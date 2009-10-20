@@ -10,6 +10,7 @@ require 'webme/color'
 # based on '==', ie. <h2>.
 #
 # TODO: Add markdown support.
+#
 # TODO: Need clean eRuby rendering context.
 #
 class WebMe
@@ -109,6 +110,14 @@ class WebMe
     @search   = options[:search]   if options[:search]
 
     @colors ||= calc_colors
+  end
+
+  #
+  def yahoo_id
+    @yahoo_id ||= (
+      file = @root.glob('{,.,~/.}config/webme/yahoo.id').first
+      file ? file.read : EVN['YAHOO_ID']
+    )
   end
 
   #
