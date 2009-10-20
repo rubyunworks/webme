@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+  <TITLE><%= title %></TITLE>
+
+  <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/struct.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/font.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/color.css" />
+
+  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/jquery.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/highlight.js"></SCRIPT>
+
+  <SCRIPT type="text/javascript">
+    $(document).ready(function() {
+      $('pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+    });
+  </SCRIPT>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/highlight.css" />
+</HEAD>
+<BODY>
+
+<div id="header">
+  <div class="title">
+    <% if version %>
+      <div class="download">
+        Get Version
+        <h1><a href="<%= download %>"><%= version %></a></h1>
+      </div>
+    <% end %>
+    <%= header %>
+  </div>
+</div>
+
+<div id="nav">
+  <div class="menu">
+    <ul>
+    <% sections.each do |i, s| %>
+      <li><a href="#section_<%= i %>"><%= s %></a></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div id="main">
+  <div class="doc">
+    <%= body %>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="advert">
+    <!-- You can put an advertisment here  -->
+  </div>
+  <div class="copyright">
+    <%= copyright %> - Design inspired by <a href="http://drnicwilliams.com">Dr. Nic<a/><br/>
+  </div>
+</div>
+
+</BODY>
+</HTML>
+
+<!-- ReadWe Copyright (c) 2009 Thomas Sawyer -->
+

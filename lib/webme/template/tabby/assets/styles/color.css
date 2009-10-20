@@ -1,0 +1,35 @@
+/* COLOR */
+
+body { color: black; background: #fff; }
+h1 { }
+a {  }
+pre { color: #666; background: #eeeeee; border-color: #444; }
+
+/* #header .title */
+
+#header { background: #ccc; }
+
+.title h1 { color: #b05; }
+.title pre { background: transparent; }
+
+/* #nav .menu */
+
+#nav { background: transparent; border-color: #bbb; }
+
+.menu ul { background: transparent; }
+.menu ul li a { color: #333; border-color: #b05;}
+
+/* #main .doc */
+
+.doc { }
+.doc a { color: pink; }
+.doc a:hover { }
+.doc p { color: black; }
+.doc h2 { color: #000; border-color: #b05; }
+.doc h3 { border-color: white; }
+
+/* #footer .copyright */
+
+.copyright { color: #444444; }
+
+.copyright b { color: #b05; }

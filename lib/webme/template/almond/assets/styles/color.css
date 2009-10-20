@@ -1,0 +1,45 @@
+/* COLOR */
+
+body { color: <%= colors[:text] %>; background: #ffffff; }
+h1 { }
+a { color: <%= colors[:link] %>; }
+pre { color: white; }
+
+/* #header .title */
+
+#header { }
+
+.title h1 { color: <%= colors[:link] %>; }
+.title pre { background: transparent; }
+
+.download {
+  background: <%= colors[:high] %>;
+  border-color: <%= colors[:link] %>;
+  color: <%= colors[:text] %>;
+}
+
+.download a { color: <%= colors[:link] %>; }
+
+/* #nav .menu */
+
+#nav { border-color: <%= colors[:link] %>;
+  background: url(../images/fade.png) repeat-y <%= colors[:high] %>;
+}
+
+.menu ul { background: transparent; }
+.menu ul li a { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+
+/* #main .doc */
+
+.doc { }
+.doc a { color: <%= colors[:link] %>; }
+.doc a:hover { }
+.doc p { color: <%= colors[:text] %>; }
+.doc h2 { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+.doc h3 { border-color: <%= colors[:high] %>; }
+
+/* #footer .copyright */
+
+/* #footer { background: <%= colors[:back] %>; border-color: <%= colors[:link] %>; } */
+.copyright { color: <%= colors[:text]; }
+

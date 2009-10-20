@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+  <TITLE><%= title %></TITLE>
+
+  <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/struct.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/font.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/color.css" />
+
+  <SCRIPT language="javascript" src="assets/scripts/jquery.js"></script>
+
+  <SCRIPT type="text/javascript">
+    $(document).ready(function() {
+      $('.section').hide();
+      $('.section:first').show();
+    });
+    function section(n) {
+      $('.section').hide();
+      $('#'+n).show();
+    };
+  </SCRIPT>
+
+</HEAD>
+<BODY>
+
+<div id="header">
+  <div class="title">
+    <%= header %>
+  </div>
+</div>
+
+<div id="nav">
+  <div class="menu">
+    <ul>
+    <% sections.each do |i, s| %>
+      <li><a href="javascript: section('section_<%= i %>');"><%= s %></a></li>
+    <% end %>
+    <!--
+    <li>&middot;</li>
+    <li><a href="rdoc/index.html">API</a> &nbsp;&nbsp;</li>
+    <li><a href="https://rubyforge.org/projects/ratchets/">Devsite</a></li>
+    <li><a href="src/">Source</a></li>
+    -->
+    </ul>
+  </div>
+</div>
+
+<div id="main">
+  <div class="aside">
+    <!-- TODO: ajax load if exists? -->
+  </div>
+
+  <div class="doc">
+    <%= body %>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="advert">
+    <!-- You can put an advertisment here  -->
+  </div>
+  <div class="copyright">
+    Copyright &copy; <%= copyright %> <br/>
+  </div>
+</div>
+
+</BODY>
+</HTML>
+
+
+<!--
+    b.p { color: #777799; }
+    b.r { color: #FF0033; }
+
+    td#slogon {
+      font-family: monospace;
+      vertical-align: middle; text-align: left;
+      color: gray; font-size: 12pt; padding-left: 10px;
+      white-space: nowrap; line-height: 12pt;
+    }
+
+  <table style="padding-top: 900px;">
+    <tr>
+    <td id="slogon">
+      <b class="p">W H E N</b> <br/>
+      <b class="p">Y O U R</b> <br/>
+      <b class="r">R U B Y</b> <br/>
+      <b class="p">R U N N E T H</b> <br/>
+      <b class="p">O V E R</b>&nbsp;
+    </td>
+    </tr>
+  </table>
+-->

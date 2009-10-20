@@ -1,0 +1,33 @@
+/* FONT */
+
+html { font-family: sans-serif; font-size: 100%; }
+body { }
+pre { font-family: monospace; }
+td { text-align: left; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* #header .title */
+
+.title h1 { font-size: 300%; }
+
+/* #main .doc */
+
+.doc { }
+.doc a { font-size: 100%; }
+.doc a:hover { text-decoration: underline; }
+.doc p { text-align: left; font-size: 100%; font-family: sans-serif; line-height: 1.4em; }
+.doc h2 { font-size: 2em; font-weight: bold; }
+.doc h3 { font-style: italic;}
+
+/* #nav .menu */
+
+.menu { text-align: left; }
+.menu ul li a { font: bold 90% sans-serif; text-decoration: none; }
+.menu ul li a:hover { text-decoration: underline; }
+.menu ul li a:active { text-decoration: underline; }
+
+/* #footer .copyright */
+
+.copyright { font: bold .8em sans-serif; }
+

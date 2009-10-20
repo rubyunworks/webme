@@ -1,0 +1,4 @@
+---
+dnote:
+  service : DNote
+  active  : true

@@ -1,0 +1,6 @@
+---
+syntax:
+  service: syntax
+  exclude: [plug]
+  active : false
+

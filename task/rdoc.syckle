@@ -1,0 +1,9 @@
+---
+rdoc:
+  service : rdoc
+  template: redfish
+  include : ~
+  exclude : [lib/readwe/template/]
+  extra   : ~
+  active  : true
+

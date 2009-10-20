@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+  <TITLE>WebMe</TITLE>
+
+  <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/struct.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/font.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/color.css" />
+
+  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/jquery.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/highlight.js"></SCRIPT>
+
+  <SCRIPT type="text/javascript">
+    $(document).ready(function() {
+      $('pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+    });
+  </SCRIPT>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/highlight.css" />
+</HEAD>
+<BODY>
+
+<div id="header">
+  <div class="title"> 
+    
+      <div class="logo">
+        <a href=""><img src="assets/images/logo.jpg" /></a>
+      </div>    
+    
+    <h1>WebMe</h1>
+<ul>
+<li>home: <a href="http://proutils.github.com/webme">http://proutils.github.com/webme</a>
+
+</li>
+<li>rdocs: <a href="http://proutils.github.com/webme/rdoc">http://proutils.github.com/webme/rdoc</a>
+
+</li>
+<li>source: <a href="http://github.com/proutils./webme">http://github.com/proutils./webme</a>
+
+</li>
+<li>forum: <a href="http://googlegroups.com/group/proutils">http://googlegroups.com/group/proutils</a>
+
+</li>
+</ul>
+
+  </div>
+</div>
+
+<div id="nav">
+  <div class="menu">
+    <ul>
+    
+      <li><a href="#section_description:">DESCRIPTION:</a></li>
+    
+      <li><a href="#section_synopsis:">SYNOPSIS:</a></li>
+    
+      <li><a href="#section_installation:">INSTALLATION:</a></li>
+    
+      <li><a href="#section_copying:">COPYING:</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+<div id="main">
+  <div class="doc">
+    <div class="section" id="section_description:"><h2>DESCRIPTION:</h2>
+<p>
+WebMe converts a README file, in either RDoc or Markdown format, into a
+simple website.
+</p>
+<p>
+WebMe&#8217;s output is quite nice and can serve as ones final site design
+&#8212;there are a number or templates to choose from. However, WebMe is
+primarily intended to give developers a jumpstart on creating there own
+unique and even nicer looking site.
+</p>
+</div><div class="section" id="section_synopsis:"><h2>SYNOPSIS:</h2>
+<p>
+WebMe is a POM-based project. You first should make sure you have a
+reasonablly complete meta/ already setup for your project. See
+<a href="http://proutils.github.com/pom">http://proutils.github.com/pom</a> for more information.
+</p>
+<p>
+After that, usage is quite easy. Many defaults settings are built into
+system. So a simple:
+</p>
+<pre>
+  $ webme
+</pre>
+<p>
+From the root of your project is enough to produce a site. By default WebMe
+looks for either <tt>website/</tt>, <tt>web/</tt>, or <tt>site/</tt>
+directories to place the generated files. If none of these is found it will
+create a <tt>site/</tt> directory for the purpose. To use an alternate
+location supply the <tt>&#8212;output</tt> or <tt>-o</tt> option. Eg.
+</p>
+<pre>
+  $ webme -o html/
+</pre>
+<p>
+WebMe comes bundled with a number of differnt templates. Specify the
+template you&#8217;d like to use with the -t option.
+</p>
+<pre>
+  $ webme -t joy
+</pre>
+<p>
+If WebMe finds a <tt>config/webme/options.yml</tt> file (or in
+<tt>.config/</tt>), it will load it and use the settings specified there.
+This can be very useful in the early period of project development, as it
+allows you to adjust the look of your site and reapeat the same settings as
+ones README improves.
+</p>
+<p>
+All built-in templates use a common layout of:
+</p>
+<pre>
+  assets/
+    images/
+    includes/
+    scripts/
+    styles/
+  index.html
+</pre>
+<p>
+While not strictly neccessary, it&#8217;s a useful convention. Two files
+are treated specially by some templates, <tt>assets/images/logo.png</tt>
+and <tt>assets/includes/advert.html</tt>. If these files are found the
+template may try to incorporate them into the site. The logo image does not
+have to be a <tt>png</tt> file. It can be a <tt>gif</tt> or <tt>jpg</tt> as
+well. If the logo file is not found the template may attempt to find a
+suitable candidtate on the Internet (via Yahoo Search API) and save it.
+Note this feature requires BOSSman. See <a href="http://github.com/bossman">http://github.com/bossman</a>.
+</p>
+<p>
+BTW. This website is generate using WebMe, with no further augmentation.
+</p>
+</div><div class="section" id="section_installation:"><h2>INSTALLATION:</h2>
+<p>
+To install with RubyGems simply open a console and type:
+</p>
+<pre>
+  $ gem install webme
+</pre>
+<p>
+To do a site install you will need Setup.rb, then download the tar.gz
+package and type:
+</p>
+<pre>
+  $ tar -xvzf webme-x.y.z.tgz
+  $ cd webme-x.y.z.tgz
+  $ sudo setup.rb
+</pre>
+</div><div class="section" id="section_copying:"><h2>COPYING:</h2>
+<p>
+Copyright &#169; 2009 Thomas Sawyer
+</p>
+<p>
+This program is ditributed unser the terms of the GPL license.
+</p>
+<p>
+Please see COPYING file.
+</p>
+</div>
+  </div>
+</div>
+
+<div id="footer">
+<div class="advert">
+<div style="text-align: center;">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-1126154564663472";
+  /* RUBYWORKS 09-10-02 728x90 */
+  google_ad_slot = "0788888658";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+</div>
+
+</div>
+  <div class="copyright">
+    WebMe Copyright &copy; 2009 <br/>
+  </div>
+</div>
+
+</BODY>
+</HTML>
+
+<!-- ReadWe Copyright (c) 2009 Thomas Sawyer -->
+

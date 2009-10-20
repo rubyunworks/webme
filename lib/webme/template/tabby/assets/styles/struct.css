@@ -1,0 +1,40 @@
+/* STRUCTURE */
+
+body { margin: 0; padding: 0; position: relative; }
+div { margin: 0; padding: 0; }
+h1 { margin: 5px 0; }
+img { border: none; }
+td { text-align: left; vertical-align: top; }
+pre { margin: 10px 0; padding: 10px 0; width: 550px; }
+
+/* #header .title */
+
+#header { width: 100%; }
+
+.title { width: 800px; margin: 0 auto; padding: 10px 0; }
+.title ul { padding-left: 20px; }
+
+/* #nav .menu */
+
+#nav { width:100%; padding: 20px 0 10px 0; border-top: 1px solid; }
+
+.menu { width: 800px; margin: 0 auto; text-align: left;}
+.menu ul { list-style-type: none; margin: 0px; padding: 0px; width: 100%; position: relative; }
+.menu ul li { display: inline; margin: 15px 10px 15px 0; line-height: 36px; }
+.menu ul li a { border-top: 10px solid; }
+
+/* #main .doc */
+
+#main { width: 100%; padding: 0px; }
+
+.doc { margin: 0 auto; width: 800px; padding: 20px 0 10px 0; min-height: 890px; }
+.doc p { text-align: left; }
+.doc h2 { border-left: 15px solid; padding-left: 10px; }
+.doc h2 img { margin: 0 0 0 0; }
+.doc h3 { border-bottom: 1px dotted; }
+
+/* #footer .copyright */
+
+#footer { width: 100%; }
+
+.copyright { margin: 0 auto; margin-top: 20px; width: 800px; padding: 20px 0px 35px 0px; }
