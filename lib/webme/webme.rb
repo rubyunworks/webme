@@ -88,7 +88,7 @@ class WebMe
     )
 
     @advert =(
-      file = @output.glob('assets/adverts/banner.html').first
+      file = @output.glob('assets/includes/advert.html').first
       file.read if file
     )
 
