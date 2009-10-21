@@ -57,7 +57,7 @@ class WebMe
   # Use an alternate search term when looking for a logo.
   attr_accessor :search
 
-  # Color scheme.
+  # Colors to use for color scheme.
   attr_accessor :colors
 
   # If you want to add an advertisment, you
@@ -109,14 +109,16 @@ class WebMe
     @title    = options[:title]    if options[:title]
     @search   = options[:search]   if options[:search]
 
-    @colors ||= calc_colors
+    calc_colors
   end
 
   #
   def yahoo_id
     @yahoo_id ||= (
-      file = @root.glob('{,.,~/.}config/webme/yahoo.id').first
-      file ? file.read : EVN['YAHOO_ID']
+      home = Pathname.new(File.expand_path('~'))
+      file = @root.glob('{,.,#{home}/.}config/webme/yahoo.id').first
+      file = file || home.glob('.config/webme/yahoo.id').first
+      file ? file.read : ENV['YAHOO_ID']
     )
   end
 
@@ -274,22 +276,28 @@ class WebMe
 
   # Take the title and calc uniq colors for it.
   def calc_colors
-    key = (title+"AZ")[0,3].upcase.sub(/\W/,'')
-    rgb = key.each_byte.to_a.map{ |i| (i-65)*10 }
+    if @colors
+      back = @colors['back']
+      text = @colors['text']
+      high = @colors['high']
+      link = @colors['link']
+      color = Color.new(back)
+    else
+      @colors = {}
+      key = (title+"ZZ").sub(/[aeiou]/,'')[0,3].upcase.sub(/\W/,'')
+      rgb = key.each_byte.to_a.map{ |i| (i-65)*10 }
+      color = Color.new(rgb)
+    end
 
-    color = Color.new(rgb)
-    back = color
-    text = color.lightness > 0.5 ? "#333333" : "#EEEEEE"
+    back ||= color
+    text ||= color.lightness > 0.5 ? "#333333" : "#EEEEEE"
+    high ||= color.bright
+    link ||= color.dark #lightness > 0.5 ? text.bright : text.dark
 
-    high = color.bright
-    link = color.dark #lightness > 0.5 ? text.bright : text.dark
-
-    @colors = {
-      :back => "##{back}",
-      :text => "##{text}",
-      :high => "##{high}",
-      :link => "##{link}"
-    }
+    @colors[:back] = "##{back}"
+    @colors[:text] = "##{text}"
+    @colors[:high] = "##{high}"
+    @colors[:link] = "##{link}"
   end
 
   # Pull a randomly searched image from the Net for a logo.
@@ -341,7 +349,6 @@ class WebMe
   def advert
     return '' if FalseClass === @advert
     @advert ||= <<-HERE
-<div style="text-align: center;">
   <script type="text/javascript"><!--
   google_ad_client = "pub-1126154564663472";
   /* RUBYWORKS 09-10-02 728x90 */
@@ -353,7 +360,6 @@ class WebMe
   <script type="text/javascript"
   src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
   </script>
-</div>
     HERE
   end
 
