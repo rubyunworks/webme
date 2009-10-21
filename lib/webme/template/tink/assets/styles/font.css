@@ -28,7 +28,7 @@ body { }
 
 /* #nav .menu */
 
-.menu { text-align: left; }
+.menu { text-align: right; }
 .menu ul li a { font-family: sans-serif; font-weight: bold; text-decoration: none; }
 .menu ul li a:hover { text-decoration: underline; }
 .menu ul li a:active { text-decoration: underline; }
