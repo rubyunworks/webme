@@ -1,0 +1,24 @@
+---
+layout  : page
+title   : Homepage
+stencil : liquid
+
+--- html
+
+<div id="nav">
+  <div class="menu">
+    <ul>
+    <% sections.each do |i, s| %>
+      <li><a href="#section_<%= i %>"><%= s %></a></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div id="main">
+  <div class="doc">
+    <%= body %>
+  </div>
+</div>
+
+

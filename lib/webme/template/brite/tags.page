@@ -1,0 +1,25 @@
+---
+layout  : page
+title   : TigerOps
+stencil : liquid
+---
+
+<div class="page">
+
+{% for tag in site.tags %}
+  <div class="">
+    <div class="heading">
+      {{ tag }}
+    </div>
+  {% for post in site.posts_by_tag[tag] %}
+    <div class="" style="margin: 0; padding: 0;">
+      <span class="date">{{ post.date | date_to_string }}</span>
+      <a class="" href="{{ post.url }}">{{ post.title }}</a>
+    </div>
+  {% endfor %}
+  </div>
+  <br/>
+{% endfor %}
+
+</div>
+

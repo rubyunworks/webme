@@ -1,0 +1,11 @@
+---
+title  : Drafts
+author : trans
+tags   : brite
+date   : 2009-01-27
+
+--- markdown
+
+Just to let you know, you can use a '.draft' extension to keep Brite from
+turning a post you are working into an .html file.
+

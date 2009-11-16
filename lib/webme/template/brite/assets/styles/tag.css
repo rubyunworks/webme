@@ -1,0 +1,48 @@
+/* TAG STYLES */
+
+/* LAYOUT */
+
+body { margin: 0; padding: 0; }
+
+
+/* FONT */
+
+body {
+    font-size: 75%;
+    font-family: sans-serif, Arial;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: sans-serif, Arial;
+    font-weight: bold;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+}
+
+h1 { font-size: 1.6em; line-height: 1;    margin: 0.50em 0; }
+h2 { font-size: 1.4em;                    margin: 0.75em 0; }
+h3 { font-size: 1.3em; line-height: 1;    margin: 1.00em 0; }
+h4 { font-size: 1.2em; line-height: 1.25; margin: 1.25em 0; }
+h5 { font-size: 1.1em; font-weight: bold; margin: 0 0 1.5em 0; }
+h6 { font-size: 1.0em; font-weight: bold; }
+
+p {
+  line-height: 1.6em;
+}
+
+pre {
+  font-size: 12px;
+}
+
+a { text-decoration: none; }
+
+
+/* COLOR */
+
+body { background-color: white; }
+a { color: green; font-weight: bold; }
+a:hover { color: #ff4455; }
+p { color: #222; }
+

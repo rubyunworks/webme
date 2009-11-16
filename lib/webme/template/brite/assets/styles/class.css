@@ -1,0 +1,185 @@
+/* CLASS STYLES */
+
+/* LAYOUT */
+
+/* main */
+
+.doc { width: 960px; margin: 0 auto; }
+
+.main { width: 620px; float: left; }
+
+.side { width: 270px; float: left; padding-left: 70px; }
+
+/* header */
+
+#header {
+  padding-top: 5px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 150px;
+}
+
+#header-inner {
+  width: 960px;
+  height: 140px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#header .logo {
+  padding-top: 20px;
+  margin-left: -30px;
+}
+
+/* side */
+
+.side-title {
+  border-bottom: 1px solid #ccc;
+ }
+
+/* menu */
+
+.menu {
+  width: 50%;
+  padding-top: 10px;
+  height: 32px;
+  text-align: center;
+  width: 500px;
+}
+
+.menu-inner {
+  width: 500px;
+}
+
+.menu a {
+  line-height: 20px;
+  text-align: left;
+  padding: 5px 10px;
+  /* border-left: 1px solid #ccc; */
+}
+
+.topfade {
+  width: 100%;
+  height: 32px;
+  text-align: center;
+}
+
+.btext {
+  height: 30em; overflow: hidden;
+  padding: 0 0;
+  border: 0px solid #ccc;
+  clear: both;
+}
+
+/* footer */
+
+.footer {
+  width: 100%;
+  height: 400px;
+}
+
+.footer-inner {
+  width: 960px;
+  padding-top: 200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+
+/* FONT */
+
+/* -----------------------------------------------------------------
+
+  This is where you set your desired font size. The line-heights
+  and vertical margins are automatically calculated from this.
+  The percentage is of 16px (0.75 * 16px = 12px).
+
+----------------------------------------------------------------- */
+
+#header .title {
+  font-size: 64px;
+  line-height: 1em;
+  font-weight: bold;
+}
+
+.heading { font-size: 2em; }
+.heading .title { font-size: 1.2em; font-weight: bold; }
+.heading .date  { font-size: 0.7em; }
+
+.menu a {
+  font-size: 1.5em;
+  font-style: normal;
+  background: white;
+}
+
+.footer {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+
+
+/* COLOR */
+
+.topfade {
+  background: url(../images/orange-fade-up-sm.png) repeat-x white;
+}
+
+#header {
+  background: url(../images/u.jpg) 0px 0px repeat-x #111;
+  color: #111;
+}
+
+#header .menu a {
+  font-weight: bold;
+}
+
+#header .menu a:hover {
+  color: #222;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.heading .title {
+  color: #2454ad;
+}
+
+.heading .title:hover {
+  color: #ff4455;
+}
+
+.menu {
+  background: orange;
+  opacity: 0.6;
+}
+
+.menu li {
+  border-color: #ccc;
+}
+
+.menu li:hover {
+  background: #ccc;
+}
+
+.footer {
+  color: #777;
+  background: url(../images/White-Tiger-drinking-water.jpg) bottom right no-repeat;
+}
+
+.btext {
+  position: relative;
+}
+
+.continue {
+  margin: 0; padding: 0;
+  position: absolute;
+  bottom: 0;
+  padding-top: 70px;
+  background: url(../images/fade-up-sm.png) repeat-x;
+  width: 100%;
+  text-align: right;
+}
+
+#github-badge .footer {
+  background: transparent;
+}
+

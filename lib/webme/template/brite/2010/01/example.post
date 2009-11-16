@@ -1,0 +1,40 @@
+---
+title  : Example Post
+author : your name
+tags   : example
+date   : 2010-01-01
+
+--- markdown
+
+This is an example Brite blog post. Notice that the file name ends in '.post'.
+
+Brite posts, like Brite pages, are dividided into format sections. This section
+is a markdown section, as desinated by the "--- markdown" divider. Other sections
+can be used for other formats, such as Textile, HTML and Coderay highlighting.
+
+For example:
+
+--- coderay.ruby
+
+  class Example
+    def hello_world
+      puts "Hello, World!"
+    end
+  end
+
+--- markdown
+
+Or how about a Coderay example in XML.
+
+--- coderay.xml
+
+  <people>
+    <person>
+      <name>John Jay</name>
+    </person>
+  </people>
+
+--- markdown
+
+Please see the [Brite](http://proutils.github.com/brite) site for more information.
+

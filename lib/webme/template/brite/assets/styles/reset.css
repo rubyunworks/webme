@@ -1,0 +1,80 @@
+/* -------------------------------------------------------------- 
+  
+   reset.css
+   * Resets default browser CSS.
+   
+   Based on work by Eric Meyer:
+   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+   
+-------------------------------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6,
+a, img, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+   margin: 0; padding: 0; border: 0;
+   font-weight: inherit; font-style: inherit;
+   font-family: inherit; font-size: 100%;
+   /* vertical-align: baseline; */
+}
+
+body {
+   line-height: 1.5;
+   background: #fff;
+}
+
+table {
+   border-collapse: separate;
+   border-spacing: 0;
+}
+
+caption, th, td {
+   text-align: left;
+}
+
+q:before, q:after { 
+   content:'';
+}
+
+p {
+  text-align: justify;
+  padding: 0.2em 0;
+}
+
+pre {
+  font-family: monospace;
+  font-size: 0.9em;
+
+}
+
+blockquote {
+  font-style: italic;
+}
+
+
+
+/*
+
+body {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+
+h1 {
+  margin-top: 30px;
+}
+
+a {
+  color: #ff7000;
+  font-weight: bold;
+}
+
+td {
+ font-size: 10pt;
+ padding: 5px;
+ vertical-align: top;
+}
+
+*/
+
