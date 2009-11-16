@@ -121,11 +121,11 @@
 /* COLOR */
 
 .topfade {
-  background: url(../images/orange-fade-up-sm.png) repeat-x white;
+  background: url(../images/fade-up-sm.png) repeat-x white;
 }
 
 #header {
-  background: url(../images/u.jpg) 0px 0px repeat-x #111;
+  background: url(../images/bkg.jpg) 0px 0px repeat-x #111;
   color: #111;
 }
 
@@ -162,7 +162,6 @@
 
 .footer {
   color: #777;
-  background: url(../images/White-Tiger-drinking-water.jpg) bottom right no-repeat;
 }
 
 .btext {
