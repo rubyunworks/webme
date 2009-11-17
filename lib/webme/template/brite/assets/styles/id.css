@@ -6,48 +6,62 @@
 
 .doc { width: 960px; margin: 0 auto; }
 
-.main { width: 620px; float: left; }
+.main { }
 
-.side { width: 270px; float: left; padding-left: 70px; }
+/*
+.side { width: 260px; float: left; padding-left: 50px; }
+*/
+
 
 /* header */
 
 #header {
   padding-top: 5px;
   border-bottom: 2px solid #ccc;
-  margin-bottom: 150px;
+  margin-bottom: 30px;
 }
 
 #header-inner {
   width: 960px;
-  height: 140px;
   margin: 0 auto;
   text-align: left;
 }
 
 #header .logo {
-  padding-top: 20px;
+  padding: 20px;
   margin-left: -30px;
 }
 
 /* side */
-
+/*
 .side-title {
   border-bottom: 1px solid #ccc;
- }
+}
+*/
 
 /* menu */
 
 .menu {
   width: 50%;
-  padding-top: 10px;
-  height: 32px;
-  text-align: center;
   width: 500px;
+  height: 32px;
+  padding-top: 10px;
 }
 
 .menu-inner {
   width: 500px;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+}
+
+.menu li {
+  float: left;
+  line-height: 20px;
+  width: 75px;
+  border-left: 1px solid #ccc;
 }
 
 .menu a {
@@ -57,18 +71,18 @@
   /* border-left: 1px solid #ccc; */
 }
 
-.topfade {
-  width: 100%;
-  height: 32px;
-  text-align: center;
+/* nav */
+
+#sections { position: fixed; padding: 20px; right: 0; top: 80px; width: 200px;
+  border-top: 4px solid; border-left: 4px solid; border-bottom: 4px solid;
+  -moz-border-radius-topleft: 20px; -webkit-border-top-left-radius: 20px;
+  -moz-border-radius-bottomleft: 20px; -webkit-border-bottom-left-radius: 20px;
 }
 
-.btext {
-  height: 30em; overflow: hidden;
-  padding: 0 0;
-  border: 0px solid #ccc;
-  clear: both;
-}
+#sections .inner { padding: 10px; text-align: left; background: <%= colors[:high] %>; }
+#sections .inner ul { list-style-type: none; margin: 0px; padding: 0px; width: 100%; position: relative; }
+#sections .inner ul li { margin: 10px 0 10px 0; line-height: 20px; }
+#sections .inner ul li a { border-top: 0 solid; }
 
 /* footer */
 
@@ -82,6 +96,21 @@
   padding-top: 200px;
   margin: 0 auto;
   text-align: left;
+}
+
+/* generic */
+
+.topfade {
+  width: 100%;
+  height: 32px;
+  text-align: center;
+}
+
+.btext {
+  height: 30em; overflow: hidden;
+  padding: 0 0;
+  border: 0px solid #ccc;
+  clear: both;
 }
 
 
@@ -105,10 +134,17 @@
 .heading .title { font-size: 1.2em; font-weight: bold; }
 .heading .date  { font-size: 0.7em; }
 
+.menu {
+  text-align: center;
+}
+
+.menu li {
+  text-align: center;
+}
+
 .menu a {
   font-size: 1.5em;
   font-style: normal;
-  background: white;
 }
 
 .footer {
@@ -126,7 +162,7 @@
 
 #header {
   background: url(../images/bkg.jpg) 0px 0px repeat-x #111;
-  color: #111;
+  color: white;
 }
 
 #header .menu a {
@@ -148,8 +184,10 @@
 }
 
 .menu {
-  background: orange;
-  opacity: 0.6;
+}
+
+.menu a {
+  background: white;
 }
 
 .menu li {
@@ -181,4 +219,5 @@
 #github-badge .footer {
   background: transparent;
 }
+
 
