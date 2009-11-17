@@ -12,6 +12,15 @@ class WebMe
       new.run
     end
 
+    # Command-line options in a Hash.
+    attr :options
+
+    #
+    def initialize
+      $TRIAL = nil unless defined?($TRIAL)
+      $TRACE = nil unless defined?($TRACE)
+    end
+
     # Parse command-line options.
     def parse
       options = {}
@@ -48,12 +57,17 @@ HERE
           options[:output] = dir
         end
 
-        opt.on("--verbose", "-v", "provide extra verbose output") do
-          options[:verbose] = true
+        opt.on("--trace", "trace execution") do
+          options[:trace] = true
         end
 
-        opt.on("--trial", "-c", "run without writing to disk") do
+        opt.on("--trial", "run without writing to disk") do
           options[:trial] = true
+        end
+
+        opt.on("--debug", "run in debug mode ($DEBUG = true)") do
+          $DEBUG   = true
+          $VERBOSE = true  # damn it, why isn't this called $WARN ?
         end
 
         opt.on("--help", "-h", "show this help information") do
