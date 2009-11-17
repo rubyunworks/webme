@@ -51,7 +51,7 @@ The easiest way to install is via RubyGems.
 
   $ gem install facets
 
-To install manually, your will need Ruby Setup (http::/setup.rubyforge.org).
+To install manually, your will need Ruby Setup (http://setup.rubyforge.org).
 Then download and unpack the .tar.gz package and run:
 
   $ tar -xvzf facets-2.x.x.tar.gz
