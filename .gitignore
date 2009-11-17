@@ -2,5 +2,6 @@
 log
 doc/rdoc
 doc/ri
+pkg
 work/sandbox/site
 MANIFEST

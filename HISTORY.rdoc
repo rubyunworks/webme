@@ -1,8 +1,22 @@
 = Release History
 
-== 0.1.0 // 2009-10-17
+== 0.3 // 2009-11-17
 
-Hey, I had this great idea I'm calling ReadWe.
+This is a significant release for WebMe as it is the
+first to be made public.
+
+Changes:
+
+* Added additional templates (joy, nicjr, etc.)
+* Can utilize POM metadata in templates.
+* Progress toward better CSS conventions.
+* Can fetch a random logo from YAHOO Image Search.
+* Colorization based on project title.
+
+
+== 0.1 // 2009-10-17
+
+Hey, I had this great idea I'm calling <s>ReadWe</s> WebMe.
 
 Changes:
 
