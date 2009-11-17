@@ -45,16 +45,28 @@ HERE
           options[:template] = name.downcase
         end
 
+        opt.on("--readme", "-r [FILE]", "README file to use (defaults to first README*)") do |readme|
+          options[:readme] = readme
+        end
+
         opt.on("--title [TITLE]", "title to use at top of page") do |title|
           options[:title] = title
         end
 
-        opt.on("--search", "-s [TERM]", "alternate search term for finding a logo") do |term|
+        opt.on("--color [HEX]", "general color tone, supply a css hex value.") do |hex|
+          options[:color] = hex
+        end
+
+        opt.on("--search", "-s [TERM]", "alternate term for selecting colors and logo") do |term|
           options[:search] = term
         end
 
         opt.on("--output", "-o [DIR]", "output directory") do |dir|
           options[:output] = dir
+        end
+
+        opt.on("--force", "-f", "force overwrite of pre-existing site") do
+          options[:force] = true
         end
 
         opt.on("--trace", "trace execution") do
@@ -70,7 +82,12 @@ HERE
           $VERBOSE = true  # damn it, why isn't this called $WARN ?
         end
 
-        opt.on("--help", "-h", "show this help information") do
+        opt.on_tail("--list", "-l", "list available templates") do
+          puts WebMe.templates.join("\n")
+          exit 0
+        end
+
+        opt.on_tail("--help", "-h", "show this help information") do
           puts opt
           exit 0
         end

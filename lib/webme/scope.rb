@@ -36,7 +36,7 @@ class WebMe
 
     # URL where downloads can be found, or repository.
     def download
-      metadata.download || metadata.repository
+      metadata.download || metadata.homepage
     end
 
     # Copyright notice.

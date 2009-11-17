@@ -1,6 +1,8 @@
 require 'erb'
 
 require 'facets/pathname'
+require 'facets/ostruct'
+
 require 'pom/metadata'
 
 require 'webme/scope'
@@ -9,8 +11,6 @@ require 'webme/color'
 # Generates a basic website based on a README file.
 # It does this by sectioning the README based on 2nd
 # level headers, '==' or '##', ie. <h2>.
-#
-# TODO: Add markdown support.
 #
 # TODO: Use Tilt for future versions.
 
@@ -22,7 +22,7 @@ class WebMe
   DIR = Pathname.new(File.dirname(__FILE__))
 
   # Config file. Loated at +config/webme.yml+, or standard variations there-of.
-  CONFIG = '{.,}config/webme.{yml,yaml}'
+  CONFIG = '{.,}config/webme/options.{yml,yaml}'
 
   # Fallback output directory if no other found.
   OUTPUT = 'site'
@@ -36,16 +36,17 @@ class WebMe
   # Default logo file.
   LOGO = "assets/images/logo.png"
 
+  # C L A S S  M E T H O D S
+
+  #
+  def self.templates
+    Dir.glob(DIR + "templates/*").map{ |f| File.basename(f) }
+  end
+
   # A T T R I B U T E S
 
   # Template type.
   attr_accessor :template
-
-  # Run in trial mode.
-  attr_accessor :trial
-
-  # Show extra output.
-  attr_accessor :trace
 
   # Path to README file.
   attr_accessor :readme
@@ -53,24 +54,30 @@ class WebMe
   # Path in which files are placed.
   attr_accessor :output
 
-  # Project title.
+  # Project title (defaults to POM title).
   attr_accessor :title
-
-  # Copyright notice.
-  #attr_accessor :copyright
-
-  # Yahoo application id used by Bossman for finding a logo.
-  attr_accessor :yahoo_id
 
   # Use an alternate search term when looking for a logo.
   attr_accessor :search
 
-  # Colors to use for color scheme.
-  attr_accessor :colors
-
   # If you want to add an advertisment, you
   # place it here. This should be an HTML snippet.
   attr_accessor :advert
+
+  # Run in trial mode.
+  attr_accessor :trial
+
+  # Show extra output.
+  attr_accessor :trace
+
+  # Force overwrite of pre-exising site.
+  attr_accessor :force
+
+  # Yahoo application id used by Bossman for finding a logo.
+  attr_accessor :yahoo_id
+
+  # Colors to use for color scheme.
+  attr_accessor :colors
 
   # README header
   attr :header
@@ -100,11 +107,7 @@ class WebMe
 
     @name      = metadata.name #meta(:project) || meta(:name)
     @title     = metadata.title #meta(:title)
-
-    @logo =(
-      file = @output.glob('assets/images/logo.*').first
-      file.basename if file
-    )
+    @search    = metadata.title
 
     @advert =(
       file = @output.glob('assets/includes/advert.html').first
@@ -121,33 +124,19 @@ class WebMe
 
     @trial    = options[:trial] || $TRIAL
     @trace    = options[:trace] || $TRACE
+    @force    = options[:force]
 
     @template = options[:template] if options[:template]
     @output   = options[:output]   if options[:output]
     @title    = options[:title]    if options[:title]
     @search   = options[:search]   if options[:search]
 
-    calc_colors
+    @colors   = calc_colors(options[:color] || options[:colors])
   end
 
   # Generate the website.
   def generate
     transfer
-  end
-
-  #
-  def yahoo_id
-    @yahoo_id ||= (
-      home = Pathname.new(File.expand_path('~'))
-      file = @root.glob('{,.,#{home}/.}config/webme/yahoo.id').first
-      file = file || home.glob('.config/webme/yahoo.id').first
-      file ? file.read : ENV['YAHOO_ID']
-    )
-  end
-
-  #
-  def metadata
-    @metadata ||= POM::Metadata.load(root)  # TODO: Change to .new ?
   end
 
   # Load config file.
@@ -160,29 +149,61 @@ class WebMe
     end
   end
 
+  # Yahoo Application ID is looked for in the working directory and home
+  # directory under 'config' or '.config' at 'webme/yahoo.id'. Failing this
+  # is looks for 'YAHOO_ID' environment variable.
+  def yahoo_id
+    @yahoo_id ||= (
+      home = Pathname.new(File.expand_path('~'))
+      file = root.glob('{,.}config/webme/yahoo.id').first
+      file = home.glob('.config/webme/yahoo.id').first unless file
+      file ? file.read.strip : ENV['YAHOO_ID']
+    )
+  end
+
+  # POM metadata.
+  def metadata
+    @metadata ||= POM::Metadata.load(root)  # TODO: Change to .new ?
+  end
+
   # TODO: Generalize which files run through Erb.
   def transfer
-    fu.mkdir_p(output) unless File.directory?(output)
-    entries = []
-    Dir.chdir(DIR + "template/#{template}") do
-      entries = Dir['**/*'].select{ |f| File.file?(f) }
-    end
-    entries.each do |path|
-      case File.extname(path)
-      when '.html', '.css'
-        transfer_erb(path)
-      when '.layout', '.page', '.post', '.file'  # for Brite
-        transfer_erb(path)
-      else
-        transfer_copy(path)
+    if File.directory?(output) && !force
+      $stderr << "Output directory already exists. Use --force to allow overwrite.\n"
+      $stderr << "-> #{output.relative_path_from(Pathname.new(Dir.pwd))}\n"
+    else
+      puts "#{output.relative_path_from(Pathname.new(Dir.pwd))}/"
+      fu.mkdir_p(output) unless File.directory?(output)
+
+      tmpdir = (DIR + "templates/#{template}").to_s
+
+      entries = Dir.glob("#{tmpdir}/**/*")
+      entries = entries.select{ |f| File.file?(f) }
+      entries = entries.map{ |f| f.sub(tmpdir + '/', '') }
+
+      #Dir.chdir(DIR + "templates/#{template}") do
+      #  entries = Dir['**/*'].select{ |f| File.file?(f) }
+      #end
+
+      entries.each do |path|
+        puts "  #{path}"
+        case File.extname(path)
+        when '.html', '.css'
+          transfer_erb(path)
+        when '.layout', '.page', '.post', '.file'  # for Brite
+          transfer_erb(path)
+        else
+          transfer_copy(path)
+        end
       end
     end
   end
 
   # Copy a file after processing it through Erb.
   def transfer_erb(file)
-    txt = erb(DIR + "template/#{template}/#{file}")
-    fu.mkdir_p(File.dirname(File.join(output, file)))
+    txt = erb(DIR + "templates/#{template}/#{file}")
+    dir = File.dirname(File.join(output, file))
+    fu.mkdir_p(dir) unless File.directory?(dir)
     if trial
       puts "erb #{file}"
     else
@@ -192,8 +213,9 @@ class WebMe
 
   # Copy a file verbatim.
   def transfer_copy(file)
-    fu.mkdir_p(File.dirname(File.join(output, file)))
-    fu.cp(File.join(DIR, "template/#{template}", file), File.join(output,file))
+    dir = File.dirname(File.join(output, file))
+    fu.mkdir_p(dir) unless File.directory?(dir)
+    fu.cp(File.join(DIR, "templates/#{template}", file), File.join(output,file))
   end
 
   # Helper method to convert file with eRuby.
@@ -211,13 +233,18 @@ class WebMe
   def parse_readme
     abort "No readme file found." unless readme
 
-    html = rdoc(@readme)
+    case File.extname(@readme)
+    when '.md', '.markdown'
+      html = markdown(@readme)
+    else
+      html = rdoc(@readme)
+    end
+
+    #html = linkify(html)  # no longer needed for rdoc, what about markdown?
 
     if md = /<h1>(.*?)<\/h1>/.match(html)
       @title ||= $1
     end
-
-    #html = linkify(html)
 
     i = html.index('<h2>')
 
@@ -227,7 +254,7 @@ class WebMe
     sections = []
 
     html.gsub!(/<h2>(.*?)<\/h2>/) do |m|
-      label = $1
+      label = $1.chomp(':')
       ident = label.gsub(/\s+/, '_').downcase
       sections << [ident, label]
       %[</div><div class="section" id="section_#{ident}"><h2>#{label}</h2>]
@@ -251,85 +278,89 @@ class WebMe
     end
   end
 
-  #
+  # Process the README through rdoc.
   def rdoc(file)
-    require 'rdoc/markup'
+    #require 'rdoc/markup'
     require 'rdoc/markup/to_html'
     input = File.read(file)
     markup = ::RDoc::Markup::ToHtml.new
     markup.convert(input)
   end
 
-  # TODO: Add README markdown support.
-  def markdown()
+  # Process the README through markdown.
+  def markdown(file)
+    require 'rdiscount'
+    input = File.read(file)
+    markdown = RDiscount.new(input)
+    markdown.to_html
   end
 
-  # Take the title and calc uniq colors for it.
-  def calc_colors
-    if @colors
-      back = @colors['back']
-      text = @colors['text']
-      high = @colors['high']
-      link = @colors['link']
-      color = Color.new(back)
+  # Take the search term and calc uniq colors for it if
+  # colors are not already provided.
+  def calc_colors(hues)
+    schema = OpenStruct.new
+    case hues
+    when Hash
+      schema.back = hues['back']
+      schema.text = hues['text']
+      schema.high = hues['high']
+      schema.link = hues['link']
+    when String
+      color = Color.new(hues)
+      schema.back = color
+      schema.text = color.lightness > 0.5 ? "#EEEEEE" : "#333333"
+      schema.high = color.bright
+      schema.link = color.dark #lightness > 0.5 ? text.bright : text.dark
     else
-      @colors = {}
-      key = (title+"ZZZ").sub(/[aeiou]/,'')[0,3].upcase.sub(/\W/,'')
+      key = (search+"ZZZ").sub(/[aeiou]/,'')[0,3].upcase.sub(/\W/,'')
       rgb = key.each_byte.to_a.map{ |i| (i-65)*10 }
       color = Color.new(rgb)
+      schema.back = color
+      schema.text = color.lightness > 0.5 ? "#EEEEEE" : "#333333"
+      schema.high = color.bright
+      schema.link = color.dark #lightness > 0.5 ? text.bright : text.dark
     end
-
-    back ||= color
-    text ||= color.lightness > 0.5 ? "#333333" : "#EEEEEE"
-    high ||= color.bright
-    link ||= color.dark #lightness > 0.5 ? text.bright : text.dark
-
-    @colors[:back] = "##{back}"
-    @colors[:text] = "##{text}"
-    @colors[:high] = "##{high}"
-    @colors[:link] = "##{link}"
+    schema
   end
 
   # Pull a randomly searched image from the Internet for a logo.
   #
-  # Currently this uses BOSSMan to pull from Yahoo image search,
-  # which requires a yahoo app id. Would be better if it were generic.
+  # Currently this uses BOSSMan to pull from Yahoo Image Search,
+  # which requires a Yahoo App ID. Of course, it would be better
+  # if it were generic, but you do what you gotta.
   def logo
-    return LOGO unless require_bossman
-    return LOGO unless yahoo_id
-
     @logo ||= (
-      begin
-        BOSSMan.application_id = yahoo_id #<Your Application ID>
-
-        boss = BOSSMan::Search.images("#{search || title}", { :dimensions => "small" })
-        if boss.count == "0"
-          boss = BOSSMan::Search.images("clipart", { :dimensions => "small" })
-        end
-
-        url = boss.results[rand(boss.results.size)].url
-
-        #require 'net/http'
-        #Net::HTTP.start("static.flickr.com") { |http|
-        #  resp = http.get("/92/218926700_ecedc5fef7_o.jpg")
-        #  open("fun.jpg", "wb") { |file|
-        #    file.write(resp.body)
-        #   }
-        #}
-
-        ext = File.extname(url)
-
-        open(url) do |i|
-          open(output + "assets/images/logo#{ext}", 'wb') do |o|
-            o << i.read
-          end
-        end
-
-        "assets/images/logo#{ext}"
-      rescue
-        LOGO
+      if file = output.glob('assets/images/logo.*').first
+        file.relative_path_from(output)
+      else
+        logo_search
       end
     )
+  end
+
+  #
+  def logo_search
+    return LOGO unless require_bossman
+    return LOGO unless yahoo_id
+    begin
+      BOSSMan.application_id = yahoo_id #<Your Application ID>
+      boss = BOSSMan::Search.images("#{search || title}", { :dimensions => "small" })
+      if boss.count == "0"
+        boss = BOSSMan::Search.images("clipart", { :dimensions => "small" })
+      end
+      url = boss.results[rand(boss.results.size)].url
+      ext = File.extname(url)
+      dir = output + "assets/images"
+      fu.mkdir_p(dir) unless dir.exist?
+      open(url) do |i|
+        open(output + "assets/images/logo#{ext}", 'wb') do |o|
+          o << i.read
+        end
+      end
+      "assets/images/logo#{ext}"
+    rescue
+      LOGO
+    end
   end
 
   #
@@ -347,17 +378,17 @@ class WebMe
   def advert
     return '' if FalseClass === @advert
     @advert ||= <<-HERE
-  <script type="text/javascript"><!--
-  google_ad_client = "pub-1126154564663472";
-  /* RUBYWORKS 09-10-02 728x90 */
-  google_ad_slot = "0788888658";
-  google_ad_width = 728;
-  google_ad_height = 90;
-  //-->
-  </script>
-  <script type="text/javascript"
-  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-  </script>
+      <script type="text/javascript"><!--
+      google_ad_client = "pub-1126154564663472";
+      /* RUBYWORKS 09-10-02 728x90 */
+      google_ad_slot = "0788888658";
+      google_ad_width = 728;
+      google_ad_height = 90;
+      //-->
+      </script>
+      <script type="text/javascript"
+      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
     HERE
   end
 

@@ -1,5 +1,5 @@
 class WebMe
-  VERSION="0.2" #:till: VERSION="<%= version %>"
+  VERSION="0.3" #:till: VERSION="<%= version %>"
 end
 
 require 'webme/webme'

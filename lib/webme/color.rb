@@ -243,7 +243,7 @@ class WebMe
 
     #
     def to_s
-      rgb_2_hex(hex_red, hex_green, hex_blue)
+      "##{rgb_2_hex(hex_red, hex_green, hex_blue)}"
     end
 
     #
