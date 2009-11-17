@@ -3,23 +3,26 @@ require 'erb'
 require 'facets/pathname'
 require 'pom/metadata'
 
+require 'webme/scope'
 require 'webme/color'
 
-# Generates a basic website based on a README
-# file. It does this by sectioning the README
-# based on '==', ie. <h2>.
+# Generates a basic website based on a README file.
+# It does this by sectioning the README based on 2nd
+# level headers, '==' or '##', ie. <h2>.
 #
 # TODO: Add markdown support.
 #
-# TODO: Need clean eRuby rendering context.
-#
+# TODO: Use Tilt for future versions.
+
 class WebMe
+
+  # C O N S T A N T S
 
   # Relative directory.
   DIR = Pathname.new(File.dirname(__FILE__))
 
-  # Config file. Loated at +config/readwe.yml+, or standard variations thereof.
-  CONFIG = '{.,}config/webme/options.{yml,yaml}'
+  # Config file. Loated at +config/webme.yml+, or standard variations there-of.
+  CONFIG = '{.,}config/webme.{yml,yaml}'
 
   # Fallback output directory if no other found.
   OUTPUT = 'site'
@@ -30,6 +33,11 @@ class WebMe
   # Defualt template type is +joy+.
   TEMPLATE = 'joy'
 
+  # Default logo file.
+  LOGO = "assets/images/logo.png"
+
+  # A T T R I B U T E S
+
   # Template type.
   attr_accessor :template
 
@@ -37,7 +45,7 @@ class WebMe
   attr_accessor :trial
 
   # Show extra output.
-  attr_accessor :verbose
+  attr_accessor :trace
 
   # Path to README file.
   attr_accessor :readme
@@ -49,7 +57,7 @@ class WebMe
   attr_accessor :title
 
   # Copyright notice.
-  attr_accessor :copyright
+  #attr_accessor :copyright
 
   # Yahoo application id used by Bossman for finding a logo.
   attr_accessor :yahoo_id
@@ -64,11 +72,22 @@ class WebMe
   # place it here. This should be an HTML snippet.
   attr_accessor :advert
 
+  # README header
+  attr :header
+
+  # README body
+  attr :body
+
+  # README sections
+  attr :sections
+
   # Name of the project.
   attr :name
 
   # Project's root pathname.
   attr :root
+
+  # I N I T I A L I Z E
 
   #
   def initialize(root, options={})
@@ -81,7 +100,6 @@ class WebMe
 
     @name      = metadata.name #meta(:project) || meta(:name)
     @title     = metadata.title #meta(:title)
-    #@copyright = metadata.copyright
 
     @logo =(
       file = @output.glob('assets/images/logo.*').first
@@ -101,8 +119,8 @@ class WebMe
 
     load_config
 
-    @trial    = options[:trial]
-    @verbose  = options[:verbose]
+    @trial    = options[:trial] || $TRIAL
+    @trace    = options[:trace] || $TRACE
 
     @template = options[:template] if options[:template]
     @output   = options[:output]   if options[:output]
@@ -110,6 +128,11 @@ class WebMe
     @search   = options[:search]   if options[:search]
 
     calc_colors
+  end
+
+  # Generate the website.
+  def generate
+    transfer
   end
 
   #
@@ -124,7 +147,7 @@ class WebMe
 
   #
   def metadata
-    @project ||= POM::Metadata.new(root)
+    @metadata ||= POM::Metadata.load(root)  # TODO: Change to .new ?
   end
 
   # Load config file.
@@ -137,39 +160,7 @@ class WebMe
     end
   end
 
-  # Copyright notice.
-  def copyright
-    #@copyright ||= (metadata.copyright || "Copyright &copy; #{Time.now.strftime('%Y')}")
-    @copyright ||= "Copyright &copy; #{Time.now.strftime('%Y')}"
-  end
-
-  # Version number.
-  def version
-    metadata.version
-  end
-
-  # URL where downloads can be found, or repository.
-  def download
-     metadata.download || metadata.repository
-  end
-
-  # Generate the website.
-  def generate
-    transfer
-  end
-
- private
-
-  # Read a project meta entry.
-  #
-  # TODO: Use POM library in the future.
-  #def meta(name)
-  #  if file = @root.glob("{.,}meta/#{name}").first
-  #    file.read.strip
-  #  end
-  #end
-
-  #
+  # TODO: Generalize which files run through Erb.
   def transfer
     fu.mkdir_p(output) unless File.directory?(output)
     entries = []
@@ -178,9 +169,9 @@ class WebMe
     end
     entries.each do |path|
       case File.extname(path)
-      when '.html'
+      when '.html', '.css'
         transfer_erb(path)
-      when '.css'
+      when '.layout', '.page', '.post', '.file'  # for Brite
         transfer_erb(path)
       else
         transfer_copy(path)
@@ -188,7 +179,7 @@ class WebMe
     end
   end
 
-  #
+  # Copy a file after processing it through Erb.
   def transfer_erb(file)
     txt = erb(DIR + "template/#{template}/#{file}")
     fu.mkdir_p(File.dirname(File.join(output, file)))
@@ -199,22 +190,22 @@ class WebMe
     end
   end
 
+  # Copy a file verbatim.
   def transfer_copy(file)
     fu.mkdir_p(File.dirname(File.join(output, file)))
     fu.cp(File.join(DIR, "template/#{template}", file), File.join(output,file))
   end
 
-  # Convert file with eRuby.
+  # Helper method to convert file with eRuby.
   def erb(file)
     template = ERB.new(File.read(file))
-    template.result(binding)
+    template.result(scope._binding)
   end
 
-  attr :header
-
-  attr :body
-
-  attr :sections
+  # Erb rendering scope.
+  def scope
+    Scope.new(self)
+  end
 
   # Create html body, sections and header.
   def parse_readme
@@ -226,7 +217,7 @@ class WebMe
       @title ||= $1
     end
 
-    html = linkify(html)
+    #html = linkify(html)
 
     i = html.index('<h2>')
 
@@ -249,10 +240,10 @@ class WebMe
     @sections = sections
   end
 
-  #
+  # NOTE: RDoc no longer needs this. Consider for other types when supported.
   def linkify(text)
     text.gsub(/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/i) do |url|
-      full_url = url;
+      full_url = url
       if !full_url.match(/^https?:\/\//)
         full_url = 'http://' + full_url
       end
@@ -262,15 +253,14 @@ class WebMe
 
   #
   def rdoc(file)
-    require 'rdoc/markup/simple_markup'
-    require 'rdoc/markup/simple_markup/to_html'
+    require 'rdoc/markup'
+    require 'rdoc/markup/to_html'
     input = File.read(file)
-    markup = SM::SimpleMarkup.new
-    format = SM::ToHtml.new
-    markup.convert(input, format)
+    markup = ::RDoc::Markup::ToHtml.new
+    markup.convert(input)
   end
 
-  # TODO: Add markdown support.
+  # TODO: Add README markdown support.
   def markdown()
   end
 
@@ -284,7 +274,7 @@ class WebMe
       color = Color.new(back)
     else
       @colors = {}
-      key = (title+"ZZ").sub(/[aeiou]/,'')[0,3].upcase.sub(/\W/,'')
+      key = (title+"ZZZ").sub(/[aeiou]/,'')[0,3].upcase.sub(/\W/,'')
       rgb = key.each_byte.to_a.map{ |i| (i-65)*10 }
       color = Color.new(rgb)
     end
@@ -300,37 +290,45 @@ class WebMe
     @colors[:link] = "##{link}"
   end
 
-  # Pull a randomly searched image from the Net for a logo.
+  # Pull a randomly searched image from the Internet for a logo.
+  #
+  # Currently this uses BOSSMan to pull from Yahoo image search,
+  # which requires a yahoo app id. Would be better if it were generic.
   def logo
-    return nil unless require_bossman
-    return nil unless yahoo_id
+    return LOGO unless require_bossman
+    return LOGO unless yahoo_id
+
     @logo ||= (
-      BOSSMan.application_id = yahoo_id #<Your Application ID>
+      begin
+        BOSSMan.application_id = yahoo_id #<Your Application ID>
 
-      boss = BOSSMan::Search.images("#{search || title}", { :dimensions => "small" })
-      if boss.count == "0"
-        boss = BOSSMan::Search.images("clipart", { :dimensions => "small" })
-      end
-
-      url = boss.results[rand(boss.results.size)].url
-
-      #require 'net/http'
-      #Net::HTTP.start("static.flickr.com") { |http|
-      #  resp = http.get("/92/218926700_ecedc5fef7_o.jpg")
-      #  open("fun.jpg", "wb") { |file|
-      #    file.write(resp.body)
-      #   }
-      #}
-
-      ext = File.extname(url)
-
-      open(url) do |i|
-        open(output + "assets/images/logo#{ext}", 'wb') do |o|
-          o << i.read
+        boss = BOSSMan::Search.images("#{search || title}", { :dimensions => "small" })
+        if boss.count == "0"
+          boss = BOSSMan::Search.images("clipart", { :dimensions => "small" })
         end
-      end
 
-      "logo#{ext}"
+        url = boss.results[rand(boss.results.size)].url
+
+        #require 'net/http'
+        #Net::HTTP.start("static.flickr.com") { |http|
+        #  resp = http.get("/92/218926700_ecedc5fef7_o.jpg")
+        #  open("fun.jpg", "wb") { |file|
+        #    file.write(resp.body)
+        #   }
+        #}
+
+        ext = File.extname(url)
+
+        open(url) do |i|
+          open(output + "assets/images/logo#{ext}", 'wb') do |o|
+            o << i.read
+          end
+        end
+
+        "assets/images/logo#{ext}"
+      rescue
+        LOGO
+      end
     )
   end
 
@@ -367,7 +365,7 @@ class WebMe
   def fu
     if trial
       FileUtils::DryRun
-    elsif verbose
+    elsif trace
       FileUtils::Verbose
     else
       FileUtils
