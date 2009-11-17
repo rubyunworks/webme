@@ -4,113 +4,98 @@
 
 /* main */
 
-.doc { width: 960px; margin: 0 auto; }
+#doc { width: 960px; margin: 0 auto; }
 
 .main { }
-
-/*
-.side { width: 260px; float: left; padding-left: 50px; }
-*/
 
 
 /* header */
 
 #header {
-  padding-top: 5px;
   border-bottom: 2px solid #ccc;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-#header-inner {
+#header .inner {
   width: 960px;
   margin: 0 auto;
-  text-align: left;
+  padding: 10px;
 }
 
 #header .logo {
-  padding: 20px;
-  margin-left: -30px;
+  padding: 5px;
+  margin: -20px 10px 0 -30px;
 }
 
 /* side */
+
 /*
-.side-title {
-  border-bottom: 1px solid #ccc;
-}
+#side { width: 260px; float: left; padding-left: 50px; }
+#side .title { border-bottom: 1px solid #ccc; }
 */
 
-/* menu */
+/* topmenu */
 
-.menu {
-  width: 50%;
+#topmenu {
+  padding-top: 5px;
+}
+
+#topmenu .inner {
+  margin: 0 auto;
   width: 500px;
-  height: 32px;
+  height: 42px;
   padding-top: 10px;
 }
 
-.menu-inner {
-  width: 500px;
-}
-
-.menu ul {
+#topmenu ul {
   list-style: none;
   margin: 0;
 }
 
-.menu li {
+#topmenu li {
   float: left;
-  line-height: 20px;
+  line-height: 23px;
   width: 75px;
   border-left: 1px solid #ccc;
 }
 
-.menu a {
+#topmenu a {
   line-height: 20px;
   text-align: left;
   padding: 5px 10px;
   /* border-left: 1px solid #ccc; */
 }
 
-/* nav */
+/* sections */
 
-#sections { position: fixed; padding: 20px; right: 0; top: 80px; width: 200px;
+#sections { position: fixed; padding: 16px 0 16px 16px; right: 0; top: 20px; width: 200px;
   border-top: 4px solid; border-left: 4px solid; border-bottom: 4px solid;
   -moz-border-radius-topleft: 20px; -webkit-border-top-left-radius: 20px;
   -moz-border-radius-bottomleft: 20px; -webkit-border-bottom-left-radius: 20px;
 }
 
-#sections .inner { padding: 10px; text-align: left; background: <%= colors[:high] %>; }
+#sections .inner { padding: 10px; text-align: left; background: <%= colors[:high] %>;
+  -moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px; -webkit-border-bottom-left-radius: 10px;
+}
+
 #sections .inner ul { list-style-type: none; margin: 0px; padding: 0px; width: 100%; position: relative; }
 #sections .inner ul li { margin: 10px 0 10px 0; line-height: 20px; }
 #sections .inner ul li a { border-top: 0 solid; }
 
 /* footer */
 
-.footer {
+#footer {
   width: 100%;
-  height: 400px;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
 }
 
-.footer-inner {
+#footer .inner {
   width: 960px;
-  padding-top: 200px;
   margin: 0 auto;
   text-align: left;
-}
-
-/* generic */
-
-.topfade {
-  width: 100%;
-  height: 32px;
-  text-align: center;
-}
-
-.btext {
-  height: 30em; overflow: hidden;
-  padding: 0 0;
-  border: 0px solid #ccc;
-  clear: both;
 }
 
 
@@ -128,26 +113,27 @@
   font-size: 64px;
   line-height: 1em;
   font-weight: bold;
+  padding: 20px;
 }
 
-.heading { font-size: 2em; }
-.heading .title { font-size: 1.2em; font-weight: bold; }
-.heading .date  { font-size: 0.7em; }
+#header .inner {
+  text-align: left;
+}
 
-.menu {
+#topmenu {
   text-align: center;
 }
 
-.menu li {
+#topmenu li {
   text-align: center;
 }
 
-.menu a {
+#topmenu a {
   font-size: 1.5em;
   font-style: normal;
 }
 
-.footer {
+#footer {
   font-size: 1.4em;
   font-weight: bold;
 }
@@ -156,12 +142,8 @@
 
 /* COLOR */
 
-.topfade {
-  background: url(../images/fade-up-sm.png) repeat-x white;
-}
-
 #header {
-  background: url(../images/bkg.jpg) 0px 0px repeat-x #111;
+  background: url(../images/bkg.jpg) 0px 0px repeat-x <%= colors[:back] %>;
   color: white;
 }
 
@@ -175,49 +157,23 @@
   text-decoration: underline;
 }
 
-.heading .title {
-  color: #2454ad;
+#topmenu {
+  border-bottom: 2px solid #ccc;
 }
 
-.heading .title:hover {
-  color: #ff4455;
-}
-
-.menu {
-}
-
-.menu a {
+#topmenu a {
   background: white;
 }
 
-.menu li {
+#topmenu li {
   border-color: #ccc;
 }
 
-.menu li:hover {
+#topmenu li:hover {
   background: #ccc;
 }
 
-.footer {
+#footer {
   color: #777;
 }
-
-.btext {
-  position: relative;
-}
-
-.continue {
-  margin: 0; padding: 0;
-  position: absolute;
-  bottom: 0;
-  padding-top: 70px;
-  background: url(../images/fade-up-sm.png) repeat-x;
-  width: 100%;
-  text-align: right;
-}
-
-#github-badge .footer {
-  background: transparent;
-}
-
 

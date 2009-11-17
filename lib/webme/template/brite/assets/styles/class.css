@@ -1,0 +1,33 @@
+.heading { font-size: 2em; }
+.heading .title { font-size: 1.2em; font-weight: bold; color: #2454ad; }
+.heading .date  { font-size: 0.7em; }
+
+.heading .title:hover {
+  color: #ff4455;
+}
+
+.topfade {
+  width: 100%;
+  height: 32px;
+  text-align: center;
+  background: url(../images/fade-up-sm.png) repeat-x white;
+}
+
+.btext {
+  position: relative;
+  height: 30em; overflow: hidden;
+  padding: 0 0;
+  border: 0px solid #ccc;
+  clear: both;
+}
+
+.continue {
+  margin: 0; padding: 0;
+  position: absolute;
+  bottom: 0;
+  padding-top: 70px;
+  background: url(../images/fade-up-sm.png) repeat-x;
+  width: 100%;
+  text-align: right;
+}
+

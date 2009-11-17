@@ -10,32 +10,5 @@ layout : main
   </div>
 </div>
 
-<div class="side">
-  <h2 class="side-title">I Am</h2>
-  <p>Trans has been coding Ruby since 2002. Now he shares with you. Kazaam!</p>
-
-  <h2 class="side-title">I Make</h2>
-  <a href="http://facets.rubyforge.org"><img src="{{root}}assets/images/RubyFacets.png" style="width: 270px;"/></a><br/>
-  <a href="http://proutils.rubyforge.org"><img src="{{root}}assets/images/proutils.png"/></a><br/>
-  <a href="http://death.rubyforge.org"><img src="{{root}}assets/images/skull4.png" style="margin-top: 24px;"/></a><br/>
-
-  <h2 class="side-title">I Use</h2>
-  <a href="http://ruby-lang.org"><img src="{{root}}assets/images/ruby-lang.png"/></a><br/>
-  <a href="http://github.org"><img src="{{root}}assets/images/github-logo.png" style="float: left; margin-left: 5px; width: 115px;"/></a>
-  <a href="http://github.org"><img src="{{root}}assets/images/jquery-logo.gif" style="margin-left: 10px;"/></a>
-  <a href="http://cukes.info/"><img src="{{root}}assets/images/cuke_logo.png"/></a>
-
-  <br/><br/>
-  <h2 class="side-title">I Read</h2>
-  <a href="http://rubyinside.com/"><img src="http://www.rubyinside.com/wp-content/themes/rubyinside2009/images/logo2.png" align="center"/></a>
-
-  <br/><br/>
-  <h2 class="side-title">I Work</h2>
-
-  <div id="github-badge"></div>
-  <script type="text/javascript" charset="utf-8">
-    GITHUB_USERNAME="trans";
-  </script>
-  <script src="http://drnic.github.com/github-badges/dist/github-badge-launcher.js" type="text/javascript"></script>
-</div>
+<!-- You could be a sidebar here perhaps -->
 

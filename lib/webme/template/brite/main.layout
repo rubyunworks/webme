@@ -31,36 +31,39 @@ stencil: liquid
 
   <link href="{{root}}assets/styles/tag.css"    rel="stylesheet" type="text/css" />
   <link href="{{root}}assets/styles/class.css"  rel="stylesheet" type="text/css" />
+  <link href="{{root}}assets/styles/id.css"     rel="stylesheet" type="text/css" />
+
   <link href="{{root}}assets/styles/syntax.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-<div id="header">
-  <div id="header-inner">
-    <div class="menu" style="float: right;">
-      <div class="menu-inner">
-        <a href="{{root}}index.html">Home</a> &middot;
-        <a href="{{root}}blog.html">Blog</a> &middot;
-        <a href="{{root}}tags.html">Tags</a> &middot;
-        <a href="http://groups.google.com/group/proutils">Contact</a> &middot;
-        <a href="{{root}}about.html">About</a>
-      </div>
-    </div>
-    <div class="title">
-      <img class="logo" src="{{root}}assets/images/logo.png" align="left" />
-      <%= title %>
-    </div>
+<div id="topmenu">
+  <div class="inner">
+    <a href="{{root}}index.html">Home</a> &middot;
+    <a href="{{root}}blog.html">Blog</a> &middot;
+    <a href="{{root}}tags.html">Tags</a> &middot;
+    <a href="<%= metadata.contact %>">Contact</a> &middot;
+    <a href="<%= metadata.development %>">Source</a>
   </div>
 </div>
 
-<div class="doc">
+<div id="header">
+<div class="inner">
+  <div class="title">
+    <img class="logo" src="<%= logo %>" align="left" />
+    <%= title %><br/>
+  </div>
+</div>
+</div>
+
+<div id="doc">
   {{ content }}
 </div>
 
 <br style="clear: both;"/><br/><br/>
 
-<div class="footer">
-<div class="footer-inner">
+<div id="footer">
+<div class="inner">
   <%= copyright %>
 </div>
 </div>
