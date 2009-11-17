@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: WebMe::templates
+is_singleton: true
+name: templates
+params: ()
+visibility: public

@@ -1,0 +1,49 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Erb Rendering Scope
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Erb Rendering Scope
+constants: []
+
+full_name: WebMe::Scope
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: _binding
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: advert
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: body
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: colors
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: copyright
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: download
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: header
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: logo
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: metadata
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: name
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: sections
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: title
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: version
+name: Scope
+superclass: Object

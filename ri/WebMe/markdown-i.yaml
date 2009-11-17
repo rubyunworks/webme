@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Process the README through markdown.
+full_name: WebMe#markdown
+is_singleton: false
+name: markdown
+params: (file)
+visibility: public

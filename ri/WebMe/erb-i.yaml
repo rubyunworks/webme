@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Helper method to convert file with eRuby.
+full_name: WebMe#erb
+is_singleton: false
+name: erb
+params: (file)
+visibility: public

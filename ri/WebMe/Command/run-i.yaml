@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Parse and execute.
+full_name: WebMe::Command#run
+is_singleton: false
+name: run
+params: ()
+visibility: public

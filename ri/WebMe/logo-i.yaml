@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Pull a randomly searched image from the Internet for a logo.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Currently this uses BOSSMan to pull from Yahoo Image Search, which requires a Yahoo App ID. Of course, it would be better if it were generic, but you do what you gotta.
+full_name: WebMe#logo
+is_singleton: false
+name: logo
+params: ()
+visibility: public

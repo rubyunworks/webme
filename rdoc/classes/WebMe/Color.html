@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: WebMe::Color</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../../assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../../assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../../index.html">WebMe</a>&nbsp;
+      <a href="/">WebMe::Color</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../../files/lib/webme/color_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/webme/color.rb">lib/webme/color.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000031">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000035">#blue</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000047">#bright</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000050">#complement</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000049">#dark</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000034">#green</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000039">#hex_blue</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000037">#hex_green</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000036">#hex_red</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000044">#hue</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000054">#hue_2_rgb</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000057">#inspect</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000040">#lightness</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000053">#opposite_hue</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000032">#red</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000055">#rgb_2_hex</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000042">#saturation</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000056">#to_s</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../../files/HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="../../files/COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../../files/Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="../../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../../classes/WebMe.html">WebMe</a></li>
+        
+          <li class="class"><a href="../../classes/WebMe/Color.html">WebMe::Color</a></li>
+        
+          <li class="class"><a href="../../classes/WebMe/Command.html">WebMe::Command</a></li>
+        
+          <li class="class"><a href="../../classes/WebMe/Scope.html">WebMe::Scope</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.0.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="Color.html">Color</a></h1>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="hexcode-attribute-method" class="method-detail">
+        <a name="hexcode"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">hexcode</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>
+hexcode is the six digit hex colour code we want to convert
+</p>
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(color)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 29</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">color</span>)
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">color</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>
+        <span class="ruby-identifier">color</span> = [<span class="ruby-value">0</span>,<span class="ruby-value">2</span>,<span class="ruby-value">4</span>].<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">color</span>[<span class="ruby-identifier">i</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>) }
+        <span class="ruby-ivar">@red</span>, <span class="ruby-ivar">@green</span>, <span class="ruby-ivar">@blue</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">color</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">255</span> }
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">color</span>.<span class="ruby-identifier">all?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span> }
+          <span class="ruby-ivar">@red</span>, <span class="ruby-ivar">@green</span>, <span class="ruby-ivar">@blue</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">color</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@red</span>, <span class="ruby-ivar">@green</span>, <span class="ruby-ivar">@blue</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">color</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">255</span> }
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;bad color -- #{color}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="blue-method" class="method-detail ">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">blue</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Ratio of blue.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="blue-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">blue</span>
+      <span class="ruby-comment cmt">#$blue = (hexdec($bluehex)) / 255;</span>
+      <span class="ruby-ivar">@blue</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="bright-method" class="method-detail ">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">bright</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="bright-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 162</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bright</span>
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">red</span>   <span class="ruby-operator">+</span> ((<span class="ruby-value">1</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">red</span>)   <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>)
+      <span class="ruby-identifier">g</span> = <span class="ruby-identifier">green</span> <span class="ruby-operator">+</span> ((<span class="ruby-value">1</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">green</span>) <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>)
+      <span class="ruby-identifier">b</span> = <span class="ruby-identifier">blue</span>  <span class="ruby-operator">+</span> ((<span class="ruby-value">1</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">blue</span>)  <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>)
+      <span class="ruby-constant">Color</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">r</span>,<span class="ruby-identifier">g</span>,<span class="ruby-identifier">b</span>])
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="complement-method" class="method-detail ">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">complement</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Input is HSL value of complementary colour, held in $h2, $s, $l as
+fractions of 1 Output is RGB in normal 255 255 255 format, held in $r, $g,
+$b Hue is converted using function <a
+href="Color.html#M000054">hue_2_rgb</a>, shown at the end of this code
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="complement-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 185</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">complement</span>
+      <span class="ruby-ivar">@complement</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">saturation</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">r</span> = <span class="ruby-identifier">lightness</span> <span class="ruby-operator">*</span> <span class="ruby-value">255</span>
+          <span class="ruby-identifier">g</span> = <span class="ruby-identifier">lightness</span> <span class="ruby-operator">*</span> <span class="ruby-value">255</span>
+          <span class="ruby-identifier">b</span> = <span class="ruby-identifier">lightness</span> <span class="ruby-operator">*</span> <span class="ruby-value">255</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lightness</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>
+            <span class="ruby-identifier">var_2</span> = <span class="ruby-identifier">lightness</span> <span class="ruby-operator">*</span> (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">saturation</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">var_2</span> = (<span class="ruby-identifier">lightness</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">saturation</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">saturation</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">lightness</span>)
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">var_1</span> = <span class="ruby-value">2</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">lightness</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">var_2</span>
+
+          <span class="ruby-identifier">r</span> = <span class="ruby-value">255</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">hue_2_rgb</span>(<span class="ruby-identifier">var_1</span>, <span class="ruby-identifier">var_2</span>, <span class="ruby-identifier">opposite_hue</span> <span class="ruby-operator">+</span> (<span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-value">3</span>))
+          <span class="ruby-identifier">g</span> = <span class="ruby-value">255</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">hue_2_rgb</span>(<span class="ruby-identifier">var_1</span>, <span class="ruby-identifier">var_2</span>, <span class="ruby-identifier">opposite_hue</span>)
+          <span class="ruby-identifier">b</span> = <span class="ruby-value">255</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">hue_2_rgb</span>(<span class="ruby-identifier">var_1</span>, <span class="ruby-identifier">var_2</span>, <span class="ruby-identifier">opposite_hue</span> <span class="ruby-operator">-</span> (<span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-value">3</span>))
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-constant">Color</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">r</span>,<span class="ruby-identifier">g</span>,<span class="ruby-identifier">b</span>])
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="dark-method" class="method-detail ">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">dark</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="dark-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 170</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dark</span>
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">red</span>   <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>
+      <span class="ruby-identifier">g</span> = <span class="ruby-identifier">green</span> <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>
+      <span class="ruby-identifier">b</span> = <span class="ruby-identifier">blue</span>  <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>
+      <span class="ruby-constant">Color</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">r</span>,<span class="ruby-identifier">g</span>,<span class="ruby-identifier">b</span>])
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="green-method" class="method-detail ">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">green</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Ratio of green.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="green-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 54</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">green</span>
+      <span class="ruby-comment cmt">#$green = (hexdec($greenhex)) / 255;</span>
+      <span class="ruby-ivar">@green</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="hex-blue-method" class="method-detail ">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">hex_blue</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="hex-blue-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 76</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hex_blue</span>
+      <span class="ruby-ivar">@hex_blue</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">blue</span> <span class="ruby-operator">*</span> <span class="ruby-value">255</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="hex-green-method" class="method-detail ">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">hex_green</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="hex-green-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 71</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hex_green</span>
+      <span class="ruby-ivar">@hex_green</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">green</span> <span class="ruby-operator">*</span> <span class="ruby-value">255</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="hex-red-method" class="method-detail ">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">hex_red</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="hex-red-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 66</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hex_red</span>
+      <span class="ruby-ivar">@hex_red</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">red</span> <span class="ruby-operator">*</span> <span class="ruby-value">255</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="hue-method" class="method-detail ">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">hue</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="hue-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 119</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hue</span>
+      <span class="ruby-ivar">@hue</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">var_min</span> = [<span class="ruby-identifier">red</span>, <span class="ruby-identifier">green</span>, <span class="ruby-identifier">blue</span>].<span class="ruby-identifier">min</span>
+        <span class="ruby-identifier">var_max</span> = [<span class="ruby-identifier">red</span>, <span class="ruby-identifier">green</span>, <span class="ruby-identifier">blue</span>].<span class="ruby-identifier">max</span>
+        <span class="ruby-identifier">del_max</span> = <span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">var_min</span>
+
+        <span class="ruby-identifier">l</span> = (<span class="ruby-identifier">var_max</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">var_min</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">del_max</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">h</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-comment cmt">#if l &lt; 0.5</span>
+          <span class="ruby-comment cmt">#  s = del_max / (var_max + var_min)</span>
+          <span class="ruby-comment cmt">#else</span>
+          <span class="ruby-comment cmt">#  s = del_max / (2 - var_max - var_min)</span>
+          <span class="ruby-comment cmt">#end</span>
+
+          <span class="ruby-identifier">del_r</span> = (((<span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">red</span>) <span class="ruby-operator">/</span> <span class="ruby-value">6</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">del_max</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)) <span class="ruby-operator">/</span> <span class="ruby-identifier">del_max</span>;
+          <span class="ruby-identifier">del_g</span> = (((<span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">green</span>) <span class="ruby-operator">/</span> <span class="ruby-value">6</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">del_max</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)) <span class="ruby-operator">/</span> <span class="ruby-identifier">del_max</span>;
+          <span class="ruby-identifier">del_b</span> = (((<span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">blue</span>) <span class="ruby-operator">/</span> <span class="ruby-value">6</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">del_max</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)) <span class="ruby-operator">/</span> <span class="ruby-identifier">del_max</span>;
+
+          <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">red</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">var_max</span>)
+            <span class="ruby-identifier">h</span> = <span class="ruby-identifier">del_b</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">del_g</span>;
+          <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">green</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">var_max</span>)
+            <span class="ruby-identifier">h</span> = (<span class="ruby-value">1</span> <span class="ruby-operator">/</span> <span class="ruby-value">3</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">del_r</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">del_b</span>;
+          <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">blue</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">var_max</span>)
+            <span class="ruby-identifier">h</span> = (<span class="ruby-value">2</span> <span class="ruby-operator">/</span> <span class="ruby-value">3</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">del_g</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">del_r</span>;
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">h</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">h</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">h</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">h</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="hue-rgb-method" class="method-detail ">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">hue_2_rgb</span><span
+            class="method-args">(v1, v2, vh)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Function to convert hue to RGB used above.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="hue-rgb-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 217</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hue_2_rgb</span>(<span class="ruby-identifier">v1</span>, <span class="ruby-identifier">v2</span>, <span class="ruby-identifier">vh</span>)
+      <span class="ruby-identifier">vh</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">vh</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">vh</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">vh</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-value">6</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">vh</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">return</span> (<span class="ruby-identifier">v1</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">v2</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">v1</span>) <span class="ruby-operator">*</span> <span class="ruby-value">6</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">vh</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-value">2</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">vh</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">v2</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-value">3</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">vh</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span>
+        <span class="ruby-keyword kw">return</span> (<span class="ruby-identifier">v1</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">v2</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">v1</span>) <span class="ruby-operator">*</span> ((<span class="ruby-value">2.0</span> <span class="ruby-operator">/</span> <span class="ruby-value">3</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">vh</span>) <span class="ruby-operator">*</span> <span class="ruby-value">6</span>))
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">v1</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="inspect-method" class="method-detail ">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="inspect-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 250</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+      <span class="ruby-node">&quot;&lt;Color:#{to_s}:(#{red},#{green},#{blue})&gt;&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="lightness-method" class="method-detail ">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">lightness</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="lightness-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 87</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lightness</span>
+      <span class="ruby-ivar">@lightness</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">var_min</span> = [<span class="ruby-identifier">red</span>, <span class="ruby-identifier">green</span>, <span class="ruby-identifier">blue</span>].<span class="ruby-identifier">min</span>
+        <span class="ruby-identifier">var_max</span> = [<span class="ruby-identifier">red</span>, <span class="ruby-identifier">green</span>, <span class="ruby-identifier">blue</span>].<span class="ruby-identifier">max</span>
+        <span class="ruby-identifier">del_max</span> = <span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">var_min</span>
+        <span class="ruby-identifier">l</span> = (<span class="ruby-identifier">var_max</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">var_min</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="opposite-hue-method" class="method-detail ">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">opposite_hue</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Calculate the opposite hue, $h2 Next find the value of the opposite Hue,
+i.e., the one that&#8217;s 180°, or 0.5, away (I&#8217;m sure the
+mathematicians have a more elegant way of doing this, but):
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="opposite-hue-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 210</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">opposite_hue</span>
+      <span class="ruby-identifier">h2</span> = <span class="ruby-identifier">hue</span> <span class="ruby-operator">+</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>
+      <span class="ruby-identifier">h2</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">h2</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">h2</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="red-method" class="method-detail ">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">red</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Ratio of red.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="red-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 48</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">red</span>
+      <span class="ruby-comment cmt">#$red = (hexdec($redhex)) / 255;</span>
+      <span class="ruby-ivar">@red</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rgb-hex-method" class="method-detail ">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rgb_2_hex</span><span
+            class="method-args">(r, g, b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="rgb-hex-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 237</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rgb_2_hex</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">g</span>, <span class="ruby-identifier">b</span>)
+      <span class="ruby-identifier">rhex</span> = <span class="ruby-value str">&quot;%02X&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">round</span>
+      <span class="ruby-identifier">ghex</span> = <span class="ruby-value str">&quot;%02X&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">round</span>
+      <span class="ruby-identifier">bhex</span> = <span class="ruby-value str">&quot;%02X&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">round</span>
+      <span class="ruby-node">&quot;#{rhex}#{ghex}#{bhex}&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="saturation-method" class="method-detail ">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">saturation</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="saturation-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 97</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">saturation</span>
+      <span class="ruby-ivar">@saturation</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">var_min</span> = [<span class="ruby-identifier">red</span>, <span class="ruby-identifier">green</span>, <span class="ruby-identifier">blue</span>].<span class="ruby-identifier">min</span>
+        <span class="ruby-identifier">var_max</span> = [<span class="ruby-identifier">red</span>, <span class="ruby-identifier">green</span>, <span class="ruby-identifier">blue</span>].<span class="ruby-identifier">max</span>
+        <span class="ruby-identifier">del_max</span> = <span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">var_min</span>
+
+        <span class="ruby-identifier">l</span> = (<span class="ruby-identifier">var_max</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">var_min</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">del_max</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">s</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>
+            <span class="ruby-identifier">s</span> = <span class="ruby-identifier">del_max</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">var_max</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">var_min</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">s</span> =<span class="ruby-identifier">del_max</span> <span class="ruby-operator">/</span> (<span class="ruby-value">2</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">var_max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">var_min</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">s</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-s-method" class="method-detail ">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-s-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/color.rb, line 245</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-node">&quot;##{rgb_2_hex(hex_red, hex_green, hex_blue)}&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

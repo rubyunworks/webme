@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: README header
+full_name: WebMe::Scope#header
+is_singleton: false
+name: header
+params: ()
+visibility: public

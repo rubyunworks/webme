@@ -1,0 +1,191 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: If you want to add an advertisment, you place it here. This should be an HTML snippet.
+  name: advert
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: README body
+  name: body
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Colors to use for color scheme.
+  name: colors
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Force overwrite of pre-exising site.
+  name: force
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: README header
+  name: header
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Name of the project.
+  name: name
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Path in which files are placed.
+  name: output
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Path to README file.
+  name: readme
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Project's root pathname.
+  name: root
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Use an alternate search term when looking for a logo.
+  name: search
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: README sections
+  name: sections
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Template type.
+  name: template
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Project title (defaults to POM title).
+  name: title
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Show extra output.
+  name: trace
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Run in trial mode.
+  name: trial
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Yahoo application id used by Bossman for finding a logo.
+  name: yahoo_id
+  rw: RW
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: templates
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "So first of all, get the six hex digits into this input format:"
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: VERSION
+  value: "\"0.3\""
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Relative directory.
+  name: DIR
+  value: Pathname.new(File.dirname(__FILE__))
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Config file. Loated at <tt>config/webme.yml</tt>, or standard variations there-of.
+  name: CONFIG
+  value: "'{.,}config/webme/options.{yml,yaml}'"
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Fallback output directory if no other found.
+  name: OUTPUT
+  value: "'site'"
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Glob used to lookup output directory.
+  name: OUTPUT_GLOB
+  value: "'{site,web,website,www}'"
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Defualt template type is <tt>joy</tt>.
+  name: TEMPLATE
+  value: "'joy'"
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Default logo file.
+  name: LOGO
+  value: "\"assets/images/logo.png\""
+full_name: WebMe
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: advert
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: calc_colors
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: erb
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: fu
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: generate
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: linkify
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: load_config
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: logo
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: logo_search
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: markdown
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: metadata
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_readme
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: rdoc
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: require_bossman
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: scope
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: transfer
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: transfer_copy
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: transfer_erb
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: yahoo_id
+name: WebMe
+superclass: Object

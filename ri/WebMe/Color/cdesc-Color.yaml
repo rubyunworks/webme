@@ -1,0 +1,62 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: hexcode is the six digit hex colour code we want to convert
+  name: hexcode
+  rw: R
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Color
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Color
+constants: []
+
+full_name: WebMe::Color
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: blue
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: bright
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: complement
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: dark
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: green
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: hex_blue
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: hex_green
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: hex_red
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: hue
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: hue_2_rgb
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: inspect
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: lightness
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: opposite_hue
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: red
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: rgb_2_hex
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: saturation
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_s
+name: Color
+superclass: Object

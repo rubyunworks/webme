@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Project title. (Get from generator b/c it can be overrided.)
+full_name: WebMe::Scope#title
+is_singleton: false
+name: title
+params: ()
+visibility: public

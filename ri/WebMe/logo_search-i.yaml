@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: WebMe#logo_search
+is_singleton: false
+name: logo_search
+params: ()
+visibility: public

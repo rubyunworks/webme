@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "TODO: Generalize which files run through Erb."
+full_name: WebMe#transfer
+is_singleton: false
+name: transfer
+params: ()
+visibility: public

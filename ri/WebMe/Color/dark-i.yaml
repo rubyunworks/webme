@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: WebMe::Color#dark
+is_singleton: false
+name: dark
+params: ()
+visibility: public

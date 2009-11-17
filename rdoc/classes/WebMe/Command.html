@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: WebMe::Command</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../../assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../../assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../../index.html">WebMe</a>&nbsp;
+      <a href="/">WebMe::Command</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../../files/lib/webme/command_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/webme/command.rb">lib/webme/command.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000001">::new</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000000">::run</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000004">#execute</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000002">#parse</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000005">#run</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../../files/HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="../../files/COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../../files/Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="../../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../../classes/WebMe.html">WebMe</a></li>
+        
+          <li class="class"><a href="../../classes/WebMe/Color.html">WebMe::Color</a></li>
+        
+          <li class="class"><a href="../../classes/WebMe/Command.html">WebMe::Command</a></li>
+        
+          <li class="class"><a href="../../classes/WebMe/Scope.html">WebMe::Scope</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.0.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1>Command-line Utility</h1>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="options-attribute-method" class="method-detail">
+        <a name="options"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">options</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>
+Command-line options in a Hash.
+</p>
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 19</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+      <span class="ruby-identifier">$TRIAL</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-identifier">$TRIAL</span>)
+      <span class="ruby-identifier">$TRACE</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-identifier">$TRACE</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="run-method" class="method-detail ">
+        <a name="M000000"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">run</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Initialize and run.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="run-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 11</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>
+      <span class="ruby-identifier">new</span>.<span class="ruby-identifier">run</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="execute-method" class="method-detail ">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">execute</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Execute command.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="execute-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 104</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span>
+      <span class="ruby-identifier">readwe</span> = <span class="ruby-constant">WebMe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">readwe</span>.<span class="ruby-identifier">generate</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="parse-method" class="method-detail ">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">parse</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Parse command-line options.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="parse-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 25</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>
+      <span class="ruby-identifier">options</span> = {}
+
+      <span class="ruby-identifier">opts</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Usage: webme [OPTIONS]\n\nGenerates a basic website based on a README file. It does this\nby sectioning the README into tabs based on second level entries\n(ie. the &lt;h2&gt;'s produced by == or ##).\n\nIf output is not given, generates to the first folder called\nwebsite/, web/ or site/ in the current directory. Defaults to\nsite/ if none of these are found.\n\nOPTIONS:\n&quot;</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--template&quot;</span>, <span class="ruby-value str">&quot;-t [NAME]&quot;</span>, <span class="ruby-value str">&quot;select html template&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>] = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--readme&quot;</span>, <span class="ruby-value str">&quot;-r [FILE]&quot;</span>, <span class="ruby-value str">&quot;README file to use (defaults to first README*)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">readme</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:readme</span>] = <span class="ruby-identifier">readme</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--title [TITLE]&quot;</span>, <span class="ruby-value str">&quot;title to use at top of page&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">title</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:title</span>] = <span class="ruby-identifier">title</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--color [HEX]&quot;</span>, <span class="ruby-value str">&quot;general color tone, supply a css hex value.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hex</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:color</span>] = <span class="ruby-identifier">hex</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--search&quot;</span>, <span class="ruby-value str">&quot;-s [TERM]&quot;</span>, <span class="ruby-value str">&quot;alternate term for selecting colors and logo&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">term</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:search</span>] = <span class="ruby-identifier">term</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--output&quot;</span>, <span class="ruby-value str">&quot;-o [DIR]&quot;</span>, <span class="ruby-value str">&quot;output directory&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:output</span>] = <span class="ruby-identifier">dir</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--force&quot;</span>, <span class="ruby-value str">&quot;-f&quot;</span>, <span class="ruby-value str">&quot;force overwrite of pre-existing site&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:force</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--trace&quot;</span>, <span class="ruby-value str">&quot;trace execution&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:trace</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--trial&quot;</span>, <span class="ruby-value str">&quot;run without writing to disk&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:trial</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--debug&quot;</span>, <span class="ruby-value str">&quot;run in debug mode ($DEBUG = true)&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">$DEBUG</span>   = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-identifier">$VERBOSE</span> = <span class="ruby-keyword kw">true</span>  <span class="ruby-comment cmt"># damn it, why isn't this called $WARN ?</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">&quot;--list&quot;</span>, <span class="ruby-value str">&quot;-l&quot;</span>, <span class="ruby-value str">&quot;list available templates&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-constant">WebMe</span>.<span class="ruby-identifier">templates</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+          <span class="ruby-identifier">exit</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">&quot;--help&quot;</span>, <span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;show this help information&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-identifier">opt</span>
+          <span class="ruby-identifier">exit</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span>
+
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="run-method" class="method-detail ">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">run</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Parse and execute.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="run-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 110</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+      <span class="ruby-identifier">parse</span>
+      <span class="ruby-identifier">execute</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

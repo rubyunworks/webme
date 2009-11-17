@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Ratio of blue.
+full_name: WebMe::Color#blue
+is_singleton: false
+name: blue
+params: ()
+visibility: public

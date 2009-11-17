@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Copy a file after processing it through Erb.
+full_name: WebMe#transfer_erb
+is_singleton: false
+name: transfer_erb
+params: (file)
+visibility: public

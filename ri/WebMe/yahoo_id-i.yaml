@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Yahoo Application ID is looked for in the working directory and home directory under 'config' or '.config' at 'webme/yahoo.id'. Failing this is looks for 'YAHOO_ID' environment variable.
+full_name: WebMe#yahoo_id
+is_singleton: false
+name: yahoo_id
+params: ()
+visibility: public

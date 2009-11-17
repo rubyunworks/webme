@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Create html body, sections and header.
+full_name: WebMe#parse_readme
+is_singleton: false
+name: parse_readme
+params: ()
+visibility: public

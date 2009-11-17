@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: WebMe::Color#rgb_2_hex
+is_singleton: false
+name: rgb_2_hex
+params: (r, g, b)
+visibility: public

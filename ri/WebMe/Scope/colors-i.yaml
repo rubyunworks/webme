@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Color pallette.
+full_name: WebMe::Scope#colors
+is_singleton: false
+name: colors
+params: ()
+visibility: public

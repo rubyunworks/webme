@@ -1,0 +1,36 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Command-line options in a Hash.
+  name: options
+  rw: R
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: run
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Command-line Utility
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Command-line Utility
+constants: []
+
+full_name: WebMe::Command
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: execute
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: run
+name: Command
+superclass: Object

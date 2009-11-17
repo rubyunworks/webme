@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "Calculate the opposite hue, $h2 Next find the value of the opposite Hue, i.e., the one that's 180\xC2\xB0, or 0.5, away (I'm sure the mathematicians have a more elegant way of doing this, but):"
+full_name: WebMe::Color#opposite_hue
+is_singleton: false
+name: opposite_hue
+params: ()
+visibility: public

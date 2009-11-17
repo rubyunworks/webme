@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Copy a file verbatim.
+full_name: WebMe#transfer_copy
+is_singleton: false
+name: transfer_copy
+params: (file)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: README sections.
+full_name: WebMe::Scope#sections
+is_singleton: false
+name: sections
+params: ()
+visibility: public

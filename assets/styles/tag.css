@@ -1,0 +1,31 @@
+/* TAG STYLES */
+
+/* LAYOUT */
+
+body {margin:0;padding:0;position:relative;}
+ div {margin:0;padding:0;}
+  h1 {margin:5px 0;}
+  li {padding:3px 0;}
+ pre {margin:10px 0;}
+ pre code {padding:10px 10px;}
+ img {border:none;}
+  td {vertical-align:top;}
+
+/* FONT */
+
+html { font-family: sans-serif; font-size: 100%; }
+body { }
+ pre { font-family: monospace; }
+  td { text-align: left; }
+   p { text-align: justify; font-size: 80%; font-weight: bold; line-height: 170%; }
+  li { font-size: 80%; font-weight: bold; line-height: 160%; }
+   a { text-decoration: none; }
+   a:hover { text-decoration: underline; }
+
+/* COLOR */
+
+body { color: #333333; background: #ffeeee; }
+h1 { }
+a { color: #6E053C; }
+pre { color: white; }
+

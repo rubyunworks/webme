@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Input is HSL value of complementary colour, held in $h2, $s, $l as fractions of 1 Output is RGB in normal 255 255 255 format, held in $r, $g, $b Hue is converted using function hue_2_rgb, shown at the end of this code
+full_name: WebMe::Color#complement
+is_singleton: false
+name: complement
+params: ()
+visibility: public

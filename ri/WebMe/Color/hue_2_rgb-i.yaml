@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Function to convert hue to RGB used above.
+full_name: WebMe::Color#hue_2_rgb
+is_singleton: false
+name: hue_2_rgb
+params: (v1, v2, vh)
+visibility: public

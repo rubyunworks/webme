@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Default advert.
+full_name: WebMe#advert
+is_singleton: false
+name: advert
+params: ()
+visibility: public
