@@ -3,7 +3,7 @@ rdoc:
   service : rdoc
   template: redfish
   include : ~
-  exclude : [lib/readwe/template/]
+  exclude : [lib/webme/templates/]
   extra   : ~
   active  : true
 
