@@ -98,25 +98,11 @@ class WebMe
 
   #
   def initialize(root, options={})
-    @root      = Pathname.new(root)
+    @root = Pathname.new(root)
 
-    # DEFAULTS
+    initialize_defaults
 
-    @template  = TEMPLATE
-    @output    = @root.glob(OUTPUT_GLOB).first || @root + OUTPUT
-
-    @name      = metadata.name #meta(:project) || meta(:name)
-    @title     = metadata.title #meta(:title)
-    @search    = metadata.title
-
-    @advert =(
-      file = @output.glob('assets/includes/advert.html').first
-      file.read if file
-    )
-
-    @readme = @root.glob((options[:readme] || 'readme{,.*}'), :casefold).first
-
-    raise "cannot find README file" unless @readme
+    raise "cannot find README file" unless readme
 
     parse_readme
 
@@ -135,6 +121,23 @@ class WebMe
     #self.search   = options[:search]   if options[:search]
     #self.output   = options[:output]   if options[:output]
     #self.colors   = options[:color] || options[:colors]
+  end
+
+  #
+  def initialize_defaults
+    @template  = TEMPLATE
+    @output    = @root.glob(OUTPUT_GLOB).first || @root + OUTPUT
+
+    @name      = metadata.name #meta(:project) || meta(:name)
+    @title     = metadata.title #meta(:title)
+    @search    = metadata.title
+
+    @advert =(
+      file = @output.glob('assets/includes/advert.html').first
+      file.read if file
+    )
+
+    @readme = @root.glob((options[:readme] || 'readme{,.*}'), :casefold).first
   end
 
   #
@@ -172,7 +175,7 @@ class WebMe
 
   # Load config file.
   def load_config
-    file = @root.glob(CONFIG, :casefold).first
+    file = root.glob(CONFIG, :casefold).first
     if file
       YAML.load(File.new(file)).each do |k,v|
         __send__("#{k}=",v)
