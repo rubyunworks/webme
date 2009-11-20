@@ -64,20 +64,20 @@ class WebMe
   # place it here. This should be an HTML snippet.
   attr_accessor :advert
 
-  # Run in trial mode.
-  attr_accessor :trial
-
-  # Show extra output.
-  attr_accessor :trace
-
-  # Force overwrite of pre-exising site.
-  attr_accessor :force
-
   # Yahoo application id used by Bossman for finding a logo.
   attr_accessor :yahoo_id
 
   # Colors to use for color scheme.
   attr_accessor :colors
+
+  # Force overwrite of pre-exising site.
+  attr_accessor :force
+
+  # Run in trial mode.
+  attr_accessor :trial
+
+  # Show extra output.
+  attr_accessor :trace
 
   # README header
   attr :header
@@ -122,17 +122,48 @@ class WebMe
 
     load_config
 
-    @trial    = options[:trial] || $TRIAL
-    @trace    = options[:trace] || $TRACE
-    @force    = options[:force]
+    options.each do |k,v|
+      __send__("#{k}=",v)
+    end
 
-    @template = options[:template] if options[:template]
-    @output   = options[:output]   if options[:output]
-    @title    = options[:title]    if options[:title]
-    @search   = options[:search]   if options[:search]
+    #@trial    = options[:trial] || $TRIAL
+    #@trace    = options[:trace] || $TRACE
+    #@force    = options[:force]
 
-    @colors   = calc_colors(options[:color] || options[:colors])
+    #self.template = options[:template] if options[:template]
+    #self.title    = options[:title]    if options[:title]
+    #self.search   = options[:search]   if options[:search]
+    #self.output   = options[:output]   if options[:output]
+    #self.colors   = options[:color] || options[:colors]
   end
+
+  #
+  def trial?
+    @trial || $TRIAL
+  end
+
+  #
+  def trace?
+    @trace || $TRACE
+  end
+
+  #
+  def force?
+    @force
+  end
+
+  #
+  def output=(path)
+    @output = Pathname.new(File.expand_path(path))
+  end
+
+  #
+  def colors=(values)
+    @colors = calc_colors(values)
+  end
+
+  #
+  alias_method :color=, :colors=
 
   # Generate the website.
   def generate
@@ -168,7 +199,7 @@ class WebMe
 
   # TODO: Generalize which files run through Erb.
   def transfer
-    if File.directory?(output) && !force
+    if File.directory?(output) && !force?
       $stderr << "Output directory already exists. Use --force to allow overwrite.\n"
       $stderr << "-> #{output.relative_path_from(Pathname.new(Dir.pwd))}\n"
     else
@@ -204,7 +235,7 @@ class WebMe
     txt = erb(DIR + "templates/#{template}/#{file}")
     dir = File.dirname(File.join(output, file))
     fu.mkdir_p(dir) unless File.directory?(dir)
-    if trial
+    if trial?
       puts "erb #{file}"
     else
       File.open(File.join(output,file), 'w'){ |f| f << txt }
@@ -394,9 +425,9 @@ class WebMe
 
   # Access to FileUtils.
   def fu
-    if trial
+    if trial?
       FileUtils::DryRun
-    elsif trace
+    elsif trace?
       FileUtils::Verbose
     else
       FileUtils
