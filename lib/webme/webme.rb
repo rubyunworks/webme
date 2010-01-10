@@ -120,7 +120,8 @@ class WebMe
     #self.title    = options[:title]    if options[:title]
     #self.search   = options[:search]   if options[:search]
     #self.output   = options[:output]   if options[:output]
-    #self.colors   = options[:color] || options[:colors]
+
+    self.colors = nil unless self.colors
   end
 
   #
@@ -137,7 +138,7 @@ class WebMe
       file.read if file
     )
 
-    @readme = @root.glob((options[:readme] || 'readme{,.*}'), :casefold).first
+    @readme = @root.glob('readme{,.*}', :casefold).first
   end
 
   #
