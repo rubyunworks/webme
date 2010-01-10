@@ -1,5 +1,0 @@
----
-stats:
-  service : Stats
-  priority: -1
-  active  : true

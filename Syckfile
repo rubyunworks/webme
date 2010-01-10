@@ -1,0 +1,39 @@
+---
+box:
+  service: Box
+  types  : [ gem, gz ]
+  include: [ bin, doc, lib, meta, test, "[A-Z]*" ]
+  exclude: [ doc/rdoc, doc/ri ]
+  active : true
+
+dnote:
+  service : DNote
+  active  : true
+
+rdoc:
+  service : rdoc
+  template: redfish
+  include : ~
+  exclude : [lib/webme/templates/]
+  extra   : ~
+  active  : true
+
+ridoc:
+  service: ridoc
+  exclude: [plug]
+  active : true
+
+stats:
+  service : Stats
+  priority: -1
+  active  : true
+
+syntax:
+  service: syntax
+  exclude: [plug]
+  active : false
+
+testrb:
+  service: testrb
+  active : false
+

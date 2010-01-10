@@ -1,5 +1,0 @@
----
-ridoc:
-  service: ridoc
-  exclude: [plug]
-  active : true
