@@ -1,57 +1,67 @@
-require 'webme/scope'
+require 'webme'
 
 TestCase WebMe::Scope do
 
+  Concern "The Scope should reflect attributes of",
+          "it's WebMe parent visible to templates."
+
+  Unit :initialize => '' do
+    @webme = WebMe.new('test/fixtures/config')
+    @scope = @webme.scope
+  end
+
   Unit :version => '' do
-    pending
+    @scope.version.assert == @webme.metadata.version
   end
 
   Unit :_binding => '' do
-    pending
+    @scope._binding.eval('self').assert == @scope
   end
 
   Unit :download => '' do
-    pending
+    @scope.download.assert == @webme.metadata.download
   end
 
   Unit :colors => '' do
-    pending
+    @scope.colors.assert == @webme.colors
   end
 
   Unit :title => '' do
-    pending
+    @scope.title.assert == @webme.title
   end
 
   Unit :sections => '' do
-    pending
+    @scope.sections.assert == @webme.sections
   end
 
   Unit :body => '' do
-    pending
+    @scope.body.assert == @webme.body
   end
 
   Unit :metadata => '' do
-    pending
+    @scope.metadata.assert == @webme.metadata
   end
 
   Unit :copyright => '' do
-    pending
+    #@scope.copyright.assert == @webme.metadata.copyright
+    @scope.copyright.assert == "Copyright &copy; #{Time.now.strftime('%Y')}"
   end
 
   Unit :advert => '' do
-    pending
+    @scope.advert.assert == @webme.advert
   end
 
   Unit :name => '' do
-    pending
+    @scope.name.assert == @webme.name
   end
 
   Unit :header => '' do
-    pending
+    @scope.header.assert == @webme.header
   end
 
   Unit :logo => '' do
-    pending
+    @scope.logo.assert == @webme.logo
   end
 
 end
+

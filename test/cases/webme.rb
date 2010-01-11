@@ -2,93 +2,61 @@ require 'webme'
 
 TestCase WebMe do
 
-  Concern "Instantiate and parse"
-
-  Unit :initialize, :parse_readme, :rdoc do
-    webme = WebMe.new('test/fixture')
+  Concern "Settings of WebMe instance" do
+    @webme = WebMe.new('test/fixtures/rdoc', :title=>'Faux Title', :force=>true, :trial=>true, :trace=>true)
   end
 
-
-  Concern "Option settings of WebMe instance"
-
   Unit :root => 'returns root directory setting' do
-    webme = WebMe.new('test/fixture')
-    webme.root.assert == Pathname.new('test/fixture')
+    @webme.root.assert == Pathname.new('test/fixtures/rdoc')
   end
 
   Unit :force? => 'returns force option' do
-    webme = WebMe.new('test/fixture', :force=>true)
-    webme.assert.force?
+    @webme.assert.force?
   end
 
   Unit :trial? => 'returns trial option' do
-    webme = WebMe.new('test/fixture', :trial=>true)
-    webme.assert.trial?
+    @webme.assert.trial?
   end
 
   Unit :trace? => 'returns trace option' do
-    webme = WebMe.new('test/fixture', :trace=>true)
-    webme.assert.trace?
+    @webme.assert.trace?
   end
 
   Unit :title => 'returns title option, set manually' do
-    webme = WebMe.new('test/fixture', :title=>'Faux Title')
-    webme.assert.title == 'Faux Title'
+    @webme.assert.title == 'Faux Title'
   end
 
   Unit :output => 'returns default output path' do
-    webme = WebMe.new('test/fixture')
-    webme.output.assert == Pathname.new("test/fixture/site")
+    @webme.output.assert == Pathname.new("test/fixtures/rdoc/site")
   end
 
   Unit :readme => '' do
-    webme = WebMe.new('test/fixture')
-    webme.readme.assert == Pathname.new("test/fixture/README.rdoc")
+    @webme.readme.assert == Pathname.new("test/fixtures/rdoc/README.rdoc")
   end
 
   Unit :template => 'returns default template name' do
-    webme = WebMe.new('test/fixture')
-    webme.template.assert == "joy"
+    @webme.template.assert == "joy"
+  end
+
+  Unit :advert => '' do
+    pending
   end
 
   #Unit :initialize_defaults => pass
 
 
-  Concern "Project metadata"
+  Concern "Parsing of RDoc-based README file"
 
-  Unit :metadata => '' do
-    webme = WebMe.new('test/fixture')
-    webme.metadata.assert.is_a?(POM::Metadata)
-  end
-
-  Unit :name => '' do
-    webme = WebMe.new('test/fixture')
-    webme.name.assert == ''
-  end
-
-
-  Concern "Parsing of README file"
-
-  Unit :parse_readme => '' do
-    pending  # punt :initialize
-  end
-
-  Unit :rdoc => '' do
-    pending  # punt :initialize
-  end
-
-  Unit :markdown => '' do
-    pending
+  Unit :parse_readme => '', :rdoc => '' do
+    @webme = WebMe.new('test/fixtures/rdoc')
   end
 
   Unit :title => 'returns title option, set from README' do
-    webme = WebMe.new('test/fixture')
-    webme.assert.title == 'Test Project'
+    @webme.assert.title == 'Test Project'
   end
 
   Unit :header => '' do
-    webme = WebMe.new('test/fixture')
-    webme.header.assert.start_with? '<h1>Test Project</h1>'
+    @webme.header.assert.start_with? '<h1>Test Project</h1>'
   end
 
   Unit :body => '' do
@@ -96,34 +64,85 @@ TestCase WebMe do
   end
 
   Unit :sections => '' do
-    webme = WebMe.new('test/fixture')
-    webme.sections.assert == [["description", "DESCRIPTION"], ["usage", "USAGE"], ["installation", "INSTALLATION"], ["copying", "COPYING"]]
+    @webme.sections.assert == [["description", "DESCRIPTION"], ["usage", "USAGE"], ["installation", "INSTALLATION"], ["copying", "COPYING"]]
   end
 
 
+  Concern "Parsing of Markdown-based README file"
 
-  Unit :load_config => '' do
+  Unit :markdown => '', :parse_readme => '' do
+    @webme = WebMe.new('test/fixtures/markdown')
+  end
+
+  Unit :title => 'returns title option, set from README' do
+    @webme.title.assert == 'Test Project'
+  end
+
+  Unit :header => 'returns README header in HTML form' do
+    @webme.header.assert.start_with? '<h1>Test Project</h1>'
+  end
+
+  Unit :body => 'returns README body in HTML form' do
+    @webme.body.assert.start_with? %[<div class="section"]
+    @webme.body.assert.end_with? %[</div>]
+  end
+
+  Unit :sections => 'returns a list if the body sections' do
+    @webme.sections.assert == [["description", "DESCRIPTION"], ["usage", "USAGE"], ["installation", "INSTALLATION"], ["copying", "COPYING"]]
+  end
+
+  Unit :linkify => '' do
     pending
   end
+
+
+  Concern "Project metadata"
+
+  Unit :metadata => '' do
+    webme = WebMe.new('test/fixtures/rdoc')
+    webme.metadata.assert.is_a?(POM::Metadata)
+  end
+
+  Unit :name => '' do
+    webme = WebMe.new('test/fixtures/rdoc')
+    webme.name.assert == 'test_project'
+  end
+
+
+  Concern "Configuration file"
+
+  Unit :load_config => 'is called on instantiation' do
+    @webme = WebMe.new('test/fixtures/config')
+  end
+
+  Unit :title => 'can be set by configuration file' do
+    @webme.title = "Configured Title"
+  end
+
 
 
   Concern "Calculating a color pallette"
 
   Unit :calc_colors => '' do
-    pending
+    webme = WebMe.new('test/fixtures/rdoc')
+    colors = webme.calc_colors
+    colors.link.to_s.assert == "#7D7D7D"
+    colors.text.to_s.assert == "#EEEEEE"
+    colors.back.to_s.assert == "#FAFAFA"
+    colors.high.to_s.assert == "#FDFDFD"
   end
 
   Unit :colors => '' do
-    pending
+    webme = WebMe.new('test/fixtures/rdoc')
+    webme.colors.link.to_s.assert == "#7D7D7D"
+    webme.colors.text.to_s.assert == "#EEEEEE"
+    webme.colors.back.to_s.assert == "#FAFAFA"
+    webme.colors.high.to_s.assert == "#FDFDFD"
   end
 
-  Unit :color= => '' do
-    pending
-  end
-
-
-
-
+  #Unit :color= => '' do
+  #  pending
+  #end
 
 
   Concern "Finding a logo image"
@@ -133,7 +152,8 @@ TestCase WebMe do
   end
 
   Unit :yahoo_id => '' do
-    pending
+    webme = WebMe.new('test/fixtures/config')
+    webme.yahoo_id == "0123456789"
   end
 
   Unit :search => '' do
@@ -149,35 +169,27 @@ TestCase WebMe do
   end
 
 
-  Concern "Webpage generation"
+  Concern "Website generation and transfer"
 
   Unit :fu => 'FileUtils depends on runmodes' do
-    webme = WebMe.new('test/fixture')
+    webme = WebMe.new('test/fixtures/rdoc')
     webme.fu.assert == FileUtils
-    webme = WebMe.new('test/fixture', :trial=>true)
+    webme = WebMe.new('test/fixtures/rdoc', :trial=>true)
     webme.fu.assert == FileUtils::DryRun
-    webme = WebMe.new('test/fixture', :trace=>true)
+    webme = WebMe.new('test/fixtures/rdoc', :trace=>true)
     webme.fu.assert == FileUtils::Verbose
   end
 
   Unit :scope => 'returns Scope object' do
-    webme = WebMe.new('test/fixture')
+    webme = WebMe.new('test/fixtures/rdoc')
     webme.scope.assert.is_a?(WebMe::Scope)
   end
 
-  Unit :linkify => '' do
+  Unit :transfer => '' do
     pending
   end
 
   Unit :transfer_copy => '' do
-    pending
-  end
-
-  Unit :advert => '' do
-    pending
-  end
-
-  Unit :transfer => '' do
     pending
   end
 

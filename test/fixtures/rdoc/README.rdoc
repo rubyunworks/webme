@@ -1,0 +1,106 @@
+= Test Project
+
+* home: http://proutils.github.com/webme
+* rdocs: http://proutils.github.com/webme/rdoc
+* discuss: http://googlegroups.com/group/proutils
+* source: http://github.com/proutils/webme
+
+
+== DESCRIPTION:
+
+WebMe converts a README file, in either RDoc or Markdown format,
+into a simple website.
+
+WebMe's output is fairly nice and can serve as a final site
+design if one chooses. And there are a number or templates
+to choose from. However, WebMe is primarily intended to give 
+the developer a <i>starter site</i> upon which to create a
+unique and even nicer looking site, once a project's README
+document is mature.
+
+
+== USAGE:
+
+WebMe is a POM-based project. You must first make sure your project
+has a reasonably complete set of <tt>meta/</tt> entries.
+See http://proutils.github.com/pom for more information.
+
+After that, usage is very easy. Many defaults settings are built
+into the system. So a simple:
+
+  $ webme
+
+from the root of a project is enough to produce a site. By default
+WebMe looks for either <tt>site/</tt>, <tt>web/</tt>, or <tt>website/</tt>
+directories to place its generated files. If none of these is found it will
+create a <tt>site/</tt> directory for the purpose. To use an alternate
+location supply the <tt>--output</tt> or <tt>-o</tt> option. Eg.
+
+  $ webme -o html/
+
+If the output directory already exists, <tt>webme</tt> will ask you
+to provide the <tt>--force</tt> option to confirm that it is okay
+to overwrite any files within that directory.
+
+WebMe comes bundled with a number of differnt templates. You can
+get a list of these templates with the <tt>--list</tt> option.
+
+  $ webme --list
+
+Specify the template you'd like to use with the <tt>--template</tt>
+or <tt>-t</tt> option.
+
+  $ webme -t joy
+
+If WebMe finds a <tt>webme/options.yml</tt> file in the project's <tt>config/</tt>
+or <tt>.config/</tt> directory, or the users <tt>$HOME/.config</tt> directory,
+it will load it and use the settings specified there. This can be very useful in
+the early period of a project's development, as it allows for the adjustment of
+the look of a site and reapeat the same settings as the project's README improves.
+
+All built-in templates use a common layout of:
+
+  assets/
+    images/
+    includes/
+    scripts/
+    styles/
+  index.html
+
+While this layout is not strictly neccessary, it's a useful convention.
+
+If WebMe finds an <tt>assets/includes/advert.html</tt> file, some templates
+will incorporate that into the site.
+
+Also, if WebMe finds a <tt>assets/images/logo.*</tt> file, some templates will try
+to incorporate it into the site. The logo image can be a +png+, +gif+ or +jpg+.
+If the logo file is not found the template may attempt to find a suitable
+candidtate on the Internet (via Yahoo Search API) and save it. Note this feature
+requires BOSSman (http://github.com/bossman) and a Yahoo Application ID stored
+in <tt>.config/webme/yahoo.id</tt> (or alike config directory as mentioned above).
+
+By the way, this website is generated using WebMe, without any additional augmentation.
+
+
+== INSTALLATION:
+
+To install with RubyGems simply open a console and type:
+
+  $ gem install webme
+
+To do a site install you will need Setup.rb, then download the tar.gz
+package and type:
+
+  $ tar -xvzf webme-0.3.tgz
+  $ cd webme-0.3.tgz
+  $ sudo setup.rb
+
+
+== COPYING:
+
+Copyright (c) 2009 Thomas Sawyer
+
+This program is ditributed unser the terms of the GPL license.
+
+Please see COPYING file.
+
