@@ -88,9 +88,6 @@ class WebMe
   # README sections
   attr :sections
 
-  # Name of the project.
-  attr :name
-
   # Project's root pathname.
   attr :root
 
@@ -129,8 +126,8 @@ class WebMe
     @template  = TEMPLATE
     @output    = @root.glob(OUTPUT_GLOB).first || @root + OUTPUT
 
-    @name      = metadata.name #meta(:project) || meta(:name)
     @title     = metadata.title #meta(:title)
+    @name      = metadata.name  #meta(:project) || meta(:name)
     @search    = metadata.title
 
     @advert =(
@@ -154,6 +151,11 @@ class WebMe
   #
   def force?
     @force
+  end
+
+  # Name of the project.
+  def name
+    @name ||= title.downcase.gsub(/\s+/, '_')
   end
 
   #
@@ -201,7 +203,9 @@ class WebMe
     @metadata ||= POM::Metadata.load(root)  # TODO: Change to .new ?
   end
 
+  #--
   # TODO: Generalize which files run through Erb.
+  #++
   def transfer
     if File.directory?(output) && !force?
       $stderr << "Output directory already exists. Use --force to allow overwrite.\n"
@@ -278,7 +282,7 @@ class WebMe
     #html = linkify(html)  # no longer needed for rdoc, what about markdown?
 
     if md = /<h1>(.*?)<\/h1>/.match(html)
-      @title ||= $1
+      @title = $1 if title.nil? or title.empty?
     end
 
     i = html.index('<h2>')
@@ -302,7 +306,7 @@ class WebMe
     @sections = sections
   end
 
-  # NOTE: RDoc no longer needs this. Consider for other types when supported.
+  # NOTE: RDoc no longer needs this. Consider for other markup types if and when supported.
   def linkify(text)
     text.gsub(/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/i) do |url|
       full_url = url
@@ -315,8 +319,13 @@ class WebMe
 
   # Process the README through rdoc.
   def rdoc(file)
-    #require 'rdoc/markup'
-    require 'rdoc/markup/to_html'
+    begin
+      #require 'rdoc/markup'
+      require 'rdoc/markup/to_html'
+    rescue LoadError
+      require 'rubygems'
+      require 'rdoc/markup/to_html'
+    end
     input = File.read(file)
     markup = ::RDoc::Markup::ToHtml.new
     markup.convert(input)
@@ -332,7 +341,10 @@ class WebMe
 
   # Take the search term and calc uniq colors for it if
   # colors are not already provided.
-  def calc_colors(hues)
+  #--
+  # TODO: Integrate some of this into Color class.
+  #++
+  def calc_colors(hues=nil)
     schema = OpenStruct.new
     case hues
     when Hash

@@ -26,7 +26,8 @@ class WebMe
 
     # Project name.
     def name
-      metadata.name
+      #metadata.name || @generator.name
+      @generator.name
     end
 
     # Project version number.
