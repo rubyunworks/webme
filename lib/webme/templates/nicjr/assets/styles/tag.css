@@ -24,7 +24,7 @@ body { }
 
 /* COLOR */
 
-body { color: <%= colors[:text] %>; background: #ffeeee; }
+body { color: #222233; background: #ffeeee; }
 h1 { }
 a { color: <%= colors[:link] %>; }
 pre { color: white; }
