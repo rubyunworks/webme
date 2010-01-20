@@ -1,5 +1,18 @@
 = Release History
 
+== 0.4 // 2010-01-19
+
+This is minor update which mainly makes some
+under-the-hood adjustments.
+
+Changes:
+
+* fixed text color for joy and nicjr templates 
+* finally get some test coverage via Lemon
+* name defaults to snakecase title if not otherwise found
+* improved README lookup
+
+
 == 0.3 // 2009-11-17
 
 This is a significant release for WebMe as it is the
