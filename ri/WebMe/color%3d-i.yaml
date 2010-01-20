@@ -4,9 +4,9 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: Take the search term and calc uniq colors for it if colors are not already provided.
-full_name: WebMe#calc_colors
+  body: "Alias for #colors="
+full_name: WebMe#color=
 is_singleton: false
-name: calc_colors
-params: (hues=nil)
+name: color=
+params: (values)
 visibility: public

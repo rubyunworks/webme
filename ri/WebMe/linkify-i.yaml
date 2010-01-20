@@ -4,7 +4,7 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: "NOTE: RDoc no longer needs this. Consider for other types when supported."
+  body: "NOTE: RDoc no longer needs this. Consider for other markup types if and when supported."
 full_name: WebMe#linkify
 is_singleton: false
 name: linkify

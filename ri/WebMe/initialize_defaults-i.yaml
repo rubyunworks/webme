@@ -2,9 +2,10 @@
 aliases: []
 
 block_params: 
-comment: ""
-full_name: WebMe#transfer
+comment: []
+
+full_name: WebMe#initialize_defaults
 is_singleton: false
-name: transfer
+name: initialize_defaults
 params: ()
 visibility: public
