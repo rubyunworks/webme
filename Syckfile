@@ -37,3 +37,6 @@ testrb:
   service: testrb
   active : false
 
+email:
+  service: EMail
+

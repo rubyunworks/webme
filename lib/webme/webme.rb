@@ -269,6 +269,9 @@ class WebMe
   end
 
   # Create html body, sections and header.
+  #--
+  # TODO: Ultimately it would be best to use a real xml parser like Nokigiri.
+  #++
   def parse_readme
     abort "No readme file found." unless readme
 
