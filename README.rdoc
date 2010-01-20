@@ -1,6 +1,7 @@
 = WebMe
 
 * home: http://proutils.github.com/webme
+* wiki: http//wiki.github.com/protuils/webme
 * rdocs: http://proutils.github.com/webme/rdoc
 * discuss: http://googlegroups.com/group/proutils
 * source: http://github.com/proutils/webme
