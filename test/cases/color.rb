@@ -3,75 +3,75 @@ require 'webme/color'
 TestCase WebMe::Color do
 
   Unit :red => '' do
-    pending
+    raise Pending
   end
 
   Unit :lightness => '' do
-    pending
+    raise Pending
   end
 
   Unit :hexcode => '' do
-    pending
+    raise Pending
   end
 
   Unit :hex_blue => '' do
-    pending
+    raise Pending
   end
 
   Unit :hex_red => '' do
-    pending
+    raise Pending
   end
 
   Unit :opposite_hue => '' do
-    pending
+    raise Pending
   end
 
   Unit :to_s => '' do
-    pending
+    raise Pending
   end
 
   Unit :blue => '' do
-    pending
+    raise Pending
   end
 
   Unit :saturation => '' do
-    pending
+    raise Pending
   end
 
   Unit :dark => '' do
-    pending
+    raise Pending
   end
 
   Unit :hue_2_rgb => '' do
-    pending
+    raise Pending
   end
 
   Unit :complement => '' do
-    pending
+    raise Pending
   end
 
   Unit :hex_green => '' do
-    pending
+    raise Pending
   end
 
   Unit :green => '' do
-    pending
+    raise Pending
   end
 
   Unit :bright => '' do
-    pending
+    raise Pending
   end
 
   Unit :rgb_2_hex => '' do
-    pending
+    raise Pending
   end
 
   Unit :hue => '' do
-    pending
+    raise Pending
   end
 
   Unit :inspect => '' do
-    pending
+    raise Pending
   end
 
 end

@@ -39,7 +39,7 @@ TestCase WebMe do
   end
 
   Unit :advert => '' do
-    pending
+    raise Pending
   end
 
   #Unit :initialize_defaults => pass
@@ -55,13 +55,11 @@ TestCase WebMe do
     @webme.assert.title == 'Test Project'
   end
 
-  Unit :header => '' do
+  Unit :header => 'isolates the header' do
     @webme.header.assert.start_with? '<h1>Test Project</h1>'
   end
 
-  Unit :body => '' do
-    pending
-  end
+  Unit :body => ''
 
   Unit :sections => '' do
     @webme.sections.assert == [["description", "DESCRIPTION"], ["usage", "USAGE"], ["installation", "INSTALLATION"], ["copying", "COPYING"]]
@@ -91,9 +89,7 @@ TestCase WebMe do
     @webme.sections.assert == [["description", "DESCRIPTION"], ["usage", "USAGE"], ["installation", "INSTALLATION"], ["copying", "COPYING"]]
   end
 
-  Unit :linkify => '' do
-    pending
-  end
+  Unit :linkify => ''
 
 
   Concern "Project metadata"
@@ -148,7 +144,7 @@ TestCase WebMe do
   Concern "Finding a logo image"
 
   Unit :require_bossman => '' do
-    pending
+    raise Pending
   end
 
   Unit :yahoo_id => '' do
@@ -157,15 +153,15 @@ TestCase WebMe do
   end
 
   Unit :search => '' do
-    pending
+    raise Pending
   end
 
   Unit :logo_search => '' do
-    pending
+    raise Pending
   end
 
   Unit :logo => '' do
-    pending
+    raise Pending
   end
 
 
@@ -186,23 +182,23 @@ TestCase WebMe do
   end
 
   Unit :transfer => '' do
-    pending
+    raise Pending
   end
 
   Unit :transfer_copy => '' do
-    pending
+    raise Pending
   end
 
   Unit :transfer_erb => '' do
-    pending
+    raise Pending
   end
 
   Unit :generate => '' do
-    pending
+    raise Pending
   end
 
   Unit :erb => '' do
-    pending
+    raise Pending
   end
 
 end

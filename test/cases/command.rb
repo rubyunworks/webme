@@ -3,19 +3,19 @@ require 'webme/command'
 TestCase WebMe::Command do
 
   Unit :options => '' do
-    pending
+    raise Pending
   end
 
   Unit :run => '' do
-    pending
+    raise Pending
   end
 
   Unit :parse => '' do
-    pending
+    raise Pending
   end
 
   Unit :execute => '' do
-    pending
+    raise Pending
   end
 
 end
