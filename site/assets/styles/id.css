@@ -103,12 +103,12 @@
 #main .doc { }
 #main .doc a { color: #6E053C; }
 #main .doc a:hover { }
-#main .doc p { color: #333333; }
+#main .doc p { }
 #main .doc h2 { color: #6E053C; border-color: #EE85BC; }
 #main .doc h3 { border-color: #EE85BC; }
 
 /* #footer */
 
 #footer { }
-#footer .copyright { color:  colors[:text]; }
+#footer .copyright { color: #333333 }
 

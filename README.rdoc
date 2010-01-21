@@ -1,10 +1,10 @@
 = WebMe
 
-* home: http://proutils.github.com/webme
-* wiki: http://wiki.github.com/protuils/webme
-* rdocs: http://proutils.github.com/webme/rdoc
-* discuss: http://googlegroups.com/group/proutils
-* source: http://github.com/proutils/webme
+* homepage: http://proutils.github.com/webme
+* documentation: http://wiki.github.com/protuils/webme
+* api-reference: http://proutils.github.com/webme/rdoc
+* discussion: http://googlegroups.com/group/proutils
+* development: http://github.com/proutils/webme
 
 
 == DESCRIPTION:
@@ -20,67 +20,16 @@ unique and even nicer looking site, once a project's README
 document is mature.
 
 
-== USAGE:
+== DOCUMENTATION:
 
-WebMe is a POM-based project. You must first make sure your project
-has a reasonably complete set of <tt>meta/</tt> entries.
-See http://proutils.github.com/pom for more information.
+Webme is very easy to use. The hardest part is simply adding
+some metadata to your project so WebMe knows somethings about
+your project which it can not otherwise gather from a README
+file. Beyond that it's a simple matter of running the <code>webme</code>
+command.
 
-After that, usage is very easy. Many defaults settings are built
-into the system. So a simple:
-
-  $ webme
-
-from the root of a project is enough to produce a site. By default
-WebMe looks for either <tt>site/</tt>, <tt>web/</tt>, or <tt>website/</tt>
-directories to place its generated files. If none of these is found it will
-create a <tt>site/</tt> directory for the purpose. To use an alternate
-location supply the <tt>--output</tt> or <tt>-o</tt> option. Eg.
-
-  $ webme -o html/
-
-If the output directory already exists, <tt>webme</tt> will ask you
-to provide the <tt>--force</tt> option to confirm that it is okay
-to overwrite any files within that directory.
-
-WebMe comes bundled with a number of differnt templates. You can
-get a list of these templates with the <tt>--list</tt> option.
-
-  $ webme --list
-
-Specify the template you'd like to use with the <tt>--template</tt>
-or <tt>-t</tt> option.
-
-  $ webme -t joy
-
-If WebMe finds a <tt>webme/options.yml</tt> file in the project's <tt>config/</tt>
-or <tt>.config/</tt> directory, or the users <tt>$HOME/.config</tt> directory,
-it will load it and use the settings specified there. This can be very useful in
-the early period of a project's development, as it allows for the adjustment of
-the look of a site and reapeat the same settings as the project's README improves.
-
-All built-in templates use a common layout of:
-
-  assets/
-    images/
-    includes/
-    scripts/
-    styles/
-  index.html
-
-While this layout is not strictly neccessary, it's a useful convention.
-
-If WebMe finds an <tt>assets/includes/advert.html</tt> file, some templates
-will incorporate that into the site.
-
-Also, if WebMe finds a <tt>assets/images/logo.*</tt> file, some templates will try
-to incorporate it into the site. The logo image can be a +png+, +gif+ or +jpg+.
-If the logo file is not found the template may attempt to find a suitable
-candidtate on the Internet (via Yahoo Search API) and save it. Note this feature
-requires BOSSman (http://github.com/bossman) and a Yahoo Application ID stored
-in <tt>.config/webme/yahoo.id</tt> (or alike config directory as mentioned above).
-
-By the way, this website is generated using WebMe, without any additional augmentation.
+The {GitHub Wiki}[http://wiki.github.com/proutils/webme] is used for all primary documentation.
+Please click here[http://wiki.github.com/proutils/webme] to learn more about WebMe.
 
 
 == INSTALLATION:
@@ -89,8 +38,8 @@ To install with RubyGems simply open a console and type:
 
   $ gem install webme
 
-To do a site install you will need Setup.rb, then download the tar.gz
-package and type:
+To do a site install you will need {Ruby Setup}[http://proutils.github.com/setup],
+then download the tar.gz package and type:
 
   $ tar -xvzf webme-0.3.tgz
   $ cd webme-0.3.tgz
@@ -101,7 +50,16 @@ package and type:
 
 Copyright (c) 2009 Thomas Sawyer
 
-This program is ditributed unser the terms of the GPL license.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-Please see COPYING file.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+Lesser General Public License for more details.
+
+You should have received a copy of the General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
