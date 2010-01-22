@@ -21,8 +21,11 @@ class WebMe
   # Relative directory.
   DIR = Pathname.new(File.dirname(__FILE__))
 
-  # Config file. Loated at +config/webme.yml+, or standard variations there-of.
-  CONFIG = '{.,}config/webme/options.{yml,yaml}'
+  # Config directory.
+  CONFIG_DIR = '{.,}config/webme'
+
+  # Config file, loated at +config/webme.yml+, or standard variations there-of.
+  CONFIG = CONFIG_DIR + '/options.{yml,yaml}'
 
   # Fallback output directory if no other found.
   OUTPUT = 'site'
@@ -123,19 +126,16 @@ class WebMe
 
   #
   def initialize_defaults
-    @template  = TEMPLATE
-    @output    = @root.glob(OUTPUT_GLOB).first || @root + OUTPUT
+    @template = TEMPLATE
+    @output   = root.glob(OUTPUT_GLOB).first || @root + OUTPUT
 
-    @title     = metadata.title #meta(:title)
-    @name      = metadata.name  #meta(:project) || meta(:name)
-    @search    = metadata.title
+    @title    = metadata.title #meta(:title)
+    @name     = metadata.name  #meta(:project) || meta(:name)
+    @search   = metadata.title
 
-    @advert =(
-      file = @output.glob('assets/includes/advert.html').first
-      file.read if file
-    )
+    @advert   = File.read(advert_file) if advert_file
 
-    @readme = @root.glob('readme{,.*}', :casefold).first
+    @readme   = root.glob('readme{,.*}', :casefold).first
   end
 
   #
@@ -189,6 +189,7 @@ class WebMe
   # Yahoo Application ID is looked for in the working directory and home
   # directory under 'config' or '.config' at 'webme/yahoo.id'. Failing this
   # is looks for 'YAHOO_ID' environment variable.
+
   def yahoo_id
     @yahoo_id ||= (
       home = Pathname.new(File.expand_path('~'))
@@ -199,6 +200,7 @@ class WebMe
   end
 
   # POM metadata.
+
   def metadata
     @metadata ||= POM::Metadata.load(root)  # TODO: Change to .new ?
   end
@@ -206,6 +208,7 @@ class WebMe
   #--
   # TODO: Generalize which files run through Erb.
   #++
+
   def transfer
     if File.directory?(output) && !force?
       $stderr << "Output directory already exists. Use --force to allow overwrite.\n"
@@ -239,6 +242,7 @@ class WebMe
   end
 
   # Copy a file after processing it through Erb.
+
   def transfer_erb(file)
     txt = erb(DIR + "templates/#{template}/#{file}")
     dir = File.dirname(File.join(output, file))
@@ -251,6 +255,7 @@ class WebMe
   end
 
   # Copy a file verbatim.
+
   def transfer_copy(file)
     dir = File.dirname(File.join(output, file))
     fu.mkdir_p(dir) unless File.directory?(dir)
@@ -258,12 +263,14 @@ class WebMe
   end
 
   # Helper method to convert file with eRuby.
+
   def erb(file)
     template = ERB.new(File.read(file))
     template.result(scope._binding)
   end
 
   # Erb rendering scope.
+
   def scope
     Scope.new(self)
   end
@@ -310,6 +317,7 @@ class WebMe
   end
 
   # NOTE: RDoc no longer needs this. Consider for other markup types if and when supported.
+
   def linkify(text)
     text.gsub(/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/i) do |url|
       full_url = url
@@ -321,6 +329,7 @@ class WebMe
   end
 
   # Process the README through rdoc.
+
   def rdoc(file)
     begin
       #require 'rdoc/markup'
@@ -335,6 +344,7 @@ class WebMe
   end
 
   # Process the README through markdown.
+
   def markdown(file)
     require 'rdiscount'
     input = File.read(file)
@@ -347,6 +357,7 @@ class WebMe
   #--
   # TODO: Integrate some of this into Color class.
   #++
+
   def calc_colors(hues=nil)
     schema = OpenStruct.new
     case hues
@@ -378,6 +389,7 @@ class WebMe
   # Currently this uses BOSSMan to pull from Yahoo Image Search,
   # which requires a Yahoo App ID. Of course, it would be better
   # if it were generic, but you do what you gotta.
+
   def logo
     @logo ||= (
       if file = output.glob('assets/images/logo.*').first
@@ -389,6 +401,7 @@ class WebMe
   end
 
   #
+
   def logo_search
     return LOGO unless require_bossman
     return LOGO unless yahoo_id
@@ -414,6 +427,7 @@ class WebMe
   end
 
   #
+
   def require_bossman
     begin
       require 'bossman'
@@ -424,25 +438,20 @@ class WebMe
     end
   end
 
-  # Default advert.
+  # Advertisment.
+
   def advert
-    return '' if FalseClass === @advert
-    @advert ||= <<-HERE
-      <script type="text/javascript"><!--
-      google_ad_client = "pub-1126154564663472";
-      /* RUBYWORKS 09-10-02 728x90 */
-      google_ad_slot = "0788888658";
-      google_ad_width = 728;
-      google_ad_height = 90;
-      //-->
-      </script>
-      <script type="text/javascript"
-      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-      </script>
-    HERE
+    @advert.to_s
+  end
+
+  # Lookup advertisment.
+
+  def advert_file
+    @advert_file ||= output.glob('assets/includes/advert.html').first || root.glob("#{CONFIG_DIR}/advert.html").first
   end
 
   # Access to FileUtils.
+
   def fu
     if trial?
       FileUtils::DryRun
