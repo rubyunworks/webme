@@ -31,7 +31,7 @@ class WebMe
   OUTPUT = 'site'
 
   # Glob used to lookup output directory.
-  OUTPUT_GLOB = '{site,web,website,www}'
+  OUTPUT_GLOB = '{site,website,web,www}'
 
   # Defualt template type is +joy+.
   TEMPLATE = 'joy'
@@ -282,11 +282,17 @@ class WebMe
   def parse_readme
     abort "No readme file found." unless readme
 
-    case File.extname(@readme)
-    when '.md', '.markdown'
-      html = markdown(@readme)
+    if require_tilt
+      template = Tilt.new(@readme)
+      html = template.render
     else
-      html = rdoc(@readme)
+      case File.extname(@readme)
+      when '.md', '.markdown'
+        html = markdown(@readme)
+      else
+        require_rdoc
+        html = rdoc(@readme)
+      end
     end
 
     #html = linkify(html)  # no longer needed for rdoc, what about markdown?
@@ -331,13 +337,6 @@ class WebMe
   # Process the README through rdoc.
 
   def rdoc(file)
-    begin
-      #require 'rdoc/markup'
-      require 'rdoc/markup/to_html'
-    rescue LoadError
-      require 'rubygems'
-      require 'rdoc/markup/to_html'
-    end
     input = File.read(file)
     markup = ::RDoc::Markup::ToHtml.new
     markup.convert(input)
@@ -438,13 +437,16 @@ class WebMe
     end
   end
 
-  # Advertisment.
+  # Advertisement markup. If not advertisement file is found
+  # this will be an empty string.
 
   def advert
     @advert.to_s
   end
 
-  # Lookup advertisment.
+  # Lookup advertisment. First it looks in the destination folder
+  # under 'assets/includes/advert.html'. If not found there it
+  # looks in the config folder under 'webme/advert.html'.
 
   def advert_file
     @advert_file ||= output.glob('assets/includes/advert.html').first || root.glob("#{CONFIG_DIR}/advert.html").first
@@ -459,6 +461,29 @@ class WebMe
       FileUtils::Verbose
     else
       FileUtils
+    end
+  end
+
+  # Require Tilt library if installed.
+
+  def require_tilt
+    begin
+      require 'tilt'
+      true
+    rescue LoadError
+      false
+    end
+  end
+
+  # Require RDoc library.
+
+  def require_rdoc
+    begin
+      #require 'rdoc/markup'
+      require 'rdoc/markup/to_html'
+    rescue LoadError
+      require 'rubygems'
+      require 'rdoc/markup/to_html'
     end
   end
 
