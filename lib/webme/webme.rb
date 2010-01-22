@@ -11,8 +11,6 @@ require 'webme/color'
 # Generates a basic website based on a README file.
 # It does this by sectioning the README based on 2nd
 # level headers, '==' or '##', ie. <h2>.
-#
-# TODO: Use Tilt for future versions.
 
 class WebMe
 
@@ -73,6 +71,12 @@ class WebMe
   # Colors to use for color scheme.
   attr_accessor :colors
 
+  # Rendereing engine type specified by file extension (eg. +rdoc+ or +markdown+).
+  # By default this is picked up by the extension on the README file name,
+  # but if none is present or the extension is not the engine type then
+  # specifying this manually is necessary.
+  attr_accessor :type
+
   # Force overwrite of pre-exising site.
   attr_accessor :force
 
@@ -132,6 +136,7 @@ class WebMe
     @title    = metadata.title #meta(:title)
     @name     = metadata.name  #meta(:project) || meta(:name)
     @search   = metadata.title
+    @type     = nil
 
     @advert   = File.read(advert_file) if advert_file
 
@@ -207,6 +212,7 @@ class WebMe
 
   #--
   # TODO: Generalize which files run through Erb.
+  # TODO: Use Tilt instead ?
   #++
 
   def transfer
@@ -277,17 +283,27 @@ class WebMe
 
   # Create html body, sections and header.
   #--
+  # TODO: Eventually only support Tilt rendering oif README
   # TODO: Ultimately it would be best to use a real xml parser like Nokigiri.
   #++
+
   def parse_readme
     abort "No readme file found." unless readme
 
+    type = self.type || File.extname(@readme).sub(/^[.]/,'')
+
     if require_tilt
-      template = Tilt.new(@readme)
-      html = template.render
+      if Tilt[type]
+        template = Tilt.new(@readme)
+        html = template.render
+      else  # fallback is RDoc (good?)
+        Tilt::RDocTemplate.new(@readme)
+        html = template.render
+      end
     else
-      case File.extname(@readme)
-      when '.md', '.markdown'
+      case type
+      when 'md', 'markdown'
+        require_rdiscount
         html = markdown(@readme)
       else
         require_rdoc
@@ -345,7 +361,6 @@ class WebMe
   # Process the README through markdown.
 
   def markdown(file)
-    require 'rdiscount'
     input = File.read(file)
     markdown = RDiscount.new(input)
     markdown.to_html
@@ -485,6 +500,12 @@ class WebMe
       require 'rubygems'
       require 'rdoc/markup/to_html'
     end
+  end
+
+  # Require RDiscount library.
+
+  def require_rdiscount
+    require 'rdiscount'
   end
 
 end

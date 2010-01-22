@@ -41,28 +41,32 @@ site/ if none of these are found.
 OPTIONS:
 HERE
 
-        opt.on("--template", "-t [NAME]", "select html template") do |name|
+        opt.on("--template", "-t NAME", "select html template") do |name|
           options[:template] = name.downcase
         end
 
-        opt.on("--readme", "-r [FILE]", "README file to use (defaults to first README*)") do |readme|
+        opt.on("--readme", "-r FILE", "README file to use (defaults to first README*)") do |readme|
           options[:readme] = readme
         end
 
-        opt.on("--title [TITLE]", "title to use at top of page") do |title|
+        opt.on("--title TITLE", "title to use at top of page") do |title|
           options[:title] = title
         end
 
-        opt.on("--color [HEX]", "general color tone, supply a css hex value.") do |hex|
+        opt.on("--color HEX", "general color tone, supply a css hex value.") do |hex|
           options[:color] = hex
         end
 
-        opt.on("--search", "-s [TERM]", "alternate term for selecting colors and logo") do |term|
+        opt.on("--search", "-s TERM", "alternate term for selecting colors and logo") do |term|
           options[:search] = term
         end
 
-        opt.on("--output", "-o [DIR]", "output directory") do |dir|
+        opt.on("--output", "-o DIR", "output directory") do |dir|
           options[:output] = dir
+        end
+
+        opt.on("--type", "-t TYPE", "explicate README markup type (rdoc, markdown, etc.)") do |type|
+          options[:type] = type
         end
 
         opt.on("--force", "-f", "force overwrite of pre-existing site") do
