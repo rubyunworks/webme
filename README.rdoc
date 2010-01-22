@@ -41,8 +41,8 @@ To install with RubyGems simply open a console and type:
 To do a site install you will need {Ruby Setup}[http://proutils.github.com/setup],
 then download the tar.gz package and type:
 
-  $ tar -xvzf webme-0.3.tgz
-  $ cd webme-0.3.tgz
+  $ tar -xvzf webme-0.5.tgz
+  $ cd webme-0.5.tgz
   $ sudo setup.rb
 
 
