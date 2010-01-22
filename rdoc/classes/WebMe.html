@@ -120,12 +120,17 @@
           
             
             <li class="singleton">
-              <a href="#M000004">::templates</a>
+              <a href="#M000003">::templates</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000059">#advert</a>
+              <a href="#M000061">#advert</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000062">#advert_file</a>
             </li>
           
             
@@ -135,12 +140,12 @@
           
             
             <li class="method">
-              <a href="#M000023">#color=</a>
+              <a href="#M000022">#color=</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000022">#colors=</a>
+              <a href="#M000021">#colors=</a>
             </li>
           
             
@@ -150,17 +155,17 @@
           
             
             <li class="method">
-              <a href="#M000016">#force?</a>
+              <a href="#M000015">#force?</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000060">#fu</a>
+              <a href="#M000063">#fu</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000028">#generate</a>
+              <a href="#M000023">#generate</a>
             </li>
           
             
@@ -170,27 +175,27 @@
           
             
             <li class="method">
-              <a href="#M000047">#linkify</a>
+              <a href="#M000048">#linkify</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000029">#load_config</a>
+              <a href="#M000024">#load_config</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000054">#logo</a>
+              <a href="#M000055">#logo</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000055">#logo_search</a>
+              <a href="#M000056">#logo_search</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000050">#markdown</a>
+              <a href="#M000051">#markdown</a>
             </li>
           
             
@@ -200,12 +205,12 @@
           
             
             <li class="method">
-              <a href="#M000017">#name</a>
+              <a href="#M000016">#name</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000021">#output=</a>
+              <a href="#M000017">#output=</a>
             </li>
           
             
@@ -215,7 +220,7 @@
           
             
             <li class="method">
-              <a href="#M000048">#rdoc</a>
+              <a href="#M000050">#rdoc</a>
             </li>
           
             
@@ -225,12 +230,27 @@
           
             
             <li class="method">
+              <a href="#M000069">#require_rdiscount</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000066">#require_rdoc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000064">#require_tilt</a>
+            </li>
+          
+            
+            <li class="method">
               <a href="#M000038">#scope</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000015">#trace?</a>
+              <a href="#M000011">#trace?</a>
             </li>
           
             
@@ -250,12 +270,12 @@
           
             
             <li class="method">
-              <a href="#M000014">#trial?</a>
+              <a href="#M000010">#trial?</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000031">#yahoo_id</a>
+              <a href="#M000029">#yahoo_id</a>
             </li>
           
         </ul>
@@ -332,7 +352,9 @@
       
 
       <p>
-So first of all, get the six hex digits into this input format:
+Generates a basic website based on a README file. It does this by
+sectioning the README based on 2nd level headers, &#8217;==&#8217; or
+&#8217;##&#8217;, ie. <h2>.
 </p>
 
     </div>
@@ -355,10 +377,17 @@ Relative directory.
 </p></dd>
         
       
+        <dt><a name="CONFIG_DIR">CONFIG_DIR</a></dt>
+        
+        <dd class="description"><p>
+Config directory.
+</p></dd>
+        
+      
         <dt><a name="CONFIG">CONFIG</a></dt>
         
         <dd class="description"><p>
-Config file. Loated at <tt>config/webme.yml</tt>, or standard variations
+Config file, loated at <tt>config/webme.yml</tt>, or standard variations
 there-of.
 </p></dd>
         
@@ -554,6 +583,28 @@ Colors to use for color scheme.
         </div>
       </div>
       
+      <div id="type-attribute-method" class="method-detail">
+        <a name="type"></a>
+        
+        <a name="type="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">type</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>
+Rendereing engine type specified by file extension (eg. <tt>rdoc</tt> or
+<tt>markdown</tt>). By default this is picked up by the extension on the
+README file name, but if none is present or the extension is not the engine
+type then specifying this manually is necessary.
+</p>
+        
+        </div>
+      </div>
+      
       <div id="force-attribute-method" class="method-detail">
         <a name="force"></a>
         
@@ -708,7 +759,7 @@ Project&#8217;s root pathname.
           <div class="method-source-code"
             id="new-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 97</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 104</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">root</span>, <span class="ruby-identifier">options</span>={})
     <span class="ruby-ivar">@root</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">root</span>)
 
@@ -744,7 +795,7 @@ Project&#8217;s root pathname.
 
     
       <div id="templates-method" class="method-detail ">
-        <a name="M000004"></a>
+        <a name="M000003"></a>
 
         <div class="method-heading">
         
@@ -763,7 +814,7 @@ Project&#8217;s root pathname.
           <div class="method-source-code"
             id="templates-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 42</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 43</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">templates</span>
     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">DIR</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;templates/*&quot;</span>).<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">f</span>) }
   <span class="ruby-keyword kw">end</span></pre>
@@ -782,7 +833,7 @@ Project&#8217;s root pathname.
 
     
       <div id="advert-method" class="method-detail ">
-        <a name="M000059"></a>
+        <a name="M000061"></a>
 
         <div class="method-heading">
         
@@ -795,7 +846,8 @@ Project&#8217;s root pathname.
         <div class="method-description">
           
           <p>
-Default advert.
+Advertisement markup. If not advertisement file is found this will be an
+empty string.
 </p>
           
 
@@ -803,10 +855,45 @@ Default advert.
           <div class="method-source-code"
             id="advert-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 428</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 458</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advert</span>
-    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">FalseClass</span> <span class="ruby-operator">===</span> <span class="ruby-ivar">@advert</span>
-    <span class="ruby-ivar">@advert</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;&lt;script type=\&quot;text/javascript\&quot;&gt;&lt;!--\ngoogle_ad_client = \&quot;pub-1126154564663472\&quot;;\n/* RUBYWORKS 09-10-02 728x90 */\ngoogle_ad_slot = \&quot;0788888658\&quot;;\ngoogle_ad_width = 728;\ngoogle_ad_height = 90;\n//--&gt;\n&lt;/script&gt;\n&lt;script type=\&quot;text/javascript\&quot;\nsrc=\&quot;http://pagead2.googlesyndication.com/pagead/show_ads.js\&quot;&gt;\n&lt;/script&gt;\n&quot;</span>
+    <span class="ruby-ivar">@advert</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="advert-file-method" class="method-detail ">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">advert_file</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Lookup advertisment. First it looks in the destination folder under
+&#8216;assets/includes/advert.html&#8217;. If not found there it looks in
+the config folder under &#8216;webme/advert.html&#8217;.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="advert-file-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 466</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advert_file</span>
+    <span class="ruby-ivar">@advert_file</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-value str">'assets/includes/advert.html'</span>).<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-node">&quot;#{CONFIG_DIR}/advert.html&quot;</span>).<span class="ruby-identifier">first</span>
   <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -839,7 +926,7 @@ provided.
           <div class="method-source-code"
             id="calc-colors-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 350</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 375</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calc_colors</span>(<span class="ruby-identifier">hues</span>=<span class="ruby-keyword kw">nil</span>)
     <span class="ruby-identifier">schema</span> = <span class="ruby-constant">OpenStruct</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">hues</span>
@@ -874,7 +961,7 @@ provided.
 
     
       <div id="color--method" class="method-detail method-alias">
-        <a name="M000023"></a>
+        <a name="M000022"></a>
 
         <div class="method-heading">
         
@@ -887,7 +974,7 @@ provided.
         <div class="method-description">
           
           <p>
-Alias for <a href="WebMe.html#M000022">colors=</a>
+Alias for <a href="WebMe.html#M000021">colors=</a>
 </p>
           
 
@@ -899,7 +986,7 @@ Alias for <a href="WebMe.html#M000022">colors=</a>
 
     
       <div id="colors--method" class="method-detail ">
-        <a name="M000022"></a>
+        <a name="M000021"></a>
 
         <div class="method-heading">
         
@@ -918,7 +1005,7 @@ Alias for <a href="WebMe.html#M000022">colors=</a>
           <div class="method-source-code"
             id="colors--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 167</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 172</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">colors=</span>(<span class="ruby-identifier">values</span>)
     <span class="ruby-ivar">@colors</span> = <span class="ruby-identifier">calc_colors</span>(<span class="ruby-identifier">values</span>)
   <span class="ruby-keyword kw">end</span></pre>
@@ -928,7 +1015,7 @@ Alias for <a href="WebMe.html#M000022">colors=</a>
 
         
         <div class="aliases">
-          Also aliased as: <a href="WebMe.html#M000023">color=</a>
+          Also aliased as: <a href="WebMe.html#M000022">color=</a>
         </div>
         
       </div>
@@ -956,7 +1043,7 @@ Helper method to convert file with eRuby.
           <div class="method-source-code"
             id="erb-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 261</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 273</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">file</span>)
     <span class="ruby-identifier">template</span> = <span class="ruby-constant">ERB</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>))
     <span class="ruby-identifier">template</span>.<span class="ruby-identifier">result</span>(<span class="ruby-identifier">scope</span>.<span class="ruby-identifier">_binding</span>)
@@ -970,7 +1057,7 @@ Helper method to convert file with eRuby.
 
     
       <div id="force--method" class="method-detail ">
-        <a name="M000016"></a>
+        <a name="M000015"></a>
 
         <div class="method-heading">
         
@@ -989,7 +1076,7 @@ Helper method to convert file with eRuby.
           <div class="method-source-code"
             id="force--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 152</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 157</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">force?</span>
     <span class="ruby-ivar">@force</span>
   <span class="ruby-keyword kw">end</span></pre>
@@ -1002,7 +1089,7 @@ Helper method to convert file with eRuby.
 
     
       <div id="fu-method" class="method-detail ">
-        <a name="M000060"></a>
+        <a name="M000063"></a>
 
         <div class="method-heading">
         
@@ -1023,7 +1110,7 @@ Access to FileUtils.
           <div class="method-source-code"
             id="fu-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 447</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 472</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fu</span>
     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trial?</span>
       <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">DryRun</span>
@@ -1042,7 +1129,7 @@ Access to FileUtils.
 
     
       <div id="generate-method" class="method-detail ">
-        <a name="M000028"></a>
+        <a name="M000023"></a>
 
         <div class="method-heading">
         
@@ -1063,7 +1150,7 @@ Generate the website.
           <div class="method-source-code"
             id="generate-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 175</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 180</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate</span>
     <span class="ruby-identifier">transfer</span>
   <span class="ruby-keyword kw">end</span></pre>
@@ -1095,21 +1182,19 @@ Generate the website.
           <div class="method-source-code"
             id="initialize-defaults-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 125</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 132</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_defaults</span>
-    <span class="ruby-ivar">@template</span>  = <span class="ruby-constant">TEMPLATE</span>
-    <span class="ruby-ivar">@output</span>    = <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">OUTPUT_GLOB</span>).<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@root</span> <span class="ruby-operator">+</span> <span class="ruby-constant">OUTPUT</span>
+    <span class="ruby-ivar">@template</span> = <span class="ruby-constant">TEMPLATE</span>
+    <span class="ruby-ivar">@output</span>   = <span class="ruby-identifier">root</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">OUTPUT_GLOB</span>).<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@root</span> <span class="ruby-operator">+</span> <span class="ruby-constant">OUTPUT</span>
 
-    <span class="ruby-ivar">@title</span>     = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">title</span> <span class="ruby-comment cmt">#meta(:title)</span>
-    <span class="ruby-ivar">@name</span>      = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">name</span>  <span class="ruby-comment cmt">#meta(:project) || meta(:name)</span>
-    <span class="ruby-ivar">@search</span>    = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">title</span>
+    <span class="ruby-ivar">@title</span>    = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">title</span> <span class="ruby-comment cmt">#meta(:title)</span>
+    <span class="ruby-ivar">@name</span>     = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">name</span>  <span class="ruby-comment cmt">#meta(:project) || meta(:name)</span>
+    <span class="ruby-ivar">@search</span>   = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">title</span>
+    <span class="ruby-ivar">@type</span>     = <span class="ruby-keyword kw">nil</span>
 
-    <span class="ruby-ivar">@advert</span> =(
-      <span class="ruby-identifier">file</span> = <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-value str">'assets/includes/advert.html'</span>).<span class="ruby-identifier">first</span>
-      <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>
-    )
+    <span class="ruby-ivar">@advert</span>   = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">advert_file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">advert_file</span>
 
-    <span class="ruby-ivar">@readme</span> = <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-value str">'readme{,.*}'</span>, <span class="ruby-identifier">:casefold</span>).<span class="ruby-identifier">first</span>
+    <span class="ruby-ivar">@readme</span>   = <span class="ruby-identifier">root</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-value str">'readme{,.*}'</span>, <span class="ruby-identifier">:casefold</span>).<span class="ruby-identifier">first</span>
   <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -1120,7 +1205,7 @@ Generate the website.
 
     
       <div id="linkify-method" class="method-detail ">
-        <a name="M000047"></a>
+        <a name="M000048"></a>
 
         <div class="method-heading">
         
@@ -1142,7 +1227,7 @@ when supported.
           <div class="method-source-code"
             id="linkify-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 313</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 343</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">linkify</span>(<span class="ruby-identifier">text</span>)
     <span class="ruby-identifier">text</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?/i</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">url</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">full_url</span> = <span class="ruby-identifier">url</span>
@@ -1161,7 +1246,7 @@ when supported.
 
     
       <div id="load-config-method" class="method-detail ">
-        <a name="M000029"></a>
+        <a name="M000024"></a>
 
         <div class="method-heading">
         
@@ -1182,7 +1267,7 @@ Load config file.
           <div class="method-source-code"
             id="load-config-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 180</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 185</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_config</span>
     <span class="ruby-identifier">file</span> = <span class="ruby-identifier">root</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">CONFIG</span>, <span class="ruby-identifier">:casefold</span>).<span class="ruby-identifier">first</span>
     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>
@@ -1200,7 +1285,7 @@ Load config file.
 
     
       <div id="logo-method" class="method-detail ">
-        <a name="M000054"></a>
+        <a name="M000055"></a>
 
         <div class="method-heading">
         
@@ -1226,7 +1311,7 @@ do what you gotta.
           <div class="method-source-code"
             id="logo-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 381</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 407</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logo</span>
     <span class="ruby-ivar">@logo</span> <span class="ruby-operator">||=</span> (
       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span> = <span class="ruby-identifier">output</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-value str">'assets/images/logo.*'</span>).<span class="ruby-identifier">first</span>
@@ -1245,7 +1330,7 @@ do what you gotta.
 
     
       <div id="logo-search-method" class="method-detail ">
-        <a name="M000055"></a>
+        <a name="M000056"></a>
 
         <div class="method-heading">
         
@@ -1264,7 +1349,7 @@ do what you gotta.
           <div class="method-source-code"
             id="logo-search-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 392</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 419</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logo_search</span>
     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">LOGO</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">require_bossman</span>
     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">LOGO</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">yahoo_id</span>
@@ -1297,7 +1382,7 @@ do what you gotta.
 
     
       <div id="markdown-method" class="method-detail ">
-        <a name="M000050"></a>
+        <a name="M000051"></a>
 
         <div class="method-heading">
         
@@ -1318,9 +1403,8 @@ Process the README through markdown.
           <div class="method-source-code"
             id="markdown-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 338</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 363</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">markdown</span>(<span class="ruby-identifier">file</span>)
-    <span class="ruby-identifier">require</span> <span class="ruby-value str">'rdiscount'</span>
     <span class="ruby-identifier">input</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>)
     <span class="ruby-identifier">markdown</span> = <span class="ruby-constant">RDiscount</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>)
     <span class="ruby-identifier">markdown</span>.<span class="ruby-identifier">to_html</span>
@@ -1355,7 +1439,7 @@ POM metadata.
           <div class="method-source-code"
             id="metadata-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 202</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 209</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">metadata</span>
     <span class="ruby-ivar">@metadata</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">POM</span><span class="ruby-operator">::</span><span class="ruby-constant">Metadata</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">root</span>)  <span class="ruby-comment cmt"># TODO: Change to .new ?</span>
   <span class="ruby-keyword kw">end</span></pre>
@@ -1368,7 +1452,7 @@ POM metadata.
 
     
       <div id="name-method" class="method-detail ">
-        <a name="M000017"></a>
+        <a name="M000016"></a>
 
         <div class="method-heading">
         
@@ -1389,7 +1473,7 @@ Name of the project.
           <div class="method-source-code"
             id="name-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 157</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 162</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name</span>
     <span class="ruby-ivar">@name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\s+/</span>, <span class="ruby-value str">'_'</span>)
   <span class="ruby-keyword kw">end</span></pre>
@@ -1402,7 +1486,7 @@ Name of the project.
 
     
       <div id="output--method" class="method-detail ">
-        <a name="M000021"></a>
+        <a name="M000017"></a>
 
         <div class="method-heading">
         
@@ -1421,7 +1505,7 @@ Name of the project.
           <div class="method-source-code"
             id="output--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 162</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 167</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output=</span>(<span class="ruby-identifier">path</span>)
     <span class="ruby-ivar">@output</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-keyword kw">end</span></pre>
@@ -1455,15 +1539,29 @@ Create html body, sections and header.
           <div class="method-source-code"
             id="parse-readme-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 275</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 290</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_readme</span>
     <span class="ruby-identifier">abort</span> <span class="ruby-value str">&quot;No readme file found.&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">readme</span>
 
-    <span class="ruby-keyword kw">case</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-ivar">@readme</span>)
-    <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'.md'</span>, <span class="ruby-value str">'.markdown'</span>
-      <span class="ruby-identifier">html</span> = <span class="ruby-identifier">markdown</span>(<span class="ruby-ivar">@readme</span>)
+    <span class="ruby-identifier">type</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-ivar">@readme</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/^[.]/</span>,<span class="ruby-value str">''</span>)
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">require_tilt</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Tilt</span>[<span class="ruby-identifier">type</span>]
+        <span class="ruby-identifier">template</span> = <span class="ruby-constant">Tilt</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@readme</span>)
+        <span class="ruby-identifier">html</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">render</span>
+      <span class="ruby-keyword kw">else</span>  <span class="ruby-comment cmt"># fallback is RDoc (good?)</span>
+        <span class="ruby-constant">Tilt</span><span class="ruby-operator">::</span><span class="ruby-constant">RDocTemplate</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@readme</span>)
+        <span class="ruby-identifier">html</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">render</span>
+      <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">else</span>
-      <span class="ruby-identifier">html</span> = <span class="ruby-identifier">rdoc</span>(<span class="ruby-ivar">@readme</span>)
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'md'</span>, <span class="ruby-value str">'markdown'</span>
+        <span class="ruby-identifier">require_rdiscount</span>
+        <span class="ruby-identifier">html</span> = <span class="ruby-identifier">markdown</span>(<span class="ruby-ivar">@readme</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">require_rdoc</span>
+        <span class="ruby-identifier">html</span> = <span class="ruby-identifier">rdoc</span>(<span class="ruby-ivar">@readme</span>)
+      <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">end</span>
 
     <span class="ruby-comment cmt">#html = linkify(html)  # no longer needed for rdoc, what about markdown?</span>
@@ -1501,7 +1599,7 @@ Create html body, sections and header.
 
     
       <div id="rdoc-method" class="method-detail ">
-        <a name="M000048"></a>
+        <a name="M000050"></a>
 
         <div class="method-heading">
         
@@ -1522,15 +1620,8 @@ Process the README through rdoc.
           <div class="method-source-code"
             id="rdoc-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 324</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 355</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rdoc</span>(<span class="ruby-identifier">file</span>)
-    <span class="ruby-keyword kw">begin</span>
-      <span class="ruby-comment cmt">#require 'rdoc/markup'</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-value str">'rdoc/markup/to_html'</span>
-    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-value str">'rubygems'</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-value str">'rdoc/markup/to_html'</span>
-    <span class="ruby-keyword kw">end</span>
     <span class="ruby-identifier">input</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>)
     <span class="ruby-identifier">markup</span> = <span class="ruby-operator">::</span><span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span><span class="ruby-operator">::</span><span class="ruby-constant">ToHtml</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">markup</span>.<span class="ruby-identifier">convert</span>(<span class="ruby-identifier">input</span>)
@@ -1563,7 +1654,7 @@ Process the README through rdoc.
           <div class="method-source-code"
             id="require-bossman-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 417</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 445</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_bossman</span>
     <span class="ruby-keyword kw">begin</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'bossman'</span>
@@ -1571,6 +1662,119 @@ Process the README through rdoc.
       <span class="ruby-keyword kw">true</span>
     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
       <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="require-rdiscount-method" class="method-detail ">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">require_rdiscount</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Require RDiscount library.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="require-rdiscount-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 507</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_rdiscount</span>
+    <span class="ruby-identifier">require</span> <span class="ruby-value str">'rdiscount'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="require-rdoc-method" class="method-detail ">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">require_rdoc</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Require RDoc library.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="require-rdoc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 495</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_rdoc</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-comment cmt">#require 'rdoc/markup'</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'rdoc/markup/to_html'</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'rubygems'</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'rdoc/markup/to_html'</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="require-tilt-method" class="method-detail ">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">require_tilt</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Require Tilt library if installed.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="require-tilt-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 484</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_tilt</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'tilt'</span>
+      <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
+      <span class="ruby-keyword kw">false</span>
     <span class="ruby-keyword kw">end</span>
   <span class="ruby-keyword kw">end</span></pre>
           </div>
@@ -1603,7 +1807,7 @@ Erb rendering scope.
           <div class="method-source-code"
             id="scope-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 267</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 280</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scope</span>
     <span class="ruby-constant">Scope</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
   <span class="ruby-keyword kw">end</span></pre>
@@ -1616,7 +1820,7 @@ Erb rendering scope.
 
     
       <div id="trace--method" class="method-detail ">
-        <a name="M000015"></a>
+        <a name="M000011"></a>
 
         <div class="method-heading">
         
@@ -1635,7 +1839,7 @@ Erb rendering scope.
           <div class="method-source-code"
             id="trace--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 147</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 152</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trace?</span>
     <span class="ruby-ivar">@trace</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">$TRACE</span>
   <span class="ruby-keyword kw">end</span></pre>
@@ -1667,7 +1871,7 @@ Erb rendering scope.
           <div class="method-source-code"
             id="transfer-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 209</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 218</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transfer</span>
     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">output</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">force?</span>
       <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;Output directory already exists. Use --force to allow overwrite.\n&quot;</span>
@@ -1729,7 +1933,7 @@ Copy a file verbatim.
           <div class="method-source-code"
             id="transfer-copy-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 254</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 265</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transfer_copy</span>(<span class="ruby-identifier">file</span>)
     <span class="ruby-identifier">dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">file</span>))
     <span class="ruby-identifier">fu</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir</span>)
@@ -1765,7 +1969,7 @@ Copy a file after processing it through Erb.
           <div class="method-source-code"
             id="transfer-erb-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 242</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 252</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transfer_erb</span>(<span class="ruby-identifier">file</span>)
     <span class="ruby-identifier">txt</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-constant">DIR</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;templates/#{template}/#{file}&quot;</span>)
     <span class="ruby-identifier">dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">file</span>))
@@ -1785,7 +1989,7 @@ Copy a file after processing it through Erb.
 
     
       <div id="trial--method" class="method-detail ">
-        <a name="M000014"></a>
+        <a name="M000010"></a>
 
         <div class="method-heading">
         
@@ -1804,7 +2008,7 @@ Copy a file after processing it through Erb.
           <div class="method-source-code"
             id="trial--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 142</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 147</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trial?</span>
     <span class="ruby-ivar">@trial</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">$TRIAL</span>
   <span class="ruby-keyword kw">end</span></pre>
@@ -1817,7 +2021,7 @@ Copy a file after processing it through Erb.
 
     
       <div id="yahoo-id-method" class="method-detail ">
-        <a name="M000031"></a>
+        <a name="M000029"></a>
 
         <div class="method-heading">
         
@@ -1841,7 +2045,7 @@ directory under &#8216;config&#8217; or &#8217;.config&#8217; at
           <div class="method-source-code"
             id="yahoo-id-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 192</span>
+<span class="ruby-comment cmt"># File lib/webme/webme.rb, line 198</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">yahoo_id</span>
     <span class="ruby-ivar">@yahoo_id</span> <span class="ruby-operator">||=</span> (
       <span class="ruby-identifier">home</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-value str">'~'</span>))

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Lookup advertisment. First it looks in the destination folder under 'assets/includes/advert.html'. If not found there it looks in the config folder under 'webme/advert.html'.
+full_name: WebMe#advert_file
+is_singleton: false
+name: advert_file
+params: ()
+visibility: public

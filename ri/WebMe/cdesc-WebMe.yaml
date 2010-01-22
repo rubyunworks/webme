@@ -87,6 +87,12 @@ attributes:
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Rendereing engine type specified by file extension (eg. <tt>rdoc</tt> or <tt>markdown</tt>). By default this is picked up by the extension on the README file name, but if none is present or the extension is not the engine type then specifying this manually is necessary.
+  name: type
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
     body: Yahoo application id used by Bossman for finding a logo.
   name: yahoo_id
   rw: RW
@@ -112,9 +118,15 @@ constants:
 - !ruby/object:RDoc::RI::Constant 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Config file. Loated at <tt>config/webme.yml</tt>, or standard variations there-of.
+    body: Config directory.
+  name: CONFIG_DIR
+  value: "'{.,}config/webme'"
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Config file, loated at <tt>config/webme.yml</tt>, or standard variations there-of.
   name: CONFIG
-  value: "'{.,}config/webme/options.{yml,yaml}'"
+  value: CONFIG_DIR + '/options.{yml,yaml}'
 - !ruby/object:RDoc::RI::Constant 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
@@ -126,7 +138,7 @@ constants:
   - !ruby/struct:RDoc::Markup::Flow::P 
     body: Glob used to lookup output directory.
   name: OUTPUT_GLOB
-  value: "'{site,web,website,www}'"
+  value: "'{site,website,web,www}'"
 - !ruby/object:RDoc::RI::Constant 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
@@ -145,6 +157,8 @@ includes: []
 instance_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
   name: advert
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: advert_file
 - !ruby/object:RDoc::RI::MethodSummary 
   name: calc_colors
 - !ruby/object:RDoc::RI::MethodSummary 
@@ -183,6 +197,12 @@ instance_methods:
   name: rdoc
 - !ruby/object:RDoc::RI::MethodSummary 
   name: require_bossman
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: require_rdiscount
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: require_rdoc
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: require_tilt
 - !ruby/object:RDoc::RI::MethodSummary 
   name: scope
 - !ruby/object:RDoc::RI::MethodSummary 

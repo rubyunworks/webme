@@ -100,7 +100,7 @@
           
             
             <li class="method">
-              <a href="#M000003">#execute</a>
+              <a href="#M000004">#execute</a>
             </li>
           
             
@@ -297,7 +297,7 @@ Initialize and run.
 
     
       <div id="execute-method" class="method-detail ">
-        <a name="M000003"></a>
+        <a name="M000004"></a>
 
         <div class="method-heading">
         
@@ -318,7 +318,7 @@ Execute command.
           <div class="method-source-code"
             id="execute-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/command.rb, line 104</span>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 108</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span>
       <span class="ruby-identifier">readwe</span> = <span class="ruby-constant">WebMe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>, <span class="ruby-identifier">options</span>)
       <span class="ruby-identifier">readwe</span>.<span class="ruby-identifier">generate</span>
@@ -361,28 +361,32 @@ Parse command-line options.
 
         <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Usage: webme [OPTIONS]\n\nGenerates a basic website based on a README file. It does this\nby sectioning the README into tabs based on second level entries\n(ie. the &lt;h2&gt;'s produced by == or ##).\n\nIf output is not given, generates to the first folder called\nwebsite/, web/ or site/ in the current directory. Defaults to\nsite/ if none of these are found.\n\nOPTIONS:\n&quot;</span>
 
-        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--template&quot;</span>, <span class="ruby-value str">&quot;-t [NAME]&quot;</span>, <span class="ruby-value str">&quot;select html template&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--template&quot;</span>, <span class="ruby-value str">&quot;-t NAME&quot;</span>, <span class="ruby-value str">&quot;select html template&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>] = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>
         <span class="ruby-keyword kw">end</span>
 
-        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--readme&quot;</span>, <span class="ruby-value str">&quot;-r [FILE]&quot;</span>, <span class="ruby-value str">&quot;README file to use (defaults to first README*)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">readme</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--readme&quot;</span>, <span class="ruby-value str">&quot;-r FILE&quot;</span>, <span class="ruby-value str">&quot;README file to use (defaults to first README*)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">readme</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:readme</span>] = <span class="ruby-identifier">readme</span>
         <span class="ruby-keyword kw">end</span>
 
-        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--title [TITLE]&quot;</span>, <span class="ruby-value str">&quot;title to use at top of page&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">title</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--title TITLE&quot;</span>, <span class="ruby-value str">&quot;title to use at top of page&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">title</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:title</span>] = <span class="ruby-identifier">title</span>
         <span class="ruby-keyword kw">end</span>
 
-        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--color [HEX]&quot;</span>, <span class="ruby-value str">&quot;general color tone, supply a css hex value.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hex</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--color HEX&quot;</span>, <span class="ruby-value str">&quot;general color tone, supply a css hex value.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hex</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:color</span>] = <span class="ruby-identifier">hex</span>
         <span class="ruby-keyword kw">end</span>
 
-        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--search&quot;</span>, <span class="ruby-value str">&quot;-s [TERM]&quot;</span>, <span class="ruby-value str">&quot;alternate term for selecting colors and logo&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">term</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--search&quot;</span>, <span class="ruby-value str">&quot;-s TERM&quot;</span>, <span class="ruby-value str">&quot;alternate term for selecting colors and logo&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">term</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:search</span>] = <span class="ruby-identifier">term</span>
         <span class="ruby-keyword kw">end</span>
 
-        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--output&quot;</span>, <span class="ruby-value str">&quot;-o [DIR]&quot;</span>, <span class="ruby-value str">&quot;output directory&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--output&quot;</span>, <span class="ruby-value str">&quot;-o DIR&quot;</span>, <span class="ruby-value str">&quot;output directory&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:output</span>] = <span class="ruby-identifier">dir</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--type&quot;</span>, <span class="ruby-value str">&quot;-t TYPE&quot;</span>, <span class="ruby-value str">&quot;explicate README markup type (rdoc, markdown, etc.)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:type</span>] = <span class="ruby-identifier">type</span>
         <span class="ruby-keyword kw">end</span>
 
         <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--force&quot;</span>, <span class="ruby-value str">&quot;-f&quot;</span>, <span class="ruby-value str">&quot;force overwrite of pre-existing site&quot;</span>) <span class="ruby-keyword kw">do</span>
@@ -448,7 +452,7 @@ Parse and execute.
           <div class="method-source-code"
             id="run-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/webme/command.rb, line 110</span>
+<span class="ruby-comment cmt"># File lib/webme/command.rb, line 114</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
       <span class="ruby-identifier">parse</span>
       <span class="ruby-identifier">execute</span>

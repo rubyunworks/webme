@@ -4,9 +4,9 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: Advertisement markup. If not advertisement file is found this will be an empty string.
-full_name: WebMe#advert
+  body: Require RDiscount library.
+full_name: WebMe#require_rdiscount
 is_singleton: false
-name: advert
+name: require_rdiscount
 params: ()
 visibility: public

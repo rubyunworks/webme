@@ -4,9 +4,9 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: Advertisement markup. If not advertisement file is found this will be an empty string.
-full_name: WebMe#advert
+  body: Require Tilt library if installed.
+full_name: WebMe#require_tilt
 is_singleton: false
-name: advert
+name: require_tilt
 params: ()
 visibility: public
