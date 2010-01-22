@@ -1,5 +1,20 @@
 = Release History
 
+== 0.5 // 2010-01-22
+
+This release adds support for Tilt to render README files.
+This means it can support a larger variety of README 
+formats including Textile. It also improves some
+configuration options, and removes the default ad.
+
+Changes:
+
+* support a variety of README formats via Tilt
+* new command option to force the type of README file
+* fallback advertisement has been removed
+* define an advertisement via .config/webme/advert.html
+
+
 == 0.4 // 2010-01-19
 
 This is minor update which mainly makes some
