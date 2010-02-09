@@ -237,10 +237,12 @@ class WebMe
       entries.each do |path|
         puts "  #{path}"
         case File.extname(path)
-        when '.html', '.css'
+        when '.erb'
           transfer_erb(path)
-        when '.layout', '.page', '.post', '.file'  # for Brite
-          transfer_erb(path)
+        #when '.html', '.css'
+        #  transfer_erb(path)
+        #when '.layout', '.page', '.post', '.file'  # for Brite
+        #  transfer_erb(path)
         else
           transfer_copy(path)
         end
@@ -254,10 +256,11 @@ class WebMe
     txt = erb(DIR + "templates/#{template}/#{file}")
     dir = File.dirname(File.join(output, file))
     fu.mkdir_p(dir) unless File.directory?(dir)
+    fname = file.chomp('.erb')
     if trial?
-      puts "erb #{file}"
+      puts "erb #{fname}"
     else
-      File.open(File.join(output,file), 'w'){ |f| f << txt }
+      File.open(File.join(output,fname), 'w'){ |f| f << txt }
     end
   end
 
