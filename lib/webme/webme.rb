@@ -1,4 +1,5 @@
 require 'erb'
+require 'tilt'
 
 require 'facets/pathname'
 require 'facets/ostruct'
@@ -291,25 +292,26 @@ class WebMe
     abort "No readme file found." unless readme
 
     type = self.type || File.extname(@readme).sub(/^[.]/,'')
+    type = type_heuristics(@readme) if type == ''
 
-    if require_tilt
+    #if require_tilt
       if Tilt[type]
         template = Tilt.new(@readme)
         html = template.render
-      else  # fallback is RDoc (good?)
-        Tilt::RDocTemplate.new(@readme)
+      else  # fallback
+        template = Tilt::RDocTemplate.new(@readme)
         html = template.render
       end
-    else
-      case type
-      when 'md', 'markdown'
-        require_rdiscount
-        html = markdown(@readme)
-      else
-        require_rdoc
-        html = rdoc(@readme)
-      end
-    end
+    #else
+    #  case type
+    #  when 'md', 'markdown'
+    #    require_rdiscount
+    #    html = markdown(@readme)
+    #  else
+    #    require_rdoc
+    #    html = rdoc(@readme)
+    #  end
+    #end
 
     #html = linkify(html)  # no longer needed for rdoc, what about markdown?
 
@@ -338,18 +340,6 @@ class WebMe
     @sections = sections
   end
 
-  # NOTE: RDoc no longer needs this. Consider for other markup types if and when supported.
-
-  def linkify(text)
-    text.gsub(/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/i) do |url|
-      full_url = url
-      if !full_url.match(/^https?:\/\//)
-        full_url = 'http://' + full_url
-      end
-      '<a href="' + full_url + '">' + url + '</a>'
-    end
-  end
-
   # Process the README through rdoc.
 
   def rdoc(file)
@@ -364,6 +354,18 @@ class WebMe
     input = File.read(file)
     markdown = RDiscount.new(input)
     markdown.to_html
+  end
+
+  # NOTE: RDoc no longer needs this. Consider for other markup types if and when supported.
+
+  def linkify(text)
+    text.gsub(/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/i) do |url|
+      full_url = url
+      if !full_url.match(/^https?:\/\//)
+        full_url = 'http://' + full_url
+      end
+      '<a href="' + full_url + '">' + url + '</a>'
+    end
   end
 
   # Take the search term and calc uniq colors for it if
@@ -414,7 +416,7 @@ class WebMe
     )
   end
 
-  #
+  # Logo search using Bossman.
 
   def logo_search
     return LOGO unless require_bossman
@@ -440,7 +442,7 @@ class WebMe
     end
   end
 
-  #
+  # Require Bossman library for Yahoo image search.
 
   def require_bossman
     begin
@@ -490,6 +492,7 @@ class WebMe
     end
   end
 
+=begin
   # Require RDoc library.
 
   def require_rdoc
@@ -507,6 +510,16 @@ class WebMe
   def require_rdiscount
     require 'rdiscount'
   end
+=end
 
+  #--
+  # TODO: improve type heuristics
+  #++
+  def type_heuristics(file)
+    text = File.read(file).strip
+    return 'rdoc' if /^\=/ =~ text
+    return 'md'   if /^\#/ =~ text
+    return nil
+  end
 end
 
