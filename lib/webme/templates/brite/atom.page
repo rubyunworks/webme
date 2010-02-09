@@ -8,11 +8,11 @@ extension : .xml
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>blog.crantastic.org</title>
- <link href="http://blog.crantastic.org/atom.xml" rel="self"/>
- <link href="http://blog.crantastic.org/"/>
+ <title><%= title %></title>
+ <link href="<%= metadata.homepage %>/atom.xml" rel="self"/>
+ <link href="<%= metadata.homepage %>"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://blog.crantastic.org/</id>
+ <id><%= metadata.homepage %></id>
 
  {% for post in site.posts %}
  <entry>

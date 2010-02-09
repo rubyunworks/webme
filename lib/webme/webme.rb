@@ -235,15 +235,16 @@ class WebMe
       #end
 
       entries.each do |path|
-        puts "  #{path}"
         case File.extname(path)
         when '.erb'
+          puts "  #{path.chomp('.erb')}"
           transfer_erb(path)
         #when '.html', '.css'
         #  transfer_erb(path)
         #when '.layout', '.page', '.post', '.file'  # for Brite
         #  transfer_erb(path)
         else
+          puts "  #{path}"
           transfer_copy(path)
         end
       end
@@ -258,7 +259,7 @@ class WebMe
     fu.mkdir_p(dir) unless File.directory?(dir)
     fname = file.chomp('.erb')
     if trial?
-      puts "erb #{fname}"
+      puts "erb #{file}"
     else
       File.open(File.join(output,fname), 'w'){ |f| f << txt }
     end
@@ -297,24 +298,13 @@ class WebMe
     type = self.type || File.extname(@readme).sub(/^[.]/,'')
     type = type_heuristics(@readme) if type == ''
 
-    #if require_tilt
-      if Tilt[type]
-        template = Tilt.new(@readme)
-        html = template.render
-      else  # fallback
-        template = Tilt::RDocTemplate.new(@readme)
-        html = template.render
-      end
-    #else
-    #  case type
-    #  when 'md', 'markdown'
-    #    require_rdiscount
-    #    html = markdown(@readme)
-    #  else
-    #    require_rdoc
-    #    html = rdoc(@readme)
-    #  end
-    #end
+    if Tilt[type]
+      template = Tilt.new(@readme)
+      html = template.render
+    else  # fallback
+      template = Tilt::RDocTemplate.new(@readme)
+      html = template.render
+    end
 
     #html = linkify(html)  # no longer needed for rdoc, what about markdown?
 
@@ -343,20 +333,14 @@ class WebMe
     @sections = sections
   end
 
-  # Process the README through rdoc.
-
-  def rdoc(file)
-    input = File.read(file)
-    markup = ::RDoc::Markup::ToHtml.new
-    markup.convert(input)
-  end
-
-  # Process the README through markdown.
-
-  def markdown(file)
-    input = File.read(file)
-    markdown = RDiscount.new(input)
-    markdown.to_html
+  #--
+  # TODO: improve type heuristics
+  #++
+  def type_heuristics(file)
+    text = File.read(file).strip
+    return 'rdoc' if /^\=/ =~ text
+    return 'md'   if /^\#/ =~ text
+    return nil
   end
 
   # NOTE: RDoc no longer needs this. Consider for other markup types if and when supported.
@@ -484,45 +468,5 @@ class WebMe
     end
   end
 
-  # Require Tilt library if installed.
-
-  def require_tilt
-    begin
-      require 'tilt'
-      true
-    rescue LoadError
-      false
-    end
-  end
-
-=begin
-  # Require RDoc library.
-
-  def require_rdoc
-    begin
-      #require 'rdoc/markup'
-      require 'rdoc/markup/to_html'
-    rescue LoadError
-      require 'rubygems'
-      require 'rdoc/markup/to_html'
-    end
-  end
-
-  # Require RDiscount library.
-
-  def require_rdiscount
-    require 'rdiscount'
-  end
-=end
-
-  #--
-  # TODO: improve type heuristics
-  #++
-  def type_heuristics(file)
-    text = File.read(file).strip
-    return 'rdoc' if /^\=/ =~ text
-    return 'md'   if /^\#/ =~ text
-    return nil
-  end
 end
 
