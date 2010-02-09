@@ -195,7 +195,7 @@ class WebMe
   # Yahoo Application ID is looked for in the working directory and home
   # directory under 'config' or '.config' at 'webme/yahoo.id'. Failing this
   # is looks for 'YAHOO_ID' environment variable.
-
+  #
   def yahoo_id
     @yahoo_id ||= (
       home = Pathname.new(File.expand_path('~'))
@@ -206,16 +206,19 @@ class WebMe
   end
 
   # POM metadata.
-
+  #
   def metadata
     @metadata ||= POM::Metadata.load(root)  # TODO: Change to .new ?
   end
 
+  # Tranfer moves a file from the template location to the site destination.
+  # If the file ends in +.erb+ it will be processed by ERB and saved 
+  # with with the +.erb+ extension removed. If a file does not end in +.erb+,
+  # it will be copied verbatim.
+  #
   #--
-  # TODO: Generalize which files run through Erb.
   # TODO: Use Tilt instead ?
   #++
-
   def transfer
     if File.directory?(output) && !force?
       $stderr << "Output directory already exists. Use --force to allow overwrite.\n"
@@ -252,7 +255,7 @@ class WebMe
   end
 
   # Copy a file after processing it through Erb.
-
+  #
   def transfer_erb(file)
     txt = erb(DIR + "templates/#{template}/#{file}")
     dir = File.dirname(File.join(output, file))
@@ -266,7 +269,7 @@ class WebMe
   end
 
   # Copy a file verbatim.
-
+  #
   def transfer_copy(file)
     dir = File.dirname(File.join(output, file))
     fu.mkdir_p(dir) unless File.directory?(dir)
@@ -274,7 +277,7 @@ class WebMe
   end
 
   # Helper method to convert file with eRuby.
-
+  #
   def erb(file)
     template = ERB.new(File.read(file))
     template.result(scope._binding)
@@ -288,7 +291,6 @@ class WebMe
 
   # Create html body, sections and header.
   #--
-  # TODO: Eventually only support Tilt rendering oif README
   # TODO: Ultimately it would be best to use a real xml parser like Nokigiri.
   #++
 
