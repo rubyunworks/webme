@@ -1,5 +1,22 @@
 = Release History
 
+== 0.6 // 2010-02-10
+
+The biggest change in version 0.6 is the dependency on
+Tilt (http://github.com/rtomayko/tilt). Also in this
+release template files need to end in +.erb.+ on order
+to be processed by ERB. Finally, WebMe will also attempt
+to figure out the format of README if it has no extension.
+The algorithm is primative at this point, but will improve
+in the next release.
+
+Changes:
+
+* Depends on Tilt (http://github.com/rtomayko/tilt).
+* Templates need .erb prefix to be processed by ERB.
+* Determine format of README w/o extensions.
+
+
 == 0.5 // 2010-01-22
 
 This release adds support for Tilt to render README files.
@@ -9,10 +26,10 @@ configuration options, and removes the default ad.
 
 Changes:
 
-* support a variety of README formats via Tilt
-* new command option to force the type of README file
-* fallback advertisement has been removed
-* define an advertisement via .config/webme/advert.html
+* Support a variety of README formats via Tilt
+* New command option to force the type of README file
+* Fallback advertisement has been removed
+* Define an advertisement via .config/webme/advert.html
 
 
 == 0.4 // 2010-01-19
@@ -22,10 +39,10 @@ under-the-hood adjustments.
 
 Changes:
 
-* fixed text color for joy and nicjr templates 
-* finally get some test coverage via Lemon
-* name defaults to snakecase title if not otherwise found
-* improved README lookup
+* Fixed text color for joy and nicjr templates 
+* Finally get some test coverage via Lemon
+* Name defaults to snakecase title if not otherwise found
+* Improved README lookup
 
 
 == 0.3 // 2009-11-17
