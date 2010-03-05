@@ -29,6 +29,7 @@ class WebMe
     def initialize(color)
       case color
       when String
+        color = color.sub(/^[#]/,'')
         color = [0,2,4].map{ |i| color[i,2].to_i(16) }
         @red, @green, @blue = *color.map{ |c| c.to_f / 255 }
       when Array
@@ -157,7 +158,6 @@ class WebMe
     # rather than as degrees and percentages. So e.g., cyan (180° 100% 50%) would
     # come out as $h = 0.5, $s = 1, and $l =  0.5.
 
-
     #
     def bright
       r = red   + ((1 - red)   * 0.5)
@@ -165,6 +165,8 @@ class WebMe
       b = blue  + ((1 - blue)  * 0.5)
       Color.new([r,g,b])
     end
+
+    alias_method :lighter, :bright
 
     #
     def dark
@@ -174,13 +176,14 @@ class WebMe
       Color.new([r,g,b])
     end
 
+    alias_method :darker, :dark
 
     # The HSL value of the complementary colour is now in $h2, $s, $l. So we're ready to convert this back to RGB
     # (again, my PHP version of the EasyRGB.com formula). Note the input and output formats are different this time, see my comments at the top of the code:
 
     # Input is HSL value of complementary colour, held in $h2, $s, $l as fractions of 1
     # Output is RGB in normal 255 255 255 format, held in $r, $g, $b
-    # Hue is converted using function hue_2_rgb, shown at the end of this code
+    # Hue is converted using function hue_2_num, shown at the end of this code
 
     def complement
       @complement ||= (
@@ -197,9 +200,9 @@ class WebMe
 
           var_1 = 2 * lightness - var_2
 
-          r = 255 * hue_2_rgb(var_1, var_2, opposite_hue + (1.0 / 3))
-          g = 255 * hue_2_rgb(var_1, var_2, opposite_hue)
-          b = 255 * hue_2_rgb(var_1, var_2, opposite_hue - (1.0 / 3))
+          r = 255 * hue_2_num(var_1, var_2, opposite_hue + (1.0 / 3))
+          g = 255 * hue_2_num(var_1, var_2, opposite_hue)
+          b = 255 * hue_2_num(var_1, var_2, opposite_hue - (1.0 / 3))
         end
         Color.new([r,g,b])
       )
@@ -213,8 +216,19 @@ class WebMe
       h2
     end
 
+    # TODO: opposite color
+    def opposite
+      complement
+    end
+
+    #alias_method :constrasting, :opposite
+
+    def foreground
+      lightness > 0.6 ? Color.new("#DDDDDD") : Color.new("#333333")
+    end
+
     # Function to convert hue to RGB used above.
-    def hue_2_rgb(v1, v2, vh)
+    def hue_2_num(v1, v2, vh)
       vh += 1 if vh < 0
       vh -= 1 if vh > 1
 

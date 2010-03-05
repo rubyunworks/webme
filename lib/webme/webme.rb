@@ -69,8 +69,8 @@ class WebMe
   # Yahoo application id used by Bossman for finding a logo.
   attr_accessor :yahoo_id
 
-  # Colors to use for color scheme.
-  attr_accessor :colors
+  # Primary color to use for color scheme.
+  attr_accessor :color
 
   # Font to use.
   attr_accessor :font
@@ -129,7 +129,7 @@ class WebMe
     #self.search   = options[:search]   if options[:search]
     #self.output   = options[:output]   if options[:output]
 
-    self.colors = nil unless self.colors
+    self.color = nil unless self.color
   end
 
   #
@@ -173,13 +173,14 @@ class WebMe
     @output = Pathname.new(File.expand_path(path))
   end
 
-  #
-  def colors=(values)
-    @colors = calc_colors(values)
+  def color
+    @color ||= keyword_color
   end
 
   #
-  alias_method :color=, :colors=
+  def color=(value)
+    @color = Color.new(value)
+  end
 
   # Generate the website.
   def generate
@@ -377,8 +378,7 @@ class WebMe
     end
   end
 
-  # Take the search term and calc uniq colors for it if
-  # colors are not already provided.
+=begin
   #--
   # TODO: Integrate some of this into Color class.
   #++
@@ -407,6 +407,15 @@ class WebMe
       schema.link = color.dark #lightness > 0.5 ? text.bright : text.dark
     end
     schema
+  end
+=end
+
+  # Take the search term and calc a uniq color.
+
+  def keyword_color
+    key = (search+"ZZZ").sub(/[aeiou]/,'')[0,3].upcase.sub(/\W/,'')
+    rgb = key.each_byte.to_a.map{ |i| (i-65)*10 }
+    Color.new(rgb)
   end
 
   # Pull a randomly searched image from the Internet for a logo.

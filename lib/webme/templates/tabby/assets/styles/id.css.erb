@@ -68,7 +68,7 @@
 
 #header { background: #ccc; }
 
-.title h1 { color: <%= colors[:link] %>; }
+.title h1 { color: <%= color.darker %>; }
 .title pre { background: transparent; }
 
 /* #nav .menu */
@@ -76,15 +76,15 @@
 #nav { background: transparent; border-color: #bbb; }
 
 .menu ul { background: transparent; }
-.menu ul li a { color: #333; border-color: <%= colors[:link] %>; }
+.menu ul li a { color: #333; border-color: <%= color.darker %>; }
 
 /* #main .doc */
 
 .doc { }
-.doc a { color: <%= colors[:link]; %> }
+.doc a { color: <%= color.darker; %> }
 .doc a:hover { }
 .doc p { color: #222; }
-.doc h2 { color: #222; border-color: <%= colors[:link] %>; }
+.doc h2 { color: #222; border-color: <%= color.darker %>; }
 .doc h3 { border-color: white; }
 
 /* #footer .copyright */

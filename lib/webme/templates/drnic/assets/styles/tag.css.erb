@@ -1,8 +1,8 @@
 /* TAG STYLES */
 
 html { font-family: <%= font %>; font-size: 100%; }
-body { position: relative; color: #222233; background: #ffffff; padding-right: 200px; }
-body { color: <%= colors[:text] %>; background: <%= colors[:back] %>; }
+body { position: relative; padding-right: 200px; }
+body { color: <%= color.foreground %>; background: <%= color %>; }
 
 pre { margin: 10px 0; font-family: monospace; }
 pre code { padding: 10px 10px; }
@@ -13,7 +13,7 @@ ol, ul { list-style: square; margin-left: 24px; }
  img { border: none; }
   td { vertical-align: top; text-align: left; }
    p { text-align: justify; font-size: 100%; line-height: 150%; margin: 0 0 1.2em 0; }
-   a { text-decoration: none; color: <%= colors[:link] %>; }
+   a { text-decoration: none; color: <%= color.opposite.darker %>; }
    a:hover { text-decoration: underline; }
 
 

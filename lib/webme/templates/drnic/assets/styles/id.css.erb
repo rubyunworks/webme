@@ -1,5 +1,9 @@
 /* CLASS STYLES */
 
+<% color_text = color.foreground %>
+<% color_high = color.lighter %>
+<% color_link = color.opposite.darker %>
+
 /*------------------ LAYOUT ------------------*/
 
 /* #header .title */
@@ -66,7 +70,7 @@
 
 /* #nav .menu */
 
-#nav { background: <%= colors[:high] %>; border-color: <%= colors[:link] %>; }
+#nav { background: <%= color_high %>; border-color: <%= color_link %>; }
 
 .menu { text-align: left; }
 .menu ul li a { font-family: sans-serif; font-weight: bold; text-decoration: none; }
@@ -80,30 +84,30 @@
 
 /*------------------ COLOR ------------------*/
 
-.title h1 { color: <%= colors[:link] %>; }
+.title h1 { color: <%= color_text %>; }
 .title pre { background: transparent; }
 
 .download {
-  background: <%= colors[:high] %>;
-  border-color: <%= colors[:link] %>;
-  color: <%= colors[:text] %>;
+  background: <%= color_high %>;
+  border-color: <%= color_link %>;
+  color: <%= color.darker %>;
 }
 
-.download a { color: <%= colors[:link] %>; }
+.download a { color: <%= color_link %>; }
 
 .menu ul { background: transparent; }
-.menu ul li a { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+.menu ul li a { color: <%= color_link %>; border-color: <%= color_high %>; }
 
 /* #main .doc */
 
 .doc { }
-.doc a { color: <%= colors[:link] %>; }
+.doc a { color: <%= color_link %>; }
 .doc a:hover { }
-.doc p { color: <%= colors[:link] %>; }
-.doc h2 { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
-.doc h3 { border-color: <%= colors[:high] %>; }
+.doc p { color: <%= color_text %>; }
+.doc h2 { color: <%= color_text %>; border-color: <%= color_high %>; }
+.doc h3 { border-color: <%= color_high %>; }
 
 /* #footer .copyright */
 
-.copyright { color: <%= colors[:high]; }
+.copyright { color: <%= color_high; }
 

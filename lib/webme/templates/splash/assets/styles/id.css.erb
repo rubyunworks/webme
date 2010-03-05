@@ -7,7 +7,7 @@
 #header { border-bottom: 1px solid #ccc; padding: 10px; }
 #header .title { padding: 10px 0; font-size: 20px;  background: url(../../<%= logo %>) top right no-repeat; height: 200px; }
 #header .title h1 { font-size: 81px; font-weight: bold; }
-#header .title h1 { color: <%= colors[:link] %>; }
+#header .title h1 { color: <%= color.darker %>; }
 #header .title pre { background: transparent; }
 
 /* #nav */
@@ -21,7 +21,7 @@
 #nav ul li a:hover { text-decoration: underline; }
 #nav ul li a:active { text-decoration: underline; }
 #nav ul { background: transparent; }
-#nav ul li a { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+#nav ul li a { color: <%= color.darker %>; border-color: <%= color.lighter %>; }
 
 /* #main */
 
@@ -35,11 +35,11 @@
 /* #doc */
 
 #doc { padding-right: 20px; }
-#doc a { color: <%= colors[:link] %>; }
+#doc a { color: <%= color.darker %>; }
 #doc a:hover { }
 #doc p { font-weight: bold; font-family: helvetica, sans-serif; font-size: 150%; }
-#doc h2 { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
-#doc h3 { border-color: <%= colors[:high] %>; }
+#doc h2 { color: <%= color.darker %>; border-color: <%= color.lighter %>; }
+#doc h3 { border-color: <%= color.lighter %>; }
 #doc {
   font-family: sans-serif;
   font-weight: bold;

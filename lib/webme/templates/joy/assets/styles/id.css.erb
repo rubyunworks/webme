@@ -1,7 +1,5 @@
 /* ID STYLES */
 
-/* LAYOUT */
-
 /* #header */
 
 #header {position:relative; padding-right:200px;}
@@ -77,35 +75,35 @@
 
 #header { }
 
-#header .title h1 { color: <%= colors[:link] %>; }
+#header .title h1 { color: <%= color.darker %>; }
 #header .title pre { background: transparent; }
 
 #header .download {
-  background: <%= colors[:high] %>;
-  border-color: <%= colors[:link] %>;
-  color: <%= colors[:text] %>;
+  background: <%= color.lighter %>;
+  border-color: <%= color.darker %>;
+  color: <%= color.foreground %>;
 }
 
-#header .download a { color: <%= colors[:link] %>; }
+#header .download a { color: <%= color.darker %>; }
 
 /* #nav */
 
 #nav {
-  background: url(../images/fade.png) <%= colors[:high] %>;
-  border-color: <%= colors[:link] %>; 
+  background: url(../images/fade.png) <%= color.lighter %>;
+  border-color: <%= color.darker %>; 
 }
 
 #nav .menu ul { background: transparent; }
-#nav .menu ul li a { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+#nav .menu ul li a { color: <%= color.darker %>; border-color: <%= color.lighter %>; }
 
 /* #main */
 
 #main .doc { }
-#main .doc a { color: <%= colors[:link] %>; }
+#main .doc a { color: <%= color.darker %>; }
 #main .doc a:hover { }
 #main .doc p { }
-#main .doc h2 { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
-#main .doc h3 { border-color: <%= colors[:high] %>; }
+#main .doc h2 { color: <%= color.darker %>; border-color: <%= color.lighter %>; }
+#main .doc h3 { border-color: <%= color.lighter %>; }
 
 /* #footer */
 

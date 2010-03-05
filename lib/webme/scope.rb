@@ -72,8 +72,8 @@ class WebMe
     end
 
     # Color pallette.
-    def colors
-      @generator.colors
+    def color
+      @generator.color
     end
 
     # Font.
