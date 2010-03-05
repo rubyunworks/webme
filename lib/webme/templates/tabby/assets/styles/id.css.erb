@@ -4,7 +4,7 @@
 
 /* #header .title */
 
-#header { width: 100%; }
+#header { width: 100%; padding: 10px 0; }
 
 .title { width: 800px; margin: 0 auto; padding: 10px 0; }
 .title ul { padding-left: 20px; }
@@ -46,20 +46,20 @@
 .doc { }
 .doc a { font-size: 100%; }
 .doc a:hover { text-decoration: underline; }
-.doc p { text-align: left; font-size: 100%; font-family: sans-serif; line-height: 1.4em; }
+.doc p { text-align: left; font-size: 100%; font-family: <%= font %>; line-height: 1.4em; }
 .doc h2 { font-size: 2em; font-weight: bold; }
 .doc h3 { font-style: italic;}
 
 /* #nav .menu */
 
 .menu { text-align: left; }
-.menu ul li a { font: bold 90% sans-serif; text-decoration: none; }
+.menu ul li a { font: bold 90% <%= font %>; text-decoration: none; }
 .menu ul li a:hover { text-decoration: underline; }
 .menu ul li a:active { text-decoration: underline; }
 
 /* #footer .copyright */
 
-.copyright { font: bold .8em sans-serif; }
+.copyright { font: bold .8em <%= font %>; }
 
 
 /* COLOR */
@@ -68,7 +68,7 @@
 
 #header { background: #ccc; }
 
-.title h1 { color: #b05; }
+.title h1 { color: <%= colors[:link] %>; }
 .title pre { background: transparent; }
 
 /* #nav .menu */
@@ -76,15 +76,15 @@
 #nav { background: transparent; border-color: #bbb; }
 
 .menu ul { background: transparent; }
-.menu ul li a { color: #333; border-color: #b05;}
+.menu ul li a { color: #333; border-color: <%= colors[:link] %>; }
 
 /* #main .doc */
 
 .doc { }
-.doc a { color: pink; }
+.doc a { color: <%= colors[:link]; %> }
 .doc a:hover { }
-.doc p { color: black; }
-.doc h2 { color: #000; border-color: #b05; }
+.doc p { color: #222; }
+.doc h2 { color: #222; border-color: <%= colors[:link] %>; }
 .doc h3 { border-color: white; }
 
 /* #footer .copyright */

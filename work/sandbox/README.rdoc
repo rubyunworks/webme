@@ -59,7 +59,7 @@ Then download and unpack the .tar.gz package and run:
   $ sudo setup.rb
 
 
-== Compatibility with 1.x
+== Compatibility
 
 Prior to 2.0, Facets was divided between CORE and MORE --standalone extensions
 vs. classes and modules, respectively. With 2.0, the notion of "CORE" has taken

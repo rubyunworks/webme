@@ -76,6 +76,17 @@ class WebMe
       @generator.colors
     end
 
+    # Font.
+    def font
+      @generator.font
+    end
+
+    #
+    def method_missing(s, *a)
+      super(s, *a) unless a.empty?
+      metadata.__send__(s)
+    end
+
   end
 
 end

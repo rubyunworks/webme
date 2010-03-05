@@ -57,6 +57,10 @@ HERE
           options[:color] = hex
         end
 
+        opt.on("--font FONT", "font family, eg. times, helvetica, sans-serif.") do |font|
+          options[:font] = font
+        end
+
         opt.on("--search", "-s TERM", "alternate term for selecting colors and logo") do |term|
           options[:search] = term
         end
@@ -65,7 +69,7 @@ HERE
           options[:output] = dir
         end
 
-        opt.on("--type", "-t TYPE", "explicate README markup type (rdoc, markdown, etc.)") do |type|
+        opt.on("--type TYPE", "explicate README markup type (rdoc, markdown, etc.)") do |type|
           options[:type] = type
         end
 

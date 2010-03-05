@@ -1,0 +1,64 @@
+/* ID STYLES */
+
+/* LAYOUT */
+
+/* #header */
+
+#header { border-bottom: 1px solid #ccc; padding: 10px; }
+#header .title { padding: 10px 0; font-size: 20px;  background: url(../../<%= logo %>) top right no-repeat; height: 200px; }
+#header .title h1 { font-size: 81px; font-weight: bold; }
+#header .title h1 { color: <%= colors[:link] %>; }
+#header .title pre { background: transparent; }
+
+/* #nav */
+
+#nav { padding: 0 10px 0 40px; text-align: left; }
+#nav ul { list-style-type: none; margin: 0px; padding: 0px; width: 100%; position: relative; }
+#nav ul li { margin: 12px 1px 10px 0; line-height: 20px; white-space:nowrap; }
+#nav ul li a { border-top: 0 solid; }
+#nav { text-align: right; }
+#nav ul li a { font-weight: bold; text-decoration: none; font-size: 30px; }
+#nav ul li a:hover { text-decoration: underline; }
+#nav ul li a:active { text-decoration: underline; }
+#nav ul { background: transparent; }
+#nav ul li a { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+
+/* #main */
+
+.main { width: 760px; margin: 0 auto; padding: 20px 0 20px 0; }
+.main { }
+.main a { font-size: 100%; }
+.main a:hover { text-decoration: underline; }
+.main h2 { font-size: 2em; font-weight: bold; }
+.main h3 { font-style: italic;}
+
+/* #doc */
+
+#doc { padding-right: 20px; }
+#doc a { color: <%= colors[:link] %>; }
+#doc a:hover { }
+#doc p { font-weight: bold; font-family: helvetica, sans-serif; font-size: 150%; }
+#doc h2 { color: <%= colors[:link] %>; border-color: <%= colors[:high] %>; }
+#doc h3 { border-color: <%= colors[:high] %>; }
+#doc {
+  font-family: sans-serif;
+  font-weight: bold;
+  line-height: 160%;
+}
+
+#readme {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* #footer */
+
+#footer { margin-top: 30px; padding-top: 30px; border-top: 1px solid #ccc; }
+#footer .advert { width: 720px; margin: 0 auto; }
+#footer .copyright {
+   width: 720px; margin: 0 auto; margin-top: 20px; padding: 20px 0px 35px 0px; 
+   font: bold .8em sans-serif;
+   color: #aaa;
+}
+

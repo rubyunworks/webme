@@ -1,33 +1,28 @@
-/*** TAG STYLES ***/
+/* TAG STYLES */
 
-/* LAYOUT */
+html { font-family: <%= font %>; font-size: 100%; }
+body { position: relative; color: #222233; background: #ffffff; padding-right: 200px; }
+body { color: <%= colors[:text] %>; background: <%= colors[:back] %>; }
 
-body { margin: 0; padding: 0; position: relative; padding-right: 200px; }
-div { margin: 0; padding: 0; }
-h1 { margin: 5px 0; }
-img { border: none; }
-td { vertical-align: top; }
-li { padding: 3px 0; }
-pre { margin: 10px 0; }
+pre { margin: 10px 0; font-family: monospace; }
 pre code { padding: 10px 10px; }
 
+ol, ul { list-style: square; margin-left: 24px; }
 
-/* FONT */
-
-html { font-family: sans-serif; font-size: 100%; }
-body { }
- pre { font-family: monospace; }
-  td { text-align: left; }
-   p { text-align: justify; font-size: 80%; font-weight: bold; line-height: 170%; }
-  li { font-size: 80%; font-weight: bold; line-height: 160%; }
-   a { text-decoration: none; }
+  li { padding: 3px 0; font-size: 80%; line-height: 150%; }
+ img { border: none; }
+  td { vertical-align: top; text-align: left; }
+   p { text-align: justify; font-size: 100%; line-height: 150%; margin: 0 0 1.2em 0; }
+   a { text-decoration: none; color: <%= colors[:link] %>; }
    a:hover { text-decoration: underline; }
 
 
-/* COLOR */
+/* headers */
 
-body { color: <%= colors[:text] %>; background: <%= colors[:back] %>; }
-h1 { }
-a { color: <%= colors[:link] %>; }
-pre { color: white; }
+h1 { margin: 5px; }
+h2, h3, h4, h5, h6 { margin: 1.5em 0 1em 0; }
+h1 { font-size: 200%; }
+h2 { font-size: 150%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; }
 

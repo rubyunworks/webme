@@ -17,6 +17,9 @@ class WebMe
 
   # C O N S T A N T S
 
+  # Defualt template type is +clean+.
+  TEMPLATE = 'clean'
+
   # Relative directory.
   DIR = Pathname.new(File.dirname(__FILE__))
 
@@ -31,9 +34,6 @@ class WebMe
 
   # Glob used to lookup output directory.
   OUTPUT_GLOB = '{site,website,web,www}'
-
-  # Defualt template type is +joy+.
-  TEMPLATE = 'joy'
 
   # Default logo file.
   LOGO = "assets/images/logo.png"
@@ -71,6 +71,9 @@ class WebMe
 
   # Colors to use for color scheme.
   attr_accessor :colors
+
+  # Font to use.
+  attr_accessor :font
 
   # Rendereing engine type specified by file extension (eg. +rdoc+ or +markdown+).
   # By default this is picked up by the extension on the README file name,
@@ -138,6 +141,7 @@ class WebMe
     @name     = metadata.name  #meta(:project) || meta(:name)
     @search   = metadata.title
     @type     = nil
+    @font     = "helvetica, sans-serif"
 
     @advert   = File.read(advert_file) if advert_file
 
@@ -184,6 +188,22 @@ class WebMe
 
   # Load config file.
   def load_config
+    load_template_config
+    load_project_config
+  end
+
+  # Load template default configuration.
+  def load_template_config
+    file = Dir.glob(DIR + "templates/#{template}/webme.{yaml,yml}").first
+    if file
+      YAML.load(File.new(file)).each do |k,v|
+        __send__("#{k}=",v)
+      end
+    end
+  end
+
+  # Load per-project configuration.
+  def load_project_config
     file = root.glob(CONFIG, :casefold).first
     if file
       YAML.load(File.new(file)).each do |k,v|
@@ -300,8 +320,8 @@ class WebMe
     type = self.type || File.extname(@readme).sub(/^[.]/,'')
     type = type_heuristics(@readme) if type == ''
 
-    if Tilt[type]
-      template = Tilt.new(@readme)
+    if engine = Tilt[type]
+      template = engine.new(@readme)
       html = template.render
     else  # fallback
       template = Tilt::RDocTemplate.new(@readme)
