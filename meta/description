@@ -1,1 +1,2 @@
-WebMe converts a README file into a starter website.
+WebMe converts a README file, in any markup format supported
+by Tilt, into a simple but elegant website.

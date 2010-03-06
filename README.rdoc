@@ -9,8 +9,8 @@
 
 == DESCRIPTION:
 
-WebMe converts a README file, in either RDoc or Markdown format,
-into a simple website.
+WebMe converts a README file, in any markup format supported
+by Tilt, into a simple but elegant website.
 
 WebMe's output is fairly nice and can serve as a final site
 design if one chooses. And there are a number or templates
