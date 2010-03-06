@@ -17,6 +17,7 @@ Changes:
 * Adjust how color is given to the templates.
 * Provide custom font configuration option.
 * Use new versioning scheme.
+* Renamed 'joy' template to 'niclite'.
 
 
 == 0.6 // 2010-02-10
