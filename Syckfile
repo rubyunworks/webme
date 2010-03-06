@@ -14,7 +14,7 @@ rdoc:
   service : rdoc
   template: redfish
   include : ~
-  exclude : [lib/webme/templates/]
+  exclude : [Syckfile, lib/webme/templates/]
   extra   : ~
   active  : true
 

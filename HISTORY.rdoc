@@ -1,5 +1,24 @@
 = Release History
 
+== 10.03.05 // 2010-03-05
+
+This release improves upon the templates. All now utilize
+Eric Meyer's reset.css (http://meyerweb.com/eric/tools/css/reset/),
+and more generally continue to be simplifed. In conjunction
+the way WebMe handles colors has been improved. A single
+primary color is provided to the templates and they can
+manifupulate as needed (eg. color.darker). And lastly, it is
+now possible to specify the font to use on the command line
+or in configuration.
+
+Changes:
+
+* Use Eric Meyer's reset.css across all templates.
+* Adjust how color is given to the templates.
+* Provide custom font configuration option.
+* Use new versioning scheme.
+
+
 == 0.6 // 2010-02-10
 
 The biggest change in version 0.6 is the dependency on
