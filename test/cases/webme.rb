@@ -35,7 +35,7 @@ TestCase WebMe do
   end
 
   Unit :template => 'returns default template name' do
-    @webme.template.assert == "joy"
+    @webme.template.assert == "clean"
   end
 
   Unit :advert => '' do
@@ -119,26 +119,13 @@ TestCase WebMe do
 
   Concern "Calculating a color pallette"
 
-  Unit :calc_colors => '' do
+  Unit :keyword_color => '' do
     webme = WebMe.new('test/fixtures/rdoc')
-    colors = webme.calc_colors
-    colors.link.to_s.assert == "#7D7D7D"
-    colors.text.to_s.assert == "#EEEEEE"
-    colors.back.to_s.assert == "#FAFAFA"
-    colors.high.to_s.assert == "#FDFDFD"
+    color = webme.keyword_color
+    color.to_s.assert == "#FAFAFA"
   end
 
-  Unit :colors => '' do
-    webme = WebMe.new('test/fixtures/rdoc')
-    webme.colors.link.to_s.assert == "#7D7D7D"
-    webme.colors.text.to_s.assert == "#EEEEEE"
-    webme.colors.back.to_s.assert == "#FAFAFA"
-    webme.colors.high.to_s.assert == "#FDFDFD"
-  end
-
-  #Unit :color= => '' do
-  #  pending
-  #end
+  Unit :color= => ''
 
 
   Concern "Finding a logo image"

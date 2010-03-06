@@ -22,8 +22,8 @@ TestCase WebMe::Scope do
     @scope.download.assert == @webme.metadata.download
   end
 
-  Unit :colors => '' do
-    @scope.colors.assert == @webme.colors
+  Unit :color => '' do
+    @scope.color.assert == @webme.color
   end
 
   Unit :title => '' do
