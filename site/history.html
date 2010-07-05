@@ -1,0 +1,253 @@
+<HTML>
+<HEAD>
+  <TITLE>WebMe</TITLE>
+
+  <META NAME="description" CONTENT="WebMe converts a README file, in any markup format supported by Tilt, into a simple but elegant website."> 
+
+  <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/style.css" />
+
+  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/jquery.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/highlight.js"></SCRIPT>
+
+  <SCRIPT type="text/javascript">
+    $(document).ready(function() {
+      $('pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+    });
+  </SCRIPT>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/highlight.css" />
+</HEAD>
+<BODY>
+
+<div id="header">
+<div class="centered">
+  <div class="title">
+    <h1>
+      <img src="assets/images/logo.jpg" align="absmiddle" style="height: 60px;" />
+      WebMe
+    </h1>
+  </div>
+  <div class="menu">
+    <a href="index.html">Home</a>  &nbsp;
+    <a href="history.html">History</a> &nbsp;
+    <a href="about.html">About</a> &nbsp;
+    <a href="legal.html">Legal</a> &nbsp;
+    <a href="logs.html">Logs</a> &nbsp;
+    &middot; &nbsp;
+    
+      
+    
+      <a href="http://proutils.github.com/webme/rdoc/">Api</a> &nbsp;
+    
+      <a href="http://groups.google.com/group/proutils">Mail</a> &nbsp;
+    
+      <a href="http://wiki.github.com/proutils/webme/">Wiki</a> &nbsp;
+    
+      
+    
+  </div>
+</div>
+</div>
+
+<div class="main">
+<div class="centered">
+
+  <h1>Release History</h1>
+<h2>0.6.1 // 2010-03-05</h2>
+<p>
+This release improves upon the templates. All now utilize Eric
+Meyer&#8217;s reset.css (<a
+href="http://meyerweb.com/eric/tools/css/reset">meyerweb.com/eric/tools/css/reset</a>/),
+and more generally continue to be simplifed. In conjunction the way WebMe
+handles colors has been improved. A single primary color is provided to the
+templates and they can manifupulate as needed (eg. color.darker). And
+lastly, it is now possible to specify the font to use on the command line
+or in configuration.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Use Eric Meyer&#8217;s reset.css across all templates.
+</p>
+</li>
+<li><p>
+Adjust how color is given to the templates.
+</p>
+</li>
+<li><p>
+Provide custom font configuration option.
+</p>
+</li>
+<li><p>
+Use new versioning scheme.
+</p>
+</li>
+<li><p>
+Renamed &#8216;joy&#8217; template to &#8216;niclite&#8217;.
+</p>
+</li>
+</ul>
+<h2>0.6.0 // 2010-02-10</h2>
+<p>
+The biggest change in version 0.6 is the dependency on Tilt (<a
+href="http://github.com/rtomayko/tilt">github.com/rtomayko/tilt</a>). Also
+in this release template files need to end in <tt>.erb.</tt> on order to be
+processed by ERB. Finally, WebMe will also attempt to figure out the format
+of README if it has no extension. The algorithm is primative at this point,
+but will improve in the next release.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Depends on Tilt (<a
+href="http://github.com/rtomayko/tilt">github.com/rtomayko/tilt</a>).
+</p>
+</li>
+<li><p>
+Templates need .erb prefix to be processed by ERB.
+</p>
+</li>
+<li><p>
+Determine format of README w/o extensions.
+</p>
+</li>
+</ul>
+<h2>0.5.0 // 2010-01-22</h2>
+<p>
+This release adds support for Tilt to render README files. This means it
+can support a larger variety of README  formats including Textile. It also
+improves some configuration options, and removes the default ad.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Support a variety of README formats via Tilt
+</p>
+</li>
+<li><p>
+New command option to force the type of README file
+</p>
+</li>
+<li><p>
+Fallback advertisement has been removed
+</p>
+</li>
+<li><p>
+Define an advertisement via .config/webme/advert.html
+</p>
+</li>
+</ul>
+<h2>0.4.0 // 2010-01-19</h2>
+<p>
+This is minor update which mainly makes some under-the-hood adjustments.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Fixed text color for joy and nicjr templates 
+</p>
+</li>
+<li><p>
+Finally get some test coverage via Lemon
+</p>
+</li>
+<li><p>
+Name defaults to snakecase title if not otherwise found
+</p>
+</li>
+<li><p>
+Improved README lookup
+</p>
+</li>
+</ul>
+<h2>0.3.0 // 2009-11-17</h2>
+<p>
+This is a significant release for WebMe as it is the first to be made
+public.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Added additional templates (joy, nicjr, etc.)
+</p>
+</li>
+<li><p>
+Can utilize POM metadata in templates.
+</p>
+</li>
+<li><p>
+Progress toward better CSS conventions.
+</p>
+</li>
+<li><p>
+Can fetch a random logo from YAHOO Image Search.
+</p>
+</li>
+<li><p>
+Colorization based on project title.
+</p>
+</li>
+</ul>
+<h2>0.1.0 // 2009-10-17</h2>
+<p>
+Hey, I had this great idea I&#8217;m calling <s>ReadWe</s> WebMe.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Started project.
+</p>
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+<div id="footer">
+<div class="centered">
+  <div class="advert">
+    <script type="text/javascript"><!--
+google_ad_client = "pub-1126154564663472";
+/* RUBYWORKS 09-10-02 728x90 */
+google_ad_slot = "0788888658";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+  </div>
+  <div class="copyright">
+    Copyright &copy; 2010 Thomas Sawyer |
+    Website generated by <a href="http://proutils.github.com/webme">webme -t awesome</a><br/>
+  </div>
+</div>
+</div>
+
+</BODY>
+</HTML>
+
+<!-- Generated with Webme by Thomas Sawyer -->

@@ -1,0 +1,14 @@
+---
+production:
+  requires:
+    - pom
+    - facets
+    - tilt
+
+development:
+  requires:
+    - pom
+    - facets
+    - tilt
+    - lemon
+

@@ -1,0 +1,10 @@
+---
+font : 'sans-serif, helvetica'
+color: '#DD6600'
+menu :
+  home: Home
+  wiki: Wiki
+  api : API
+  code: Code
+  mail: Mail
+

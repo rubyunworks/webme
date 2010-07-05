@@ -1,15 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
 <HTML>
 <HEAD>
   <TITLE>WebMe</TITLE>
 
+  <META NAME="description" CONTENT="WebMe converts a README file, in any markup format supported by Tilt, into a simple but elegant website."> 
+
   <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
 
   <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/tag.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/id.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/class.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/styles/style.css" />
 
   <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/jquery.js"></SCRIPT>
   <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/highlight.js"></SCRIPT>
@@ -27,69 +25,53 @@
 <BODY>
 
 <div id="header">
+<div class="centered">
   <div class="title">
-    <img src="assets/images/logo.jpg" align="right" style="margin: 20px 10px;" />
-    <h1>WebMe</h1>
-<ul>
-<li>homepage: <a
-href="http://proutils.github.com/webme">proutils.github.com/webme</a>
-
-</li>
-<li>documentation: <a
-href="http://wiki.github.com/proutils/webme/">wiki.github.com/proutils/webme</a>
-
-</li>
-<li>api-reference: <a
-href="http://proutils.github.com/webme/rdoc">proutils.github.com/webme/rdoc</a>
-
-</li>
-<li>discussion: <a
-href="http://googlegroups.com/group/proutils">googlegroups.com/group/proutils</a>
-
-</li>
-<li>development: <a
-href="http://github.com/proutils/webme">github.com/proutils/webme</a>
-
-</li>
-</ul>
-
+    <h1>
+      <img src="assets/images/logo.jpg" align="absmiddle" style="height: 60px;" />
+      WebMe
+    </h1>
   </div>
-</div>
-
-<div id="nav">
-  
-    <div class="download">
-      Get Version
-      <h1><a href="http://gemcutter.org/gems/webme">0.6</a></h1>
-    </div>
-  
   <div class="menu">
-    <ul>
-      <li><a href="#" style="font-size: 130%;">WebMe</a></li>
+    <a href="index.html">Home</a>  &nbsp;
+    <a href="history.html">History</a> &nbsp;
+    <a href="about.html">About</a> &nbsp;
+    <a href="legal.html">Legal</a> &nbsp;
+    <a href="logs.html">Logs</a> &nbsp;
+    &middot; &nbsp;
+    
       
-      <li><a href="#section_description">DESCRIPTION</a></li>
+    
+      <a href="http://proutils.github.com/webme/rdoc/">Api</a> &nbsp;
+    
+      <a href="http://groups.google.com/group/proutils">Mail</a> &nbsp;
+    
+      <a href="http://wiki.github.com/proutils/webme/">Wiki</a> &nbsp;
+    
       
-      <li><a href="#section_documentation">DOCUMENTATION</a></li>
-      
-      <li><a href="#section_installation">INSTALLATION</a></li>
-      
-      <li><a href="#section_copying">COPYING</a></li>
-      
-    </ul>
+    
   </div>
 </div>
+</div>
 
-<div id="main">
-  <div class="doc">
-    <div class="section" id="section_description"><h2>DESCRIPTION</h2>
+<div class="main">
+<div class="centered">
+<div id="doc">
+  <p>WebMe converts a README file, in any markup format supported by Tilt, into a simple but elegant website.</p><br/>
+  <a href="#" onclick="$('#readme').toggle();">Toggle README</a>
+</div>
+
+<div id="readme" style="display: none;">
+<div class="centered">
+  <div class="section" id="section_description"><h2>DESCRIPTION</h2>
 <p>
-WebMe converts a README file, in either RDoc or Markdown format, into a
-simple website.
+WebMe converts a README file, in any markup format supported by Tilt, into
+a simple but elegant website.
 </p>
 <p>
 WebMe&#8217;s output is fairly nice and can serve as a final site design if
 one chooses. And there are a number or templates to choose from. However,
-WebMe is primarily intended to give the developer a <em>starter site</em>
+WebMe is primarily intended to give  the developer a <em>starter site</em>
 upon which to create a unique and even nicer looking site, once a
 project&#8217;s README document is mature.
 </p>
@@ -115,13 +97,12 @@ To install with RubyGems simply open a console and type:
 </pre>
 <p>
 To do a site install you will need <a
-href="http://proutils.github.com/setup">Ruby Setup</a>, then 
-<a href="http://github.com/proutils/webme/downloads">download</a> the
+href="http://proutils.github.com/setup">Ruby Setup</a>, then download the
 tar.gz package and type:
 </p>
 <pre>
-  $ tar -xvzf webme-0.6.tgz
-  $ cd webme-0.6.tgz
+  $ tar -xvzf webme-0.5.tgz
+  $ cd webme-0.5.tgz
   $ sudo setup.rb
 </pre>
 </div><div class="section" id="section_copying"><h2>COPYING</h2>
@@ -137,8 +118,8 @@ any later version.
 <p>
 This program is distributed in the hope that it will be useful, but WITHOUT
 ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE. See the Lesser General Public License for
-more details.
+FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser General Public License
+for more details.
 </p>
 <p>
 You should have received a copy of the General Public License along with
@@ -146,31 +127,38 @@ this program. If not, see <<a
 href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/>.
 </p>
 </div>
-  </div>
+</div>
+</div>
+
+
+</div>
 </div>
 
 <div id="footer">
+<div class="centered">
   <div class="advert">
-          <script type="text/javascript"><!--
-      google_ad_client = "pub-1126154564663472";
-      /* RUBYWORKS 09-10-02 728x90 */
-      google_ad_slot = "0788888658";
-      google_ad_width = 728;
-      google_ad_height = 90;
-      //-->
-      </script>
-      <script type="text/javascript"
-      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-      </script>
+    <script type="text/javascript"><!--
+google_ad_client = "pub-1126154564663472";
+/* RUBYWORKS 09-10-02 728x90 */
+google_ad_slot = "0788888658";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
 
   </div>
   <div class="copyright">
-    Copyright &copy; 2010 - Web design generated by <a href="http://proutils.github.com/webme">WebMe<a/><br/>
+    Copyright &copy; 2010 Thomas Sawyer |
+    Website generated by <a href="http://proutils.github.com/webme">webme -t awesome</a><br/>
   </div>
+</div>
 </div>
 
 </BODY>
 </HTML>
 
-<!-- WebMe Copyright (c) 2009 Thomas Sawyer -->
-
+<!-- Generated with Webme by Thomas Sawyer -->

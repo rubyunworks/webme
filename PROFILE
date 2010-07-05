@@ -1,0 +1,21 @@
+--- 
+title    : WebMe
+summary  : Convert a README into a starter website.
+copyright: Copyright (c) 2009 Thomas Sawyer
+license  : GPL
+authors  : Thomas Sawyer
+created  : 2009-52-10/19/09
+suite    : proutils
+
+description:
+  WebMe converts a README file, in any markup format supported
+  by Tilt, into a simple but elegant website.
+
+resources:
+  homepage: http://proutils.github.com/webme
+  repository: git://github.com/proutils/webme.git
+  download: http://github.com/proutils/webme/downloads
+  wiki: http://wiki.github.com/proutils/webme/
+  mailinglist: http://groups.google.com/group/proutils
+  reference: http://proutils.github.com/webme/rdoc/
+
