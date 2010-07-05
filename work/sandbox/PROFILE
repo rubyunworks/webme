@@ -1,0 +1,19 @@
+--- 
+title: Example
+summary: An example example
+authors: Thomas Sawyer
+
+description:
+  This is just an example so that we can see
+  what WebMe output looks like.
+
+resources: 
+  home: http://somewhere.com
+  wiki: http://somewhere.com
+  docs: http://somewhere.com
+  bugs: http://somewhere.com
+  mail: http://somewhere.com
+
+copyright:
+  Copyright (c) 2010 Thomas Sawyer
+

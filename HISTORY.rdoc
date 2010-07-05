@@ -1,6 +1,6 @@
 = Release History
 
-== 10.03.05 // 2010-03-05
+== 0.6.1 // 2010-03-05
 
 This release improves upon the templates. All now utilize
 Eric Meyer's reset.css (http://meyerweb.com/eric/tools/css/reset/),
@@ -20,7 +20,7 @@ Changes:
 * Renamed 'joy' template to 'niclite'.
 
 
-== 0.6 // 2010-02-10
+== 0.6.0 // 2010-02-10
 
 The biggest change in version 0.6 is the dependency on
 Tilt (http://github.com/rtomayko/tilt). Also in this
@@ -37,7 +37,7 @@ Changes:
 * Determine format of README w/o extensions.
 
 
-== 0.5 // 2010-01-22
+== 0.5.0 // 2010-01-22
 
 This release adds support for Tilt to render README files.
 This means it can support a larger variety of README 
@@ -52,7 +52,7 @@ Changes:
 * Define an advertisement via .config/webme/advert.html
 
 
-== 0.4 // 2010-01-19
+== 0.4.0 // 2010-01-19
 
 This is minor update which mainly makes some
 under-the-hood adjustments.
@@ -65,7 +65,7 @@ Changes:
 * Improved README lookup
 
 
-== 0.3 // 2009-11-17
+== 0.3.0 // 2009-11-17
 
 This is a significant release for WebMe as it is the
 first to be made public.
@@ -79,7 +79,7 @@ Changes:
 * Colorization based on project title.
 
 
-== 0.1 // 2009-10-17
+== 0.1.0 // 2009-10-17
 
 Hey, I had this great idea I'm calling <s>ReadWe</s> WebMe.
 
