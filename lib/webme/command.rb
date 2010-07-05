@@ -1,7 +1,7 @@
 require 'webme'
 require 'optparse'
 
-class WebMe
+module WebMe
 
   # = Command-line Utility
   #
@@ -53,15 +53,15 @@ HERE
           options[:title] = title
         end
 
-        opt.on("--color HEX", "general color tone, supply a css hex value.") do |hex|
-          options[:color] = hex
-        end
+        #opt.on("--color HEX", "general color tone, supply a css hex value.") do |hex|
+        #  options[:color] = hex
+        #end
 
-        opt.on("--font FONT", "font family, eg. times, helvetica, sans-serif.") do |font|
-          options[:font] = font
-        end
+        #opt.on("--font FONT", "font family, eg. times, helvetica, sans-serif.") do |font|
+        #  options[:font] = font
+        #end
 
-        opt.on("--search", "-s TERM", "alternate term for selecting colors and logo") do |term|
+        opt.on("--search", "-s TERM", "alternate term for auto-selecting colors and logo") do |term|
           options[:search] = term
         end
 
@@ -70,7 +70,7 @@ HERE
         end
 
         opt.on("--type TYPE", "explicate README markup type (rdoc, markdown, etc.)") do |type|
-          options[:type] = type
+          options[:markup] = type
         end
 
         opt.on("--force", "-f", "force overwrite of pre-existing site") do
@@ -92,12 +92,12 @@ HERE
 
         opt.on_tail("--list", "-l", "list available templates") do
           puts WebMe.templates.join("\n")
-          exit 0
+          exit
         end
 
         opt.on_tail("--help", "-h", "show this help information") do
           puts opt
-          exit 0
+          exit
         end
 
       end

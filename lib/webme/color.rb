@@ -1,22 +1,29 @@
-
-# == Calculation Steps
+#--
+# = Calculation Steps
 #
 # 1. Convert your colour to HSL.
 # 2. Change the Hue value to that of the Hue opposite (e.g., if your Hue is 50°, the opposite one will be at 230° on the wheel — 180° further around).
 # 3. Leave the Saturation and Lightness values as they were.
 # 4. Convert this new HSL value back to your original colour notation (RGB or whatever).
 #
-# So now we just need formulae to convert everything to and from HSL, which the people at EasyRGB.com kindly give here, in "generic" code so you can adapt it to the language of your choice.
-
+# So now we just need formulae to convert everything to and from HSL, which the people
+# at EasyRGB.com kindly give here, in "generic" code so you can adapt it to the language
+# of your choice.
+#
 # PHP Example
-
-# Here is my example, using PHP to calculate a complementary colour from a hex colour code. You can make the PHP more succinct and efficient in your own program, but this example breaks the process down into simple steps to make it easier to follow the theory.
-
-# Our formula to convert RGB to HSL takes three decimal fractions of 1 as its input. E.g., an RGB value of 255 255 255 would be input as 1 1 1, and the RGB value 153 051 255 would be input as 0.6, 0.2, 1.
-
+#
+# Here is my example, using PHP to calculate a complementary colour from a hex colour code.
+# You can make the PHP more succinct and efficient in your own program, but this example
+# breaks the process down into simple steps to make it easier to follow the theory.
+#
+# Our formula to convert RGB to HSL takes three decimal fractions of 1 as its input.
+# E.g., an RGB value of 255 255 255 would be input as 1 1 1, and the RGB value 153 051 255
+# would be input as 0.6, 0.2, 1.
+#
 # So first of all, get the six hex digits into this input format:
+#++
 
-class WebMe
+module WebMe
 
   # = Color
   #
