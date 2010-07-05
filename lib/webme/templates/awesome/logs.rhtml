@@ -1,0 +1,7 @@
+<h1>LOG REPORTS</h1>
+<% logs = output.glob('log/*').each do |path| %>
+  <ul>
+    <li><a href="<%= path.to_s.sub(output.to_s+'/','')+'/' %>"><%= File.basename(path).capitalize %></a></li>
+  </ul>
+<% end %>
+

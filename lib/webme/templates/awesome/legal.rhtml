@@ -1,0 +1,14 @@
+<% if exist?('COPYING*') %>
+<h1>COPYING</h1>
+<pre>
+<%= read('COPYING*') %>
+</pre>
+<% end %>
+
+<% if exist?('LICENSE*') %>
+<h1>LICENCE</h1>
+<pre>
+<%= read('LICENSE*') %>
+</pre>
+<% end %>
+
