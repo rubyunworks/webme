@@ -1,0 +1,152 @@
+/* CSS */
+
+/* TAG STYLES */
+
+html { font-family: <%= font %>; font-size: 100%; }
+body { position: relative; color: #222233; background: #ffeeee; }
+ pre { margin: 10px 0; font-family: monospace; color: white; }
+ pre code { padding:10px 10px; }
+  td { text-align: left; vertical-align:top; }
+   p { text-align: justify; font-size: 100%; line-height: 150%; margin: 0 0 1.2em 0; }
+  li { padding: 3px 0; line-height: 150%; }
+   a { color: <%= lg %>; text-decoration: none; }
+   a:hover { text-decoration: underline; }
+
+ol, ul { list-style: square; margin-left: 24px; }
+
+h1 { margin: 5px; }
+h2, h3, h4, h5, h6 { margin: 1.5em 0 1em 0; }
+h1 { font-size: 200%; }
+h2 { font-size: 150%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; }
+
+/* CLASS STYLES */
+
+.centered {
+  width: 760px;
+  margin: 0 auto;
+}
+
+.colorized {
+  background: <%= bg %>;
+  color: <%= fg %>;
+}
+
+.highlighted {
+  color: <%= hg %>;
+}
+
+/* #header .title */
+
+#header {position:relative; border-bottom: 4px solid; padding-right:200px;}
+
+.title {width:720px; margin:0 auto; padding:10px 0;}
+.title ul {padding-left: 20px;}
+
+#download { 
+  height: 120px;
+  float: right;
+  margin-top: 30px;
+  padding: 10px 30px;
+  border: 4px solid;
+  -moz-border-radius:20px;
+  border-radius:20px;
+  background: <%= lg %>;
+  border-color: <%= hg %>;
+  color: <%= fg %>;
+  font-size: 150%; text-align: center;
+}
+
+#download a { color: <%= lg %>; }
+#download h1 { font-size: 64px; }
+#download h1 a:hover { text-decoration: none; }
+
+/* #nav .menu */
+
+#nav { position: fixed; padding: 20px; right: 0; top: 40px; width: 200px;
+  border-top: 4px solid; border-left: 4px solid; border-bottom: 4px solid;
+  -moz-border-radius-topleft: 20px; -webkit-border-top-left-radius: 20px;
+  -moz-border-radius-bottomleft: 20px; -webkit-border-bottom-left-radius: 20px;
+}
+
+.menu { margin: 0 auto; text-align: left; }
+.menu ul { list-style-type: none; margin: 0px; padding: 0px; width: 100%; position: relative; }
+.menu ul li { margin: 15px 10px 15px 0; line-height: 20px; }
+.menu ul li a { border-top: 0 solid; }
+
+/* #main .doc */
+
+#main { padding: 0px; padding-right: 200px; }
+
+.doc { width: 720px; margin: 0 auto; padding: 20px 0 10px 0; min-height: 890px; }
+.doc h2 { border-left: 0px solid; padding-left: 0; }
+.doc h2 img { margin: 0 0 0 0; }
+.doc h3 { border-bottom: 1px dotted; }
+
+/* #footer .copyright */
+
+#footer { padding-right: 200px; border-top: 4px solid; }
+
+.copyright { width: 720px; margin: 0 auto; margin-top: 20px; padding: 20px 0px 35px 0px; }
+
+
+/* FONT */
+
+/* #header .title */
+
+.title { font-size: 80%; }
+.title h1 { font-size: 450%; font-weight: bold; }
+
+/* #main .doc */
+
+.doc { }
+.doc a { font-size: 100%; }
+.doc a:hover { text-decoration: underline; }
+.doc h2 { font-size: 2em; font-weight: bold; }
+.doc h3 { font-style: italic;}
+
+/* #nav .menu */
+
+.menu { text-align: left; }
+.menu ul li a { font-family: sans-serif; font-weight: bold; text-decoration: none; }
+.menu ul li a:hover { text-decoration: underline; }
+.menu ul li a:active { text-decoration: underline; }
+
+/* #footer .copyright */
+
+.copyright { font: bold .8em sans-serif; }
+
+
+/* COLOR */
+
+/* #header .title */
+
+#header { background: <%= bg %>; border-color: <%= lg %>; }
+
+.title h1 { color: <%= lg %>; }
+.title pre { background: transparent; }
+
+/* #nav .menu */
+
+#nav { background: <%= lg %>; border-color: <%= hg %>; }
+
+.menu ul { background: transparent; }
+.menu ul li a { color: <%= fg %>; border-color: <%= hg %>; }
+
+/* #main .doc */
+
+.doc { background: <%= lg %> }
+.doc a { color: <%= hg %>; }
+.doc a:hover { }
+.doc p { }
+.doc h2 { color: <%= fg %>; border-color: <%= hg %>; }
+.doc h3 { border-color: <%= hg %>; }
+
+/* #footer .copyright */
+
+#footer { background: <%= bg %>; border-color: <%= lg %>; }
+
+.copyright { color: <%= fg; }
+
+

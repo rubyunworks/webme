@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+utilize 'gemdo'
+utilize 'color'
+
+require 'gemdo/readme'
+
+key = metadata.title
+hue = metadata.fg ? color(metadata.fg) : color_from_keyword(key)
+
+if hue.brightness > 0.5
+  metadata.fg ||= hue.html
+  metadata.bg ||= hue.adjust_brightness(-50).html
+  metadata.hg ||= hue.adjust_brightness(-30).html
+  metadata.lg ||= hue.adjust_brightness(+30).html
+else
+  metadata.fg ||= hue.html
+  metadata.bg ||= hue.adjust_brightness(+50).html
+  metadata.hg ||= hue.adjust_brightness(+30).html
+  metadata.lg ||= hue.adjust_brightness(-30).html
+end
+
+metadata.font ||= 'sans serif'
+metadata.size ||= '1em'
+
+text = project.readme.text
+type = project.readme.extname.sub(/^\./,'')
+
+i = text.index(/^(==|##)/)
+
+metadata.header = Malt.render(:text=>text[0...i],  :type=>type)
+metadata.body   = Malt.render(:text=>text[i...-1], :type=>type)
+
+rsrc = project.profile.resources
+link = rsrc['download'] || rsrc['gem']
+
+metadata.link ||= link
+
+scaffold do
+  copy
+end
+

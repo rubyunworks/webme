@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+utilize 'gemdo'
+
+metadata.font ||= 'sans serif'
+metadata.size ||= '1em'
+
+metadata.bg ||= '#ffffff'
+metadata.fg ||= '#222222'
+metadata.hg ||= '#222222'
+
+site = output.glob('{site,website,web,www}').first || 'site'
+
+scaffold do
+  copy
+end

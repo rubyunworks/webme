@@ -1,0 +1,95 @@
+/* CLASS STYLES */
+
+/* LAYOUT */
+
+/* #header .title */
+
+#header { width: 100%; padding: 10px 0; }
+
+.title { width: 800px; margin: 0 auto; padding: 10px 0; }
+.title ul { padding-left: 20px; }
+
+/* #nav .menu */
+
+#nav { width:100%; padding: 20px 0 10px 0; border-top: 1px solid; }
+
+.menu { width: 800px; margin: 0 auto; text-align: left;}
+.menu ul { list-style-type: none; margin: 0px; padding: 0px; width: 100%; position: relative; }
+.menu ul li { display: inline; margin: 15px 10px 15px 0; line-height: 36px; }
+.menu ul li a { border-top: 10px solid; }
+
+/* #main .doc */
+
+#main { width: 100%; padding: 0px; }
+
+.doc { margin: 0 auto; width: 800px; padding: 20px 0 10px 0; min-height: 890px; }
+.doc p { text-align: left; }
+.doc h2 { border-left: 15px solid; padding-left: 10px; }
+.doc h2 img { margin: 0 0 0 0; }
+.doc h3 { border-bottom: 1px dotted; }
+
+/* #footer .copyright */
+
+#footer { width: 100%; }
+
+.copyright { margin: 0 auto; margin-top: 20px; width: 800px; padding: 20px 0px 35px 0px; }
+
+
+/* FONT */
+
+/* #header .title */
+
+.title h1 { font-size: 300%; }
+
+/* #main .doc */
+
+.doc { }
+.doc a { font-size: 100%; }
+.doc a:hover { text-decoration: underline; }
+.doc p { text-align: left; font-size: 100%; font-family: <%= font %>; line-height: 1.4em; }
+.doc h2 { font-size: 2em; font-weight: bold; }
+.doc h3 { font-style: italic;}
+
+/* #nav .menu */
+
+.menu { text-align: left; }
+.menu ul li a { font: bold 90% <%= font %>; text-decoration: none; }
+.menu ul li a:hover { text-decoration: underline; }
+.menu ul li a:active { text-decoration: underline; }
+
+/* #footer .copyright */
+
+.copyright { font: bold .8em <%= font %>; }
+
+
+/* COLOR */
+
+/* #header .title */
+
+#header { background: #ccc; }
+
+.title h1 { color: <%= color.darker %>; }
+.title pre { background: transparent; }
+
+/* #nav .menu */
+
+#nav { background: transparent; border-color: #bbb; }
+
+.menu ul { background: transparent; }
+.menu ul li a { color: #333; border-color: <%= color.darker %>; }
+
+/* #main .doc */
+
+.doc { }
+.doc a { color: <%= color.darker; %> }
+.doc a:hover { }
+.doc p { color: #222; }
+.doc h2 { color: #222; border-color: <%= color.darker %>; }
+.doc h3 { border-color: white; }
+
+/* #footer .copyright */
+
+.copyright { color: #444444; }
+
+.copyright b { color: #b05; }
+
