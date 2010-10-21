@@ -73,6 +73,10 @@ HERE
           options[:markup] = type
         end
 
+        opt.on("--skip", "-s", "skip overwrite of pre-existing site") do
+          options[:skip] = true
+        end
+
         opt.on("--force", "-f", "force overwrite of pre-existing site") do
           options[:force] = true
         end
@@ -109,8 +113,18 @@ HERE
 
     # Execute command.
     def execute
-      readwe = WebMe.new(Dir.pwd, options)
-      readwe.generate
+      webme = WebMe.new(Dir.pwd, options)
+      begin
+        report = webme.generate
+        report.each do |action|
+          puts action
+        end
+      rescue => err
+        case err
+        when OverwriteError
+          puts err.message
+        end
+      end
     end
 
     # Parse and execute.

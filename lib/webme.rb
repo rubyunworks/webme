@@ -1,12 +1,12 @@
-require 'webme/generator'
+#require 'webme/copier'
 
 module WebMe
-  VERSION="1.3.0" #:till: VERSION="<%= version %>"
+  require 'webme/meta/data'
 
-  def self.new(root, options)
-    Generator.new(root, options)
-  end
-
+  #def self.new(root, options)
+  #  #Generator.new(root, options)
+  #  Copier.new(root, options)
+  #end
 end
 
 
