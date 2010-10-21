@@ -1,0 +1,11 @@
+name    : webme
+date    : 2010-10-20
+version : 0.7.0
+
+requires:
+  - gemdo
+  - facets
+  - malt
+  - syckle (build)
+  - qed (test)
+

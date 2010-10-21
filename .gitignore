@@ -1,8 +1,8 @@
 .cache
 log
-doc/rdoc
-doc/ri
+ri
 pkg
-work/sandbox/site
-MANIFEST
+tmp
+site/docs
 site/examples
+work/sandbox
