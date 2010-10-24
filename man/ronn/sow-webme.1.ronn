@@ -1,0 +1,38 @@
+sow-webme(1) -- Generate Project Website
+========================================
+
+## SYNOPSIS
+
+  `sow <name>.webme [directory]`
+
+## DESCRIPTION
+
+WebMe provides simple README and GEM DO POM based project
+site templates. WebMe's templates use Sow for generation.
+
+## NAME
+
+The `name` selection parameter selects which WebMe template
+to utilize.
+
+Without the `name` selection parameter, the default template
+is `splash`, which is the simplest template provided,
+constisting of little more than a cover page and links to
+resources.
+
+## ARGUMENTS
+
+  * `directory`:
+    Directory relative to output option to put website files.
+    By default looks for `site`, `website`, `web` or `www`.
+    If not found, it creates a new `site` directory. To generate
+    the template in the current directory, use the dot-path, `.`.
+
+## COPYRIGHT
+
+WebMe is Copyright (C) 2008 Thomas Sawyer <http://trans.github.com/>
+
+## SEE ALSO
+
+sow(1), sow-webme-list(1)
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+# Generate Dr. Nic Style Website
+# ==============================
+#
+# ## DESCRIPTION
+#
+# This WebME template provides a Dr. Nic inspired README and
+# GEM DO POM based project site layout.
+#
+# ## ARGUMENTS
+#
+#   * `directory`:
+#     Directory relative to output option to put website files.
+#     By default looks for `site`, `website`, `web` or `www`.
+#     If not found, it creates a new `site` directory. To generate
+#     the template in the current directory, use the dot-path, `.`.
+#
+# ## COPYRIGHT
+#
+# WebMe is Copyright (C) 2008 Thomas Sawyer <http://trans.github.com/>
+#
+# ## SEE ALSO
+#
+# sow(1), sow-webme(1)
+
+require 'webme'
+
+webme_setup
+
+copy '**/*'
+

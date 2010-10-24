@@ -5,15 +5,13 @@
 <HEAD>
   <TITLE><%= title %></TITLE>
 
-  <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
+  <LINK rel="shortcut icon" href="assets/ruby.png"/>
 
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/tag.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/id.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/class.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/reset.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/custom.css" />
 
-  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/jquery.js"></SCRIPT>
-  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/highlight.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="assets/jquery.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="assets/highlight.js"></SCRIPT>
 
   <SCRIPT type="text/javascript">
     $(document).ready(function() {
@@ -23,7 +21,7 @@
     });
   </SCRIPT>
 
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/highlight.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/highlight.css" />
 </HEAD>
 <BODY>
 
@@ -31,12 +29,12 @@
   <div class="title"> 
     <% if logo %>
       <div class="logo">
-        <a href="<%= download %>"><img src="<%= logo %>" /></a>
+        <a href="<%= link %>"><img src="<%= logo %>" /></a>
       </div>    
     <% else %>
       <div class="download">
         Get Version
-        <h1><a href="<%= download %>"><%= version %></a></h1>
+        <h1><a href="<%= link %>"><%= version %></a></h1>
       </div>
     <% end %>
     <%= header %>
@@ -46,10 +44,8 @@
 <div id="nav">
   <div class="menu">
     <ul>
-      <li><a href="#" style="font-size: 175%;"><%= title %></a></li>
-    <% sections.each do |i, s| %>
-      <li><a href="#section_<%= i %>"><%= s %></a></li>
-    <% end %>
+    <li><a href="#" style="font-size: 175%;"><%= title %></a></li>
+    <!-- TODO: javascript TOC -->
     </ul>
   </div>
 </div>
@@ -72,5 +68,4 @@
 </BODY>
 </HTML>
 
-<!-- ReadWe Copyright (c) 2009 Thomas Sawyer -->
-
+<!-- WebMe Copyright (c) 2009 Thomas Sawyer -->
