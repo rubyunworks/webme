@@ -24,8 +24,4 @@
 #
 # sow(1), sow-webme(1)
 
-require 'webme'
-
-webme_setup
-
 copy '**/*'
